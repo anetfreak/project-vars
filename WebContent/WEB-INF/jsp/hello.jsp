@@ -7,15 +7,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 	<title>Welcome to VARS!</title>
-	<script type="text/javascript" src="<spring:url value="/js/bootstrap/bootstrap.min.js"/>"></script>
-	<link rel="stylesheet" type="text/css" href="<spring:url value="/css/bootstrap/bootstrap.css"/>">
-	<link rel="stylesheet" type="text/css" href="<spring:url value="/css/bootstrap/bootstrap.min.css"/>">
-	<link rel="stylesheet" type="text/css" href="<spring:url value="/css/bootstrap/bootstrap-responsive.css"/>">
-	<link rel="stylesheet" type="text/css" href="<spring:url value="/css/bootstrap/bootstrap-responsive.min.css"/>">
-	
-	<script type="text/javascript" src="<spring:url value="/js/bootstrap/bootstrap.js"/>"></script>
-	
-	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	<%@include file="includes.jsp" %>
 	<script type="text/javascript">
 // 		$(document).ready(function(){
 // 			$('#createUser').click(function(event) {
