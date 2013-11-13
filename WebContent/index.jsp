@@ -41,6 +41,7 @@
 				<div id="sidebar" class="span2">
 					<!--Sidebar content-->
 					<ul id="sidebar-list" class="nav nav-list">
+						<li class="nav-header">Project Options</li>
 						<li><a href="#">Post new Project</a></li>
 						<li><a href="#">View My Projects</a></li>
 					</ul>
