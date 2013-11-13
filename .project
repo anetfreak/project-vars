@@ -33,11 +33,4 @@
 		<nature>org.eclipse.jdt.core.javanature</nature>
 		<nature>org.eclipse.wst.jsdt.core.jsNature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>js</name>
-			<type>2</type>
-			<location>/Users/Ameya/Documents/workspace/project-vars/WebContent</location>
-		</link>
-	</linkedResources>
 </projectDescription>
