@@ -16,6 +16,10 @@
 		<style type="text/css">
 			#sidebar-list {
 				font-size: 14px;
+				margin: 10px 5px 10px 5px;
+			}
+			#sidebar, #main-content {
+				background-color: #eeeeee;
 			}
 		</style>
 </head>
@@ -35,7 +39,7 @@
 		</div>
 	</div>
 
-	<div id="container" style="padding-top: 40px;">
+	<div id="container" style="padding-top: 20px;">
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2">
@@ -46,7 +50,7 @@
 						<li><a href="#">View My Projects</a></li>
 					</ul>
 				</div>
-				<div class="span10">
+				<div id="main-content" class="span10">
 					<!--Body content-->
 				</div>
 			</div>
