@@ -16,10 +16,25 @@ http://www.springframework.org/schema/context/spring-context-3.0.xsd">
         <property name="suffix" value=".jsp" />
     </bean>
     
-    <bean id="userFacade" class="com.vars.facade.UserFacadeImpl" />
+    <bean id="userFacade" class="com.vars.facade.UserFacadeImpl" p:userDao-ref="userDao"/>
+    
+    <bean id="userDao" class="com.vars.dao.UserDaoImpl">
+    	<property name="dataSource" ref="dataSource" />
+    </bean>
 	
 	<bean id="userController" class="com.vars.controller.UserController">
 		<property name="userFacade" ref="userFacade" />
+	</bean>
+	
+	<bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
+		<property name="url" value="jdbc:mysql://localhost:3306/vars_schema"/>
+		<property name="username" value="root"/>
+		<property name="password" value="root"/>
+	</bean>
+	
+	<bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+		<property name="dataSource" ref="dataSource" />
 	</bean>
 	
 </beans>

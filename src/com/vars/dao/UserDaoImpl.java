@@ -1,9 +1,17 @@
 package com.vars.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.support.JdbcDaoSupport;
+
 import com.vars.domain.User;
 
-public class UserDaoImpl implements UserDao {
+public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
+	private static final String GET_USER = "select username, password from user where id = ?"; 
+	
 	@Override
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
@@ -11,10 +19,20 @@ public class UserDaoImpl implements UserDao {
 	}
 
 	@Override
-	public User getUser() {
-		// TODO Auto-generated method stub
+	public User getUser(Integer id) {
 		//Fetch user from DB here and return
-		return null;
+		//TODO - Set the actual fetched data in the User object. Add columns in DB corresponding to the ones in domain USer.
+		
+		return getJdbcTemplate().queryForObject(GET_USER, new Object[]{id}, new RowMapper<User>(){
+			@Override
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+				User user = new User();
+				user.setEmail(rs.getString("username"));
+				user.setFirstName("NA");
+				user.setLastName("NA");
+				return user;
+			}
+		});
 	}
-
+	
 }

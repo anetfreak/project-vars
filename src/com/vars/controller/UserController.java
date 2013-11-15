@@ -21,7 +21,7 @@ public class UserController {
 	@RequestMapping(value = "/user.htm", method = RequestMethod.GET)
 	public ModelAndView getUser(Integer id) {
 		
-		User user = userFacade.getUser(3);
+		User user = userFacade.getUser(1);
 		ModelAndView modelAndView = new ModelAndView("user_success");
 		modelAndView.addObject("user", user);
 		return modelAndView;

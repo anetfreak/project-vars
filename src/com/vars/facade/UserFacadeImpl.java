@@ -1,9 +1,12 @@
 package com.vars.facade;
 
+import com.vars.dao.UserDao;
 import com.vars.domain.User;
 
 public class UserFacadeImpl implements UserFacade{
 
+	private UserDao userDao;
+	
 	@Override
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
@@ -13,14 +16,11 @@ public class UserFacadeImpl implements UserFacade{
 
 	@Override
 	public User getUser(Integer id) {
-		// TODO Auto-generated method stub
-		
-		User user = new User();
-		user.setEmail("sumant@murke.com");
-		user.setFirstName("Sumant");
-		user.setLastName("Murke");
-		user.setPassword("pass");
-		return user;
+		return userDao.getUser(id);
+	}
+	
+	public void setUserDao(UserDao userDao) {
+		this.userDao = userDao;
 	}
 
 }
