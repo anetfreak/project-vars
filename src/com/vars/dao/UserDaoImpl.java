@@ -34,5 +34,11 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			}
 		});
 	}
+
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
 	
 }

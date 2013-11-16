@@ -19,8 +19,13 @@ public class UserFacadeImpl implements UserFacade{
 		return userDao.getUser(id);
 	}
 	
+	@Override
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
-
 }

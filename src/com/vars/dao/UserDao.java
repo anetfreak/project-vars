@@ -7,5 +7,7 @@ public interface UserDao {
 	void createUser(User user);
 	
 	User getUser(Integer id);
+	
+	void updateUser(User user);
 
 }
