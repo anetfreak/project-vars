@@ -1,11 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+	pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>VARS</title>
-
 <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap/bootstrap.css">
@@ -14,18 +13,15 @@
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap/bootstrap-responsive.css">
 <link rel="stylesheet" type="text/css"
+	href="css/vars.css">	
+<link rel="stylesheet" type="text/css"
 	href="css/bootstrap/bootstrap-responsive.min.css">
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 <script type="text/javascript">
-
+	
 </script>
-<style type="text/css">
-#sidebar-list {
-	font-size: 14px;
-}
-</style>
 </head>
 <body>
 	<div id="header">
@@ -42,70 +38,80 @@
 			</div>
 		</div>
 	</div>
-	
-				
+
 	<div id="container" style="padding-top: 40px;">
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2">
-						<!--Sidebar content-->
+					<!--Sidebar content-->
 					<ul id="sidebar-list" class="nav nav-list">
+
 					</ul>
 				</div>
+				<div>
 					<div class="tab-content">
-						<div class="tab-pane active" id="UserProfile">
+						<div class="tab-pane active" id="testerproposal">
 							<table>
 								<!--Body content-->
 								<tr>
-  									<h2><u>Update your information here!</u></h2>
-								</tr>
-								<tr>
-									<td><h2 class="label label-primary">First Name</h2></td>
-									<td></td>
-									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="firstNameInput">NameFromDB</p>
-  										  </div></td>
-								</tr>
-								<tr></tr>
-								<tr>
-									<td><h2 class="label label-primary">Last Name</h2></td>
-									<td></td>
-									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="lastNameInput">NameFromDB</p>
-  										  </div></td>
-								</tr>
-								<tr></tr>
-								<tr>
-									<td><h2 class="label label-primary">Email</h2></td>
-									<td></td>
-									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="emailInput">EmailFromDB</p>
-  										  </div></td>
-								</tr>
-								<tr></tr>
-								<tr>
-									<td><h2 class="label label-primary">Password</h2></td>
+									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="password" id="passwordInput" class="form-control" placeholder="Password">
+											<input class="input-xlarge" id="disabledInput" type="text"
+												disabled>
 										</div></td>
 								</tr>
-								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Re-enter Password</h2></td>
+									<td><h2 class="label label-primary">Domain</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="password" id="reEnterPasswordInput" class="form-control" placeholder="Re-enter Password">
+
+											<input class="input-xlarge" id="disabledInput" type="text"
+												disabled>
 										</div></td>
 								</tr>
-								<tr></tr>
-								<tr></tr>
+								<tr>
+									<td><h2 class="label label-primary">Description</h2></td>
+									<td></td>
+									<td><div class="input-group">
+											<input class="input-xlarge" id="disabledInput" type="text"
+												disabled>
+										</div></td>
+								</tr>
+								<tr>
+									<td><h2 class="label label-primary">Developers Name</h2></td>
+									<td></td>
+									<td><div class="input-group">
+											<input class="input-xlarge" id="disabledInput" type="text"
+												disabled>
+										</div></td>
+								</tr>
+								<tr>
+									<td><h2 class="label label-primary">Proposal</h2></td>
+									<td></td>
+									<td>
+										<div class="input-prepend input-append">
+											<span class="add-on">$</span> 
+											<input class="proposal-input"
+												id="appendedPrependedInput" type="text" >
+										</div>
+									</td>
+								</tr>
 								<tr>
 									<td></td>
 									<td></td>
-									<td><div class="btn-group">
-  										<button type="submit" class="btn">Update Profile</button>
-									</div></td>
+									<td><textarea rows="4" class="proposalDescription-input" ></textarea></td>
+								</tr>
+								<tr>
+									<td></td>
+									<td></td>
+									<td>
+										<div class="btn-group">
+											<button type="submit" class="btn">Submit</button>
+										</div>
+
+									</td>
+
 								</tr>
 							</table>
 						</div>
@@ -113,9 +119,6 @@
 				</div>
 			</div>
 		</div>
-	
-
-	<div id="footer"></div>
-
+	</div>
 </body>
 </html>
