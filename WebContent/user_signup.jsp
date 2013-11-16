@@ -105,11 +105,11 @@
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input id="userType"></jsp:element>' type="radio">
+        											<input name="userTypeInput" type="radio">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
       											
-      											<input id="userType" type="radio">
+      											<input name="userTypeInput" type="radio">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->
