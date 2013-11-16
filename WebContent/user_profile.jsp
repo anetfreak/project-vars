@@ -53,34 +53,34 @@
 					</ul>
 				</div>
 					<div class="tab-content">
-						<div class="tab-pane active" id="NewUserSignUp">
+						<div class="tab-pane active" id="UserProfile">
 							<table>
 								<!--Body content-->
 								<tr>
-  									<h2><u>Create an account here</u></h2>
+  									<h2><u>Update your information here!</u></h2>
 								</tr>
 								<tr>
 									<td><h2 class="label label-primary">First Name</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" class="form-control" placeholder="First Name">
-										</div></td>
+									<td><div class="col-sm-10">
+    									  <p class="form-control-static">NameFromDB</p>
+  										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
 									<td><h2 class="label label-primary">Last Name</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" class="form-control" placeholder="Last Name">
-										</div></td>
+									<td><div class="col-sm-10">
+    									  <p class="form-control-static">NameFromDB</p>
+  										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
 									<td><h2 class="label label-primary">Email</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" class="form-control" placeholder="Email ID">
-										</div></td>
+									<td><div class="col-sm-10">
+    									  <p class="form-control-static">EmailFromDB</p>
+  										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
@@ -99,28 +99,12 @@
 										</div></td>
 								</tr>
 								<tr></tr>
-								<tr>
-									<td><h2 class="label label-primary">You are a</h2></td>
-									<td></td>
-									<td><div class="col-lg-6">
-   											 <div class="input-group">
-      											<span class="input-group-addon">
-        											<input type="radio">
-      											</span>
-      											<h2 class="label label-primary">Project Owner</h2>
-      											
-      											<input type="radio">
-      											</span>
-      											<h2 class="label label-primary">Tester</h2>
-    										</div><!-- /input-group -->
-  										</div><!-- /.col-lg-6 --></td>
-								</tr>
 								<tr></tr>
 								<tr>
 									<td></td>
 									<td></td>
 									<td><div class="btn-group">
-  										<button type="submit" class="btn">Submit</button>
+  										<button type="submit" class="btn">Update Profile</button>
 									</div></td>
 								</tr>
 							</table>
