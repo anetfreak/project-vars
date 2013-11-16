@@ -12,8 +12,7 @@
 	href="css/bootstrap/bootstrap.min.css">
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap/bootstrap-responsive.css">
-<link rel="stylesheet" type="text/css"
-	href="css/vars.css">	
+<link rel="stylesheet" type="text/css" href="css/vars.css">
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap/bootstrap-responsive.min.css">
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
@@ -54,6 +53,11 @@
 							<table>
 								<!--Body content-->
 								<tr>
+									<h2>
+										<u>Tester Proposal</u>
+									</h2>
+								</tr>
+								<tr>
 									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
 									<td><div class="input-group">
@@ -91,23 +95,31 @@
 									<td></td>
 									<td>
 										<div class="input-prepend input-append">
-											<span class="add-on">$</span> 
-											<input class="proposal-input"
-												id="appendedPrependedInput" type="text" >
+											<span class="add-on">$</span> <input class="proposal-input"
+												id="appendedPrependedInput" type="text"
+												placeholder="Amount in USD">
 										</div>
 									</td>
 								</tr>
 								<tr>
+									<td><h2>
+											<span class="label label-primary">Proposal Description</span>
+										</h2></td>
 									<td></td>
-									<td></td>
-									<td><textarea rows="4" class="proposalDescription-input" ></textarea></td>
+									<td><textarea rows="4" class="proposalDescription-input"placeholder="Description regarding proposal "></textarea></td>
 								</tr>
+								<tr> </tr>
+								<tr> </tr>
+								
 								<tr>
 									<td></td>
 									<td></td>
-									<td>
+									
+									<td >
 										<div class="btn-group">
-											<button type="submit" class="btn">Submit</button>
+										 
+											<button type="submit" class="btn" >Submit</button>
+											
 										</div>
 
 									</td>
