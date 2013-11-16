@@ -53,50 +53,47 @@
 					</ul>
 				</div>
 					<div class="tab-content">
-						<div class="tab-pane active" id="UserProfile">
+						<div class="tab-pane active" id="Project">
 							<table>
 								<!--Body content-->
 								<tr>
-  									<h2><u>Update your information here!</u></h2>
+  									<h2><u>Project Details</u></h2>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">First Name</h2></td>
+									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="firstNameInput">NameFromDB</p>
+    									  <p class="form-control-static" id="titleInput">TitleFromDB</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Last Name</h2></td>
+									<td><h2 class="label label-primary">Description</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="lastNameInput">NameFromDB</p>
+    									  <p class="form-control-static" id="descriptionInput">DescriptionFromDB</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Email</h2></td>
+									<td><h2 class="label label-primary">Tester Name</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="emailInput">EmailFromDB</p>
+    									  <p class="form-control-static" id="NameInput">TesterFromDB</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Password</h2></td>
+									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="password" id="passwordInput" class="form-control" placeholder="Password">
-										</div></td>
+									<td><textarea id="resultsInput" disabled="disabled" class="proposalDescription-Input" rows="3">DataFromDB</textarea>
+									</td>
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Re-enter Password</h2></td>
+									<td><h2 class="label label-primary">Bids</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="password" id="reEnterPasswordInput" class="form-control" placeholder="Re-enter Password">
-										</div></td>
+									<td><a href="bids.html">Show all bids</a></td>
 								</tr>
 								<tr></tr>
 								<tr></tr>

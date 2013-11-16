@@ -63,7 +63,7 @@
 									<td><h2 class="label label-primary">First Name</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" class="form-control" placeholder="First Name">
+											<input type="text" id="firstNameInput" class="form-control" placeholder="First Name">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -71,7 +71,7 @@
 									<td><h2 class="label label-primary">Last Name</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" class="form-control" placeholder="Last Name">
+											<input type="text" id="lastNameInput" class="form-control" placeholder="Last Name">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -79,7 +79,7 @@
 									<td><h2 class="label label-primary">Email</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" class="form-control" placeholder="Email ID">
+											<input type="text" id="emailInput" class="form-control" placeholder="Email ID">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -87,7 +87,7 @@
 									<td><h2 class="label label-primary">Password</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="password" class="form-control" placeholder="Password">
+											<input type="password" id="passwordInput" class="form-control" placeholder="Password">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -95,7 +95,7 @@
 									<td><h2 class="label label-primary">Re-enter Password</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="password" class="form-control" placeholder="Re-enter Password">
+											<input type="password" id="reEnterPassword" class="form-control" placeholder="Re-enter Password">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -105,11 +105,11 @@
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input type="radio">
+        											<input id="userType"></jsp:element>' type="radio">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
       											
-      											<input type="radio">
+      											<input id="userType" type="radio">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->
