@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class AuthenticationController {
 
-	@RequestMapping(value = "/showLogin.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
 	public ModelAndView showLogin() {
 		return new ModelAndView("auth/user_login");
 	}

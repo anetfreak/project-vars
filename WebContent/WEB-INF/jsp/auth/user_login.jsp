@@ -22,20 +22,40 @@
 	$(document).ready(function(){
 		$('#login').click(function(event) {
 			//Validate email
-			var email = $('#email').val();
-			var password = $('#password').val();
-			$.ajax({
-				url : "login.htm",
-			    type: "POST",
-			    data : "email=" + email + "&password=" + password,
-			    success:function(data, textStatus, jqXHR){
-			    	window.location.href="hello.htm";
-			    },
-			    error: function(jqXHR, textStatus, errorThrown){
-			    	alert("Could not process request.. " + errorThrown);
-			    }
-			});
+			if(validEmail()) {
+				var email = $('#email').val();
+				var password = $('#password').val();
+				$.ajax({
+					url : "login.htm",
+				    type: "POST",
+				    data : "email=" + email + "&password=" + password,
+				    success:function(data, textStatus, jqXHR){
+				    	window.location.href="hello.htm";
+				    },
+				    error: function(jqXHR, textStatus, errorThrown){
+				    	alert("Could not process request.. " + errorThrown);
+				    }
+				});
+			}
 		});
+		
+		var validEmail = function() {
+			var email = $('#email');
+			var EMAIL_PATTERN = /^([a-zA-Z0-9_\-\.]+([+])?[a-zA-Z0-9_\-\.]+)@((\[[0-2]{1}[0-5]{1}[0-5]{1}\.[0-2]{1}[0-5]{1}[0-5]{1}\.[0-2]{1}[0-5]{1}[0-5]{1}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-2]{1}[0-5]{1}[0-5]{1})(\]?)$/;
+			var result = false;
+
+			// show error if field is empty or invalid email is entered
+			if(email.val() == null || email.val().trim() == '') {
+				alert('Please enter your email.');
+			} else if(!EMAIL_PATTERN.test(email.val())) {
+				alert('Email is not in a valid format.');
+				email.val('');
+			} else {
+				result = true;
+			}
+			return result;
+			
+		};
 	});
 </script>
 

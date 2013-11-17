@@ -38,7 +38,8 @@
 					<li><a href="#" style="color: white;">Link</a></li>
 				</ul>
 				<ul class="nav" style=" float:right;">
-					<li><a href="showLogin.htm" style="color: white;">Login</a></li>
+					<li><a href="login.htm" style="color: white;">Login</a></li>
+					<li><a href="signup.htm" style="color: white;">Sign Up</a></li>
 				</ul>
 			</div>
 		</div>
