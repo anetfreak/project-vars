@@ -5,6 +5,7 @@ public class User {
 	private Integer id;
 	private String password;
 	private String userName;
+	
 	public Integer getId() {
 		return id;
 	}
@@ -23,6 +24,5 @@ public class User {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	
 	
 }

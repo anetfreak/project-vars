@@ -3,13 +3,16 @@ package com.vars.dao;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.vars.domain.User;
 
-public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
+public class UserDaoImpl implements UserDao {
 
+	private JdbcTemplate jdbcTemplate;
 	private static final String GET_USER = "select username, password from user where id = ?"; 
 	
 	@Override
@@ -23,7 +26,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		//Fetch user from DB here and return
 		//TODO - Set the actual fetched data in the User object. Add columns in DB corresponding to the ones in domain USer.
 		
-		return getJdbcTemplate().queryForObject(GET_USER, new Object[]{id}, new RowMapper<User>(){
+		return jdbcTemplate.queryForObject(GET_USER, new Object[]{id}, new RowMapper<User>(){
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user = new User();
@@ -38,6 +41,10 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
 		
+	}
+	
+	public void setDataSource(DataSource dataSource) {
+		this.jdbcTemplate = new JdbcTemplate(dataSource);
 	}
 	
 }

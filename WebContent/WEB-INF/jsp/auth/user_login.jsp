@@ -16,11 +16,29 @@
 <link rel="stylesheet" type="text/css"
 	href="css/bootstrap/bootstrap-responsive.min.css">
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 <script type="text/javascript">
-	
+	$(document).ready(function(){
+		$('#login').click(function(event) {
+			//Validate email
+			var email = $('#email').val();
+			var password = $('#password').val();
+			$.ajax({
+				url : "login.htm",
+			    type: "POST",
+			    data : "email=" + email + "&password=" + password,
+			    success:function(data, textStatus, jqXHR){
+			    	window.location.href="hello.htm";
+			    },
+			    error: function(jqXHR, textStatus, errorThrown){
+			    	alert("Could not process request.. " + errorThrown);
+			    }
+			});
+		});
+	});
 </script>
+
 <style type="text/css">
 #sidebar-list {
 	font-size: 14px;
@@ -49,7 +67,6 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 
-				<form class="form-horizontal" role="form">
 					<table>
 						<tr>
 							<h2>
@@ -60,7 +77,7 @@
 
 							<td><label for="inputEmail3" class="col-sm-2 control-label">Email</label></td>
 							<td><div class="col-sm-10">
-									<input type="email" class="form-control" id="emailInput"
+									<input type="email" class="form-control" id="email"
 										placeholder="Your registered email">
 
 								</div></td>
@@ -69,25 +86,24 @@
 						<td><label for="inputPassword3"
 							class="col-sm-2 control-label">Password</label></td>
 						<td><div class="col-sm-10">
-								<input type="password" class="form-control" id="passwordInput"
+								<input type="password" class="form-control" id="password"
 									placeholder="Password">
 							</div></td>
 
 						<tr>
-						
+
 						</tr>
-						
-						
+
+
 						<tr>
-						
+
 							<td></td>
 
 							<td><div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-default">Sign in</button>
+									<button type="submit" class="btn btn-default" id="login">Login</button>
 								</div></td>
 						</tr>
 					</table>
-				</form>
 			</div>
 		</div>
 	</div>
