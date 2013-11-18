@@ -18,8 +18,26 @@
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+
+<script type="text/javascript"> $(document).ready(function(){ $("#subForm").validate(); }); </script>
+<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
 <script type="text/javascript">
 
+function checkPasswordMatch() {
+    var password = $("#passwordInput").val();
+    var rePassword = $("#reEnterPasswordInput").val();
+
+    if (password != rePassword)
+        $("#divCheckPasswordMatch").html("Passwords do not match!");
+    else
+        $("#divCheckPasswordMatch").html("Passwords match.");
+}
+
+$(document).ready(function () {
+   $("reEnterPasswordInput").keyup(checkPasswordMatch);
+});
 </script>
 <style type="text/css">
 #sidebar-list {
@@ -54,16 +72,17 @@
 				</div>
 					<div class="tab-content">
 						<div class="tab-pane active" id="NewUserSignUp">
+						<form action="" method="post" id="subForm">
 							<table>
 								<!--Body content-->
 								<tr>
-  									<h2><u>Create an account here</u></h2>
+  									<h2>Create an account here</h2>
 								</tr>
 								<tr>
 									<td><h2 class="label label-primary">First Name</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" id="firstNameInput" class="form-control" placeholder="First Name">
+											<input type="text" id="firstNameInput" class="required" placeholder="First Name">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -71,7 +90,7 @@
 									<td><h2 class="label label-primary">Last Name</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" id="lastNameInput" class="form-control" placeholder="Last Name">
+											<input type="text" id="lastNameInput" class="required" placeholder="Last Name">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -79,7 +98,7 @@
 									<td><h2 class="label label-primary">Email</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" id="emailInput" class="form-control" placeholder="Email ID">
+											<input type="email" id="emailInput" class="required email" placeholder="Email ID">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -87,7 +106,7 @@
 									<td><h2 class="label label-primary">Password</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="password" id="passwordInput" class="form-control" placeholder="Password">
+											<input type="password" id="passwordInput" name="passwordInput" class="required" placeholder="Password">
 										</div></td>
 								</tr>
 								<tr></tr>
@@ -95,8 +114,9 @@
 									<td><h2 class="label label-primary">Re-enter Password</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="password" id="reEnterPassword" class="form-control" placeholder="Re-enter Password">
+											<input type="password" id="reEnterPasswordInput" name="reEnterPasswordInput" class="required" placeholder="Re-enter Password" onChange="checkPasswordMatch();">
 										</div></td>
+									<td><div class="registrationFormAlert" id="divCheckPasswordMatch"></div></td>
 								</tr>
 								<tr></tr>
 								<tr>
@@ -105,11 +125,11 @@
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input name="userTypeInput" type="radio">
+        											<input name="userTypeInput" type="radio" class="required">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
       											
-      											<input name="userTypeInput" type="radio">
+      											<input name="userTypeInput" type="radio" class="required">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->
@@ -119,11 +139,12 @@
 								<tr>
 									<td></td>
 									<td></td>
-									<td><div class="btn-group">
-  										<button type="submit" class="btn">Submit</button>
-									</div></td>
+									<td><div class="col-sm-offset-2 col-sm-10">
+									<button type="submit" class="btn btn-default" id="signup">Sign Up</button>
+								</div></td>
 								</tr>
 							</table>
+							</form>
 						</div>
 					</div>
 				</div>
