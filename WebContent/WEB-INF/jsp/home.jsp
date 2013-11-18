@@ -5,14 +5,7 @@
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 	<title>VARS</title>
-	<script>
 		<%@include file="includes.jsp" %>
-	</script>
-	<style type="text/css">
-		#sidebar-list {
-			font-size: 14px;
-		}
-	</style>
 </head>
 <body>
 	
