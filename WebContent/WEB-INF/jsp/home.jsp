@@ -18,11 +18,14 @@
 	
 	<%@include file="./layout/header.jsp" %>
 	
-	<div class="jumbotron" style="padding: 150px 20px 70px 50px;">
+	<div class="jumbotron">
 		<div id="container" >
-			<h1 style="font-family: Calibri; font-style: italic;">Welcome to MakeItUsable!</h1>
-			<p>A superb platform where developer groups and usability testers interact..</p>
-			<input class="btn btn-large btn-success" type="button" value="Know more" style="border-radius: 0px;"/>
+<!-- 			<div><img alt="usability banner" src="images/usability.png" height="300px"></div> -->
+			<div style="padding: 150px 20px 70px 50px;">
+				<h1 style="font-family: Calibri; font-style: italic;">Welcome to MakeItUsable!</h1>
+				<p>A superb platform where developer groups and usability testers interact..</p>
+				<input class="btn btn-large btn-success" type="button" value="Know more" style="border-radius: 0px;"/>
+			</div>
 		</div>
 	</div>
 
