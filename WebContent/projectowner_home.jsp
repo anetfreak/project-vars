@@ -28,23 +28,9 @@
 </style>
 </head>
 <body>
-	<div id="header">
-		<div class="navbar navbar-inverse navbar-static-top">
-			<div class="navbar-inner">
-				<a class="brand" href="#"><span style="color: white; margin: 0px 10px 0px 10px;">MakeItUsable!</span></a>
-				<ul class="nav">
-					<li><a href="hello.htm" style="color: white;">Home</a></li>
-					<li ><a href="#" style="color: white;">Link</a></li>
-					<li><a href="#" style="color: white;">Link</a></li>
-				</ul>
-				<ul class="nav" style=" float:right;">
-					<li><a href="login.htm" style="color: white;">Login</a></li>
-					<li><a href="signup.htm" style="color: white;">Sign Up</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
+	<%@include file="/WEB-INF/jsp/includes.jsp" %>
+	<%@include file="/WEB-INF/jsp/layout/header.jsp" %>
+	
 	<div id="container" style="padding: 20px 0px 70px 0px;">
 		<div class="container-fluid">
 			<div class="row-fluid">
@@ -94,16 +80,6 @@
 		</div>
 	</div>
 
-	<div id="footer">
-		<div class="navbar navbar-inverse navbar-fixed-bottom">
-			<div class="navbar-inner" style="min-height: 80px;">
-					<div style="margin:10px 5px 10px 5px; float:left;"><span style="color: white;">Copyright, MakeItUsable!</span></div>
-					<div style="margin:10px 10px 10px 10px; float: right;">
-						<a href="#" style="color: white;">About Us</a> <span style="color: white;">|</span> <a href="#" style="color: white;">Contact Us</a>
-					</div>
-			</div>
-		</div>
-	</div>
-
+	<%@include file="/WEB-INF/jsp/layout/footer.jsp" %>
 </body>
 </html>
