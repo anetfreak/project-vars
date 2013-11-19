@@ -22,4 +22,8 @@ public class AuthenticationController {
 		return new ModelAndView("hello");
 	}
 
+	@RequestMapping(value = "/signup.htm", method = RequestMethod.GET)
+	public ModelAndView showSignup() {
+		return new ModelAndView("auth/user_signup");
+	}
 }
