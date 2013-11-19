@@ -18,6 +18,10 @@
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
 
+<script type="text/javascript" src="http://platform.linkedin.com/in.js">
+  api_key: 75wgepnpou4y46
+</script>
+
 <script type="text/javascript">
 	$(document).ready(function(){
 		$('#login').click(function(event) {
@@ -127,7 +131,10 @@
 			</div>
 		</div>
 	</div>
-
+	
+	<script type="IN/Login">
+		Hello, <?js= firstName ?> <?js= lastName ?>.
+	</script>
 
 	<div id="footer"></div>
 
