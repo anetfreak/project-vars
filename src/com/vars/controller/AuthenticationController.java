@@ -26,4 +26,15 @@ public class AuthenticationController {
 	public ModelAndView showSignup() {
 		return new ModelAndView("auth/user_signup");
 	}
+	
+	@RequestMapping(value = "/signup.htm", method = RequestMethod.POST)
+	public void signup(@RequestParam("fname") String fname,@RequestParam("lname") String lname,@RequestParam("email") String email,
+			@RequestParam("password") String password,@RequestParam("userType") String userType) {
+		System.out.println("First name Received: " + fname);
+		System.out.println("Last Name Received: " + lname);
+		System.out.println("Email Received: " + email);
+		System.out.println("Password Received: " + password);
+		System.out.println("User type Received: " + userType);
+//		return new ModelAndView("hello");
+	}
 }

@@ -25,18 +25,43 @@
 <script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
 <script type="text/javascript">
 
-function checkPasswordMatch() {
+function checkPasswordMatch(){
+//var checkPasswordMatch = function() {
     var password = $("#passwordInput").val();
     var rePassword = $("#reEnterPasswordInput").val();
-
+	
     if (password != rePassword)
         $("#divCheckPasswordMatch").html("Passwords do not match!");
-    else
-        $("#divCheckPasswordMatch").html("Passwords match.");
+    else{
+        $("#divCheckPasswordMatch").html("Passwords match.");  
+    }
 }
 
 $(document).ready(function () {
-   $("reEnterPasswordInput").keyup(checkPasswordMatch);
+	result = $("reEnterPasswordInput").keyup(checkPasswordMatch);
+   
+   $('#signup').click(function(event) {
+	   
+   		alert('High alert');
+	   var fname = $('#firstNameInput').val();
+	   var lname = $('#lastNameInput').val();
+	   var email = $('#emailInput').val();
+	   var password = $('#passwordInput').val();
+	   var userType = $('#userTypeInput').val();
+	   
+		$.ajax({
+			url : "signup.htm",
+		    type: "POST",
+		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password + "&userType=" + userType,
+		    success:function(data, textStatus, jqXHR){
+		    	window.location.href="hello.htm";
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
+	   
+   });
 });
 </script>
 <style type="text/css">
@@ -125,11 +150,11 @@ $(document).ready(function () {
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input name="userTypeInput" type="radio" class="required">
+        											<input name="userTypeInput" id="userTypeInput" type="radio" class="required">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
       											
-      											<input name="userTypeInput" type="radio" class="required">
+      											<input name="userTypeInput" id="userTypeInput" type="radio" class="required">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->
