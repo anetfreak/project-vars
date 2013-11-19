@@ -6,21 +6,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>VARS</title>
 
-<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.min.css">
-<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<%@include file="../includes.jsp" %>
+
 <script src="//code.jquery.com/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
-
 <script type="text/javascript"> $(document).ready(function(){ $("#subForm").validate(); }); </script>
 <script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
 <script type="text/javascript">
@@ -67,22 +56,9 @@ $(document).ready(function () {
 
 </head>
 <body>
-	<div id="header">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<a class="brand" href="#"><span style="color: black;">MakeItUsable!</span></a>
-				<ul class="nav">
-					<li><a href="hello.htm">Home</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="#">Link</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="#">Link</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
+	<%@include file=".././layout/header.jsp" %>
 	
-				
+	
 	<div id="container" style="padding-top: 40px;">
 		<div class="container-fluid">
 			<div class="row-fluid">
@@ -145,11 +121,11 @@ $(document).ready(function () {
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input name="userTypeInput" id="userTypeInput" type="radio" class="required">
+        											<input name="userTypeInput" id="userTypeInput" type="radio" class="required" value="projectOwner">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
       											
-      											<input name="userTypeInput" id="userTypeInput" type="radio" class="required">
+      											<input name="userTypeInput" id="userTypeInput" type="radio" class="required" value="tester">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->
@@ -171,7 +147,7 @@ $(document).ready(function () {
 		</div>
 	
 
-	<div id="footer"></div>
+	<%@include file=".././layout/footer.jsp" %>
 
 </body>
 </html>
