@@ -6,18 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>VARS</title>
 
-<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.min.css">
-<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-
+<%@include file="../includes.jsp" %>
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75wgepnpou4y46
 </script>
@@ -63,82 +52,55 @@
 	});
 </script>
 
-<style type="text/css">
-#sidebar-list {
-	font-size: 14px;
-}
-</style>
 </head>
 <body>
-
-	<div id="header">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<a class="brand" href="#"><span style="color: black;">MakeItUsable!</span></a>
-				<ul class="nav">
-					<li><a href="hello.htm">Home</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="#">Link</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="#">Link</a></li>
-				</ul>
-			</div>
-		</div>
-	</div>
-
+	<%@include file=".././layout/header.jsp" %>
 
 	<div id="container" style="padding-top: 40px;" align="center">
 		<div class="container-fluid">
-			<div class="row-fluid">
-
-					<table>
-						<tr>
-							<h2>
-								<u>Login to your account</u>
-							</h2>
-						</tr>
-						<tr>
-
-							<td><label for="inputEmail3" class="col-sm-2 control-label">Email</label></td>
-							<td><div class="col-sm-10">
-									<input type="email" class="form-control" id="email"
-										placeholder="Your registered email">
-
-								</div></td>
-						</tr>
-
-						<td><label for="inputPassword3"
-							class="col-sm-2 control-label">Password</label></td>
-						<td><div class="col-sm-10">
-								<input type="password" class="form-control" id="password"
-									placeholder="Password">
-							</div></td>
-
-						<tr>
-
-						</tr>
-
-
-						<tr>
-
-							<td></td>
-
-							<td><div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-default" id="login">Login</button>
-								</div></td>
-						</tr>
-					</table>
+			<div style="margin: 80px 0px 0px 50px;">
+				<div class="span1"></div>
+				<div class="span4">
+					<div style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
+						<h3> Sign In </h3>
+						<table>
+							<tr>
+								<td><label for="inputEmail3" class="col-sm-2 control-label">Email</label></td>
+								<td><div class="col-sm-10"><input type="email" class="form-control" id="email" placeholder="Your registered email"></div></td>
+							</tr>
+							<tr>
+								<td><label for="inputPassword3" class="col-sm-2 control-label">Password</label></td>
+								<td><div class="col-sm-10"><input type="password" class="form-control" id="password" placeholder="Password"></div></td>
+							</tr>
+							<tr>
+								<td></td>
+								<td><div class="col-sm-offset-2 col-sm-10"> <button type="submit" class="btn btn-default" id="login">Login</button></div></td>
+							</tr>
+						</table>
+					</div>
+				</div>
+				
+				<div class="divider-vertical"></div>
+				<div class="span1" style="margin-top: 80px;">
+					<h3> OR </h3>
+				</div>
+				<div class="divider-vertical"></div>
+				
+				<div class="span4">
+					<div style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
+						<h3> Sign In with LinkedIn </h3>
+						<div id="linkedInLogin" style="margin: 30px 0px 77px 0px;">
+							<script type="IN/Login">
+							Hello, <?js= firstName ?> <?js= lastName ?>.
+							</script>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-	
-	<script type="IN/Login">
-		Hello, <?js= firstName ?> <?js= lastName ?>.
-	</script>
 
-	<div id="footer"></div>
-
-
+	<%@include file=".././layout/footer.jsp" %>
 
 </body>
 </html>
