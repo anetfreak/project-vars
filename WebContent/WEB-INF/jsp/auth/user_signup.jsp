@@ -38,11 +38,11 @@ function checkPasswordMatch(){
 }
 
 $(document).ready(function () {
-	result = $("reEnterPasswordInput").keyup(checkPasswordMatch);
+	
+	$("#reEnterPasswordInput").keyup(checkPasswordMatch());
    
    $('#signup').click(function(event) {
 	   
-   		alert('High alert');
 	   var fname = $('#firstNameInput').val();
 	   var lname = $('#lastNameInput').val();
 	   var email = $('#emailInput').val();
@@ -60,15 +60,11 @@ $(document).ready(function () {
 		    	alert("Could not process request.. " + errorThrown);
 		    }
 		});
-	   
    });
 });
+
 </script>
-<style type="text/css">
-#sidebar-list {
-	font-size: 14px;
-}
-</style>
+
 </head>
 <body>
 	<div id="header">
@@ -97,7 +93,6 @@ $(document).ready(function () {
 				</div>
 					<div class="tab-content">
 						<div class="tab-pane active" id="NewUserSignUp">
-						<form action="" method="post" id="subForm">
 							<table>
 								<!--Body content-->
 								<tr>
@@ -165,11 +160,10 @@ $(document).ready(function () {
 									<td></td>
 									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-									<button type="submit" class="btn btn-default" id="signup">Sign Up</button>
+									<input type="submit" class="btn btn-default" id="signup" value="Sign Up"/>
 								</div></td>
 								</tr>
 							</table>
-							</form>
 						</div>
 					</div>
 				</div>
