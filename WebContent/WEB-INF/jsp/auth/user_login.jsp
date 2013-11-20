@@ -64,6 +64,11 @@
 		IN.API.Profile("me")
 		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl")
 		.result(displayProfile);
+		
+		IN.API.Connections("me")
+	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
+	    .result(showConnections)
+		.error(connectionError);
 	}
 	
 	function displayProfile(profiles) {
@@ -72,10 +77,6 @@
 		$('#userProfile').css('display', 'block');
 		$('#profile').html("<img src=" + member.pictureUrl + "></img><div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
 		
-		IN.API.Connections("me")
-	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
-	    .result(showConnections)
-		.error(connectionError);
 	}
 	
 	function showConnections(connections) {
@@ -86,6 +87,7 @@
 	}
 	
 	function connectionError(error) {
+		alert(error.message);
 	}
 	
 </script>
