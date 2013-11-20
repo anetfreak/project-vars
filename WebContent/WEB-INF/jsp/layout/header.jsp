@@ -4,9 +4,9 @@
 <div id="header">
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="navbar-inner">
-			<a class="brand" href="#"><span style="color: white; margin: 0px 10px 0px 10px;">MakeItUsable!</span></a>
+			<a class="brand" href="/project-vars/"><span style="color: white; margin: 0px 10px 0px 10px;">MakeItUsable!</span></a>
 			<ul class="nav">
-				<li><a href="hello.htm" style="color: white;">Home</a></li>
+				<li><a href="/project-vars/" style="color: white;">Home</a></li>
 				<li ><a href="#" style="color: white;">Link</a></li>
 				<li><a href="#" style="color: white;">Link</a></li>
 			</ul>
