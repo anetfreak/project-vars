@@ -25,7 +25,7 @@
 				    type: "POST",
 				    data : "email=" + email + "&password=" + password,
 				    success:function(data, textStatus, jqXHR){
-				    	window.location.href="hello.htm";
+				    	window.location.href="viewProjects.htm";
 				    },
 				    error: function(jqXHR, textStatus, errorThrown){
 				    	alert("Could not process request.. " + errorThrown);
