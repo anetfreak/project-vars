@@ -12,7 +12,8 @@
 			</ul>
 			<ul class="nav" style=" float:right;">
 				<li><a href="login.htm" style="color: white;">Login</a></li>
-				<li><a href="signup.htm" style="color: white;">Sign Up</a></li>
+				<li><a href="signup.htm" style="color: white;">Sign Up</a></li> 
+				<li><a href="viewProjects.htm" style="color: white;">Project Owner</a></li>
 			</ul>
 		</div>
 	</div>

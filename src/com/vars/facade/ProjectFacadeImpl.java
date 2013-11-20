@@ -1,5 +1,7 @@
 package com.vars.facade;
 
+import java.util.List;
+
 import com.vars.dao.ProjectDao;
 import com.vars.domain.Project;
 
@@ -22,5 +24,15 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	public void setProjectDao(ProjectDao projectDao) {
 		this.projectDao = projectDao;
 	}
-
+	
+	@Override
+	public List<Project> getProjectDev(Integer id)
+	{
+		return projectDao.getProjectDev(id);	
+	}
+	
+	@Override
+	public List<Project> getProjectTest(Integer id){
+		return projectDao.getProjectTest(id);
+	}
 }

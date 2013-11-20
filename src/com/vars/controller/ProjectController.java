@@ -32,26 +32,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
-	public ModelAndView showProjects() {
-		ArrayList<Project> projects = new ArrayList<Project>();
-		
-		Project project = new Project();
-		project.setTitle("Title 1");
-		project.setDescription("Description 1");
-		project.setDeveloper_id(1);
-		project.setTester_id(1);
-		project.setDomain("Domain 1");
-		projects.add(project);
-		
-		Project project2 = new Project();
-		project2.setTitle("Title 2");
-		project2.setDescription("Description 2");
-		project2.setDeveloper_id(2);
-		project2.setTester_id(2);
-		project2.setDomain("Domain 2");
-		projects.add(project2);
-		
-		return new ModelAndView("projectowner_home", "projects", projects);
+	public ModelAndView showProjectsForDev() {
+		//getProjectDev needs developer Id to fetch 
+		return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectDev(1));
+	}
+	
+	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
+	public ModelAndView showProjectsForTest() {
+		//getProjectDev needs tester Id to fetch 
+		return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectTest(1));
 	}
 	
 	@RequestMapping(value = "/project/{id}.htm", method = RequestMethod.GET)
