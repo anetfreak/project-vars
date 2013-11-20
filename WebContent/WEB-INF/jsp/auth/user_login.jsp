@@ -10,11 +10,13 @@
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75wgepnpou4y46
   authorize: true
+  scope: r_network
   onLoad: onLinkedInLoad
 </script>
 
 <script type="text/javascript">
 	$(document).ready(function(){
+		
 		$('#login').click(function(event) {
 			//Validate email
 			if(validEmail()) {
@@ -70,17 +72,20 @@
 		$('#userProfile').css('display', 'block');
 		$('#profile').html("<img src=" + member.pictureUrl + "></img><div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
 		
-		IN.API.Profile("me").fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl").result(displayProfile);
 		IN.API.Connections("me")
 	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
-	    .result(showConnections);
+	    .result(showConnections)
+		.error(connectionError);
 	}
 	
 	function showConnections(connections) {
-		var connection = connections.values[22];
-		$('#connections').html("<img src=" + connection.pictureUrl + "></img><div id=\"" + connection.id + "\">Name - " +  connection.firstName + " " + connection.lastName + "<br/><div>Current Status - '" + connection.headline + "'</div>");
-		//connection = connections.values[1];
-		//$('#connections').html($('#connections').html() + "<br/><br/><img src=" + connection.pictureUrl + "></img><div id=\"" + connection.id + "\">Name - " +  connection.firstName + " " + connection.lastName + "<br/><div>Current Status - '" + connection.headline + "'</div>");
+		var conn = connections.values;
+		for(var c in conn) {
+			$('#connections').html($('#connections').html() + "<img src=" + conn[c].pictureUrl + "></img><div id=\"" + conn[c].id + "\">Name - " +  conn[c].firstName + " " + conn[c].lastName + "<br/><div>Current Status - '" + conn[c].headline + "'</div>");
+		}
+	}
+	
+	function connectionError(error) {
 	}
 	
 </script>
