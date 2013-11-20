@@ -59,12 +59,12 @@ public class AuthenticationController {
 		Tester tester = new Tester();
 
 		if(userType == 0) {
-			user.setTester(false);
+			user.setIsTester(false);
 			developer.setFirstName(fname);
 			developer.setLastName(lname);
 			developer.setLinkedInUrl("test url");
 		} else {
-			user.setTester(true);
+			user.setIsTester(true);
 			tester.setFirstName(fname);
 			tester.setLastName(lname);
 			tester.setLinkedInUrl("test url");
@@ -73,7 +73,6 @@ public class AuthenticationController {
 		user.setPassword(password);
 		user.setDeveloper(developer);
 		user.setTester(tester);
-
 		userFacade.createUser(user);
 
 		return new ModelAndView("hello");

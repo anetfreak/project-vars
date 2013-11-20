@@ -15,7 +15,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
 	private static final String GET_USER = "select * from user where username = ? && password = ?";
 	
-	private static final String INSERT_USER = "INSERT into user (username, password) values (?, ?)";
+	private static final String INSERT_USER = "INSERT into user (username, password, istester ) values (?, ?, ?)";
 	
 	private static final String INSERT_DEVELOPER = "INSERT into developer (user_id, first_name, last_name) values (?, ?, ?)";
 	
@@ -24,13 +24,12 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		//Make DB call to insert user here
-		
-		getJdbcTemplate().update(INSERT_USER, new Object[]{user.getUserName(), user.getPassword()});
+		getJdbcTemplate().update(INSERT_USER, new Object[]{user.getUserName(), user.getPassword(), user.getIsTester()? 1 : 0});
 		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
 		
 		System.out.println("userID: "+userId);
 		user.setId(userId);
-		if(user.isTester()) {
+		if(user.getIsTester()) {
 			user.getTester().setUserId(userId);
 			getJdbcTemplate().update(INSERT_TESTER, new Object[]{user.getId(), user.getTester().getFirstName(), user.getTester().getLastName()} );
 		} else {
@@ -50,6 +49,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 				User user = new User();
 				user.setUserName(rs.getString(2));
 				user.setPassword(rs.getString(3));
+				user.setIsTester(rs.getInt(4)==1 ? true : false);
 				return user;
 			}
 		});

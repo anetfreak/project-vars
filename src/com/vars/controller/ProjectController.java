@@ -1,6 +1,7 @@
 package com.vars.controller;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,14 +35,18 @@ public class ProjectController {
 	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
 	public ModelAndView showProjectsForDev() {
 		//getProjectDev needs developer Id to fetch 
-		return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectDev(1));
+		List<Project> projects = projectFacade.getProjectDev(1);
+		if(projects.size() > 0)
+		return new ModelAndView("projectowner_home", "projects", projects );
+		else
+		return null;
 	}
 	
-	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
-	public ModelAndView showProjectsForTest() {
+	//@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
+	//public ModelAndView showProjectsForTest() {
 		//getProjectDev needs tester Id to fetch 
-		return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectTest(1));
-	}
+		//return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectTest(1));
+	//}
 	
 	@RequestMapping(value = "/project/{id}.htm", method = RequestMethod.GET)
 	public ModelAndView showProject(@PathVariable("id") String id) {

@@ -27,7 +27,7 @@ DROP TABLE IF EXISTS `project`;
 CREATE TABLE `project` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `title` varchar(100) NOT NULL,
-  `desc` varchar(200) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
   `domain` varchar(200) DEFAULT NULL,
   `devp_id` int(11) NOT NULL,
   `tester_id` int(11) NOT NULL,

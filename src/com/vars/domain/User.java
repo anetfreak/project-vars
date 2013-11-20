@@ -39,11 +39,10 @@ public class User {
 	public void setTester(Tester tester) {
 		this.tester = tester;
 	}
-	public boolean isTester() {
+	public boolean getIsTester() {
 		return isTester;
 	}
-	public void setTester(boolean isTester) {
+	public void setIsTester(boolean isTester) {
 		this.isTester = isTester;
 	}
-	
 }
