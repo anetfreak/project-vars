@@ -9,6 +9,8 @@
 <%@include file="../includes.jsp" %>
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75wgepnpou4y46
+  authorize: true
+  onLoad: onLinkedInLoad
 </script>
 
 <script type="text/javascript">
@@ -49,7 +51,24 @@
 			return result;
 			
 		};
+		
 	});
+	
+	function onLinkedInLoad() {
+		IN.Event.on(IN, "auth", linkedInAuth);
+	};
+	
+	function linkedInAuth() {
+		IN.API.Profile("me").fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl").result(displayProfile);
+	};
+	
+	function displayProfile(profiles) {
+		var member = profiles.values[0];
+		$('#loginOptions').css('display', 'none');
+		$('#userProfile').css('display', 'block');
+		$('#profile').html("<div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
+	};
+	
 </script>
 
 </head>
@@ -58,7 +77,7 @@
 
 	<div id="container" style="padding-top: 40px;" align="center">
 		<div class="container-fluid">
-			<div style="margin: 80px 0px 0px 50px;">
+			<div id="loginOptions" style="margin: 80px 0px 0px 50px;">
 				<div class="span1"></div>
 				<div class="span4">
 					<div style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
@@ -90,13 +109,16 @@
 					<div style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
 						<h3> Sign In with LinkedIn </h3>
 						<div id="linkedInLogin" style="margin: 30px 0px 77px 0px;">
-							<script type="IN/Login">
-							Hello, <?js= firstName ?> <?js= lastName ?>.
-							</script>
+							<script type="IN/Login"></script>
 						</div>
 					</div>
 				</div>
 			</div>
+			
+			<div id="userProfile" style="margin: 80px 0px 0px 50px; display: none;">
+				<div id="profile" class="span4"></div>
+			</div>
+			
 		</div>
 	</div>
 
