@@ -3,6 +3,7 @@ package com.vars.controller;
 import java.util.ArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -51,5 +52,17 @@ public class ProjectController {
 		projects.add(project2);
 		
 		return new ModelAndView("projectowner_home", "projects", projects);
+	}
+	
+	@RequestMapping(value = "/project/{id}.htm", method = RequestMethod.GET)
+	public ModelAndView showProject(@PathVariable("id") String id) {
+		Project project2 = new Project();
+		project2.setTitle("Title 2");
+		project2.setDescription("Description 2");
+		project2.setDeveloper_id(2);
+		project2.setTester_id(2);
+		project2.setDomain("Domain 2");
+		
+		return new ModelAndView("projectowner_home", "project2", project2);
 	}
 }

@@ -111,13 +111,16 @@ $(document).ready(function(){
 									</tr>
 									<c:forEach var="p" items="${projects}">
 										<tr>
-										<td>${p.project_id}</td>
-										<td>${p.title}</td>
+										<td><a href="/project-vars/project/${p.project_id}.htm">${p.project_id}</a></td>
+										<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
 										<td>${p.description}</td>
 										<td>${p.domain}</td>
 									</tr>
 									</c:forEach>
 								</table>
+							</div>
+							<div id="project">
+								${project2.title }, ${project2.domain}, ${project2.description}						
 							</div>
 						</div>
 					</div>
