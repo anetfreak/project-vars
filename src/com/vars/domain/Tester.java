@@ -5,6 +5,14 @@ public class Tester {
 	private Integer userId;
 	private String firstName;
 	private String lastName;
+	private String linkedInUrl;
+	public String getLinkedInUrl() {
+		return linkedInUrl;
+	}
+	public void setLinkedInUrl(String linkedInUrl) {
+		this.linkedInUrl = linkedInUrl;
+	}
+	
 	public Integer getId() {
 		return id;
 	}

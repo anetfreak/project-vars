@@ -48,10 +48,12 @@ public class AuthenticationController {
 			user.setTester(false);
 			developer.setFirstName(fname);
 			developer.setLastName(lname);
+			developer.setLinkedInUrl("test url");
 		} else {
 			user.setTester(true);
 			tester.setFirstName(fname);
 			tester.setLastName(lname);
+			tester.setLinkedInUrl("test url");
 		}
 		user.setUserName(email);
 		user.setPassword(password);
