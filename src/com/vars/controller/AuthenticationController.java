@@ -24,8 +24,26 @@ public class AuthenticationController {
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam("email") String email,
 			@RequestParam("password") String password) {
-		System.out.println("Email Received: " + email);
-		System.out.println("Password Received: " + password);
+		User user = new User();
+		//User userDb = new User();
+		user.setUserName(email);
+		user.setPassword(password);
+	
+		
+		User userDb = userFacade.getUser(user);
+		try {
+			System.out.println("user username:" +user.getUserName());
+			
+			if(userDb.getUserName().equals(user.getUserName())){
+				System.out.println("Login success");
+			} else{
+				System.out.println("Login Failed");
+			}
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			System.out.println("In AuthenticationController:No record of user found in db");
+			e.printStackTrace();
+		}
 		return new ModelAndView("hello");
 	}
 

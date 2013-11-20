@@ -2,7 +2,9 @@ package com.vars.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
+import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
@@ -10,7 +12,7 @@ import com.vars.domain.User;
 
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
-	private static final String GET_USER = "select username, password from user where id = ?";
+	private static final String GET_USER = "select * from user where username = ? && password = ?";
 	
 	private static final String INSERT_USER = "INSERT into user (username, password) values (?, ?)";
 	
@@ -37,19 +39,31 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		}
 	}
 
-	public User getUser(Integer id) {
+	public User getUser(User user) {
 		//Fetch user from DB here and return
 		//TODO - Set the actual fetched data in the User object. Add columns in DB corresponding to the ones in domain USer.
 		
-		return getJdbcTemplate().queryForObject(GET_USER, new Object[]{id}, new RowMapper<User>(){
+		List<User> users = getJdbcTemplate().query(GET_USER, new Object[]{user.getUserName(), user.getPassword()}, new RowMapper<User>(){
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
 				User user = new User();
-				user.setUserName("username");
-				user.setPassword("password");
+				user.setUserName(rs.getString(2));
+				user.setPassword(rs.getString(3));
 				return user;
 			}
 		});
+		
+		User userDb =  DataAccessUtils.singleResult(users);
+		/*User userDb1 = getJdbcTemplate().queryForObject(GET_USER, new Object[]{user.getUserName(), user.getPassword()}, new RowMapper<User>(){
+			@Override
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+				User user = new User();
+				user.setUserName(rs.getString(2));
+				user.setPassword(rs.getString(3));
+				return user;
+			}
+		});*/
+		return userDb;
 	}
 
 	public void updateUser(User user) {

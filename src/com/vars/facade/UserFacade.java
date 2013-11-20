@@ -6,7 +6,7 @@ public interface UserFacade {
 	
 	void createUser(User user);
 	
-	User getUser(Integer id);
+	User getUser(User user);
 	
 	void updateUser(User user);
 

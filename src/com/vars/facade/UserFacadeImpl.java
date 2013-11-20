@@ -15,8 +15,15 @@ public class UserFacadeImpl implements UserFacade{
 	}
 
 	@Override
-	public User getUser(Integer id) {
-		return userDao.getUser(id);
+	public User getUser(User user) {
+		
+		try {
+			return userDao.getUser(user);
+		} catch (NullPointerException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return new User();
+		}
 	}
 	
 	@Override
