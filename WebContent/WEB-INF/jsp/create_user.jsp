@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>VARS - Create a new User</title>
+<title>MakeItUsable! - Error</title>
 </head>
 <body>
 

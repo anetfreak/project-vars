@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>VARS</title>
+<title>MakeItUsable! - Sign Up</title>
 
 <%@include file="../includes.jsp" %>
 

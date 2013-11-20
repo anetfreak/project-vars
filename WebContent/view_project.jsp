@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>VARS</title>
+<title>MakeItUsable! - View Project</title>
 
 <script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
 <link rel="stylesheet" type="text/css"
