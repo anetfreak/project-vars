@@ -6,8 +6,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vars.domain.Developer;
+import com.vars.domain.Tester;
+import com.vars.domain.User;
+import com.vars.facade.UserFacade;
+
 @Controller
 public class AuthenticationController {
+	
+	private UserFacade userFacade;
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
 	public ModelAndView showLogin() {
@@ -32,12 +39,31 @@ public class AuthenticationController {
 			@RequestParam("lname") String lname, 
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
-			@RequestParam("userType") String userType) {
-		System.out.println("First name Received: " + fname);
-		System.out.println("Last Name Received: " + lname);
-		System.out.println("Email Received: " + email);
-		System.out.println("Password Received: " + password);
-		System.out.println("User type Received: " + userType);
+			@RequestParam("userType") Integer userType) {
+		User user = new User();
+		Developer developer = new Developer();
+		Tester tester = new Tester();
+		
+		if(userType == 0) {
+			user.setTester(false);
+			developer.setFirstName(fname);
+			developer.setLastName(lname);
+		} else {
+			user.setTester(true);
+			tester.setFirstName(fname);
+			tester.setLastName(lname);
+		}
+		user.setUserName(email);
+		user.setPassword(password);
+		user.setDeveloper(developer);
+		user.setTester(tester);
+		
+		userFacade.createUser(user);
+		
 		return new ModelAndView("hello");
+	}
+
+	public void setUserFacade(UserFacade userFacade) {
+		this.userFacade = userFacade;
 	}
 }

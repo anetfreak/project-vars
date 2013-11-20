@@ -121,11 +121,11 @@ $(document).ready(function () {
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input name="userTypeInput" id="userTypeInput" type="radio" class="required" value="projectOwner">
+        											<input name="userTypeInput" id="userTypeInput" type="radio" class="required" value="0">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
       											
-      											<input name="userTypeInput" id="userTypeInput" type="radio" class="required" value="tester">
+      											<input name="userTypeInput" id="userTypeInput" type="radio" class="required" value="1">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->

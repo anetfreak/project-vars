@@ -21,11 +21,14 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<bean id="userController" class="com.vars.controller.UserController">
 		<property name="userFacade" ref="userFacade" />
 	</bean>
-	<bean id="authenticationController" class="com.vars.controller.AuthenticationController"/>
+	<bean id="authenticationController" class="com.vars.controller.AuthenticationController">
+	 	<property name="userFacade" ref="userFacade" />
+	</bean>
 	
 	<tx:advice id="userTxnAdvice" transaction-manager="txnManager">
 		<tx:attributes>
 			<tx:method name="get*" propagation="SUPPORTS" read-only="true" />
+			<tx:method name="create*" propagation="REQUIRED" />
 		</tx:attributes>
 	</tx:advice>
 	

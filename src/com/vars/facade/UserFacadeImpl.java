@@ -11,7 +11,7 @@ public class UserFacadeImpl implements UserFacade{
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		// Accept and insert all params in database
-		
+		userDao.createUser(user);
 	}
 
 	@Override

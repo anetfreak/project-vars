@@ -18,6 +18,11 @@ public class UserController {
 		return new ModelAndView("create_user");
 	}
 
+	@RequestMapping(value = "/showUser.htm", method = RequestMethod.GET)
+	public ModelAndView createUser() {
+		return new ModelAndView();
+	}
+	
 	@RequestMapping(value = "/user.htm", method = RequestMethod.GET)
 	public ModelAndView getUser(Integer id) {
 		

@@ -10,11 +10,31 @@ import com.vars.domain.User;
 
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
-	private static final String GET_USER = "select username, password from user where id = ?"; 
+	private static final String GET_USER = "select username, password from user where id = ?";
+	
+	private static final String INSERT_USER = "INSERT into user (username, password) values (?, ?)";
+	
+	private static final String INSERT_DEVELOPER = "INSERT into developer (user_id, first_name, last_name) values (?, ?, ?)";
+	
+	private static final String INSERT_TESTER = "INSERT into tester (user_id, first_name, last_name) values (?, ?, ?)";
 	
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		//Make DB call to insert user here
+		
+		getJdbcTemplate().update(INSERT_USER, new Object[]{user.getUserName(), user.getPassword()});
+		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
+		
+		System.out.println("userID: "+userId);
+		user.setId(userId);
+		if(user.isTester()) {
+			user.getTester().setUserId(userId);
+			getJdbcTemplate().update(INSERT_TESTER, new Object[]{user.getId(), user.getTester().getFirstName(), user.getTester().getLastName()} );
+		} else {
+			user.getDeveloper().setUserId(userId);
+			System.out.println("Developer: userID:"+user.getDeveloper().getUserId());
+			getJdbcTemplate().update(INSERT_DEVELOPER, new Object[]{user.getId(), user.getDeveloper().getFirstName(), user.getDeveloper().getLastName()} );
+		}
 	}
 
 	public User getUser(Integer id) {
