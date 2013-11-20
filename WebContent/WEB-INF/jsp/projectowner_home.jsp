@@ -18,7 +18,27 @@
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
 <script type="text/javascript">
+$(document).ready(function(){
+	$('#submitProject').click(function(event) {
+		//Validate email
+			var projectTitle = $('#ProjectTitleInput').val();
+			var domain = $('#DomainInput').val();
+			var description = $('#DescriptionInput').val();
+			
+			$.ajax({
+				url : "projectowner_home.htm",
+			    type: "POST",
+			    data : "projectTitle=" + projectTitle + "&domain=" + domain + "&description="+ description,
+			    success:function(data, textStatus, jqXHR){
+			    	window.location.href="hello.htm";
+			    },
+			    error: function(jqXHR, textStatus, errorThrown){
+			    	alert("Could not process request.. " + errorThrown);
+			    }
+			});
+	});
 
 </script>
 <style type="text/css">
@@ -53,23 +73,27 @@
 									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" class="form-control">
+											<input type="text" id="ProjectTitleInput" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
 									<td><h2 class="label label-primary">Domain</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" class="form-control">
+											<input type="text" id="DomainInput" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
 									<td><h2 class="label label-primary">Description</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" class="form-control">
+											<input type="text" id="DescriptionInput" class="form-control">
 										</div></td>
 								</tr>
+								<tr>
+								<td></td>
+								<td><div class="col-sm-offset-2 col-sm-10"> <button type="submit" class="btn btn-default" id="submitProject">Submit</button></div></td>
+							</tr>
 							</table>
 
 						</div>

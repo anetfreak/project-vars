@@ -10,7 +10,7 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	@Override
 	public void createProject(Project project) {
 		// TODO Auto-generated method stub
-		
+		projectDao.createProject(project);
 	}
 
 	@Override

@@ -12,7 +12,7 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	@Override
 	public void createProject(Project user) {
 		// TODO Auto-generated method stub
-
+		
 	}
 
 	@Override
@@ -22,8 +22,8 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 			public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
 				Project project = new Project();
 				project.setTitle(rs.getString("title"));
-				project.setDeveloper_id(rs.getString("devp_id"));
-				project.setTester_id(rs.getString("tester_id"));
+				project.setDeveloper_id(rs.getInt("devp_id"));
+				project.setTester_id(rs.getInt("tester_id"));
 				return project;
 			}
 		});
