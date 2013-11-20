@@ -1,5 +1,6 @@
 package com.vars.dao;
 
+import com.vars.domain.Bid;
 import com.vars.domain.User;
 
 public interface UserDao {
@@ -10,4 +11,5 @@ public interface UserDao {
 	
 	void updateUser(User user);
 
+	void updateProposal(Bid bid);
 }

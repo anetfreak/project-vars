@@ -1,5 +1,6 @@
 package com.vars.facade;
 
+import com.vars.domain.Bid;
 import com.vars.domain.User;
 
 public interface UserFacade {
@@ -10,4 +11,5 @@ public interface UserFacade {
 	
 	void updateUser(User user);
 
+	void updateProposal(Bid bid);
 }

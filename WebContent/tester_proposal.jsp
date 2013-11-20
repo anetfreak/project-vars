@@ -18,7 +18,35 @@
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
+<script type="text/javascript"> $(document).ready(function(){ $("#subForm").validate(); }); </script>
+<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
 <script type="text/javascript">
+	
+$(document).ready(function () {
+   
+   $('#submit').click(function(event) {
+	   
+	   var proposal = $('#proposal').val();
+	   var proposalDescription = $('#proposalDescription').val();
+		//params to be displayed here are not handled - projName,Desc,etc	  
+	   
+		$.ajax({
+			url : "tester_proposal.htm",
+		    type: "POST",
+		    data : "proposal=" + proposal + "&proposalDescription=" + proposalDescription,
+		    success:function(data, textStatus, jqXHR){
+		    	window.location.href="hello.htm";
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
+   });
+});
+	
 	
 </script>
 </head>
@@ -95,8 +123,8 @@
 									<td></td>
 									<td>
 										<div class="input-prepend input-append">
-											<span class="add-on">$</span> <input class="proposal-input"
-												id="appendedPrependedInput" type="text"
+											<span class="add-on">$</span> <input class="required"
+												id="proposal" type="text"
 												placeholder="Amount in USD">
 										</div>
 									</td>
@@ -106,7 +134,7 @@
 											<span class="label label-primary">Proposal Description</span>
 										</h2></td>
 									<td></td>
-									<td><textarea rows="4" class="proposalDescription-input"placeholder="Description regarding proposal "></textarea></td>
+									<td><textarea rows="4" class="required"placeholder="Description regarding proposal "></textarea></td>
 								</tr>
 								<tr> </tr>
 								<tr> </tr>
@@ -118,7 +146,7 @@
 									<td >
 										<div class="btn-group">
 										 
-											<button type="submit" class="btn" >Submit</button>
+											<button type="submit" id="submit" class="btn" >Submit</button>
 											
 										</div>
 

@@ -8,6 +8,7 @@ import org.springframework.dao.support.DataAccessUtils;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
+import com.vars.domain.Bid;
 import com.vars.domain.User;
 
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
@@ -71,4 +72,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		
 	}
 	
+	public void updateProposal(Bid bid) {
+	
+	}
 }

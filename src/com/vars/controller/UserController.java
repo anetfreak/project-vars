@@ -3,8 +3,12 @@ package com.vars.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vars.domain.Bid;
+import com.vars.domain.Developer;
+import com.vars.domain.Tester;
 import com.vars.domain.User;
 import com.vars.facade.UserFacade;
 
@@ -23,12 +27,23 @@ public class UserController {
 		return new ModelAndView();
 	}
 	
-	@RequestMapping(value = "/user.htm", method = RequestMethod.GET)
+	/*@RequestMapping(value = "/user.htm", method = RequestMethod.GET)
 	public ModelAndView getUser(Integer id) {
 		User user = userFacade.getUser(1);
 		ModelAndView modelAndView = new ModelAndView("user_success");
 		modelAndView.addObject("user", user);
 		return modelAndView;
+	}*/
+	
+	@RequestMapping(value = "/tester_proposal.htm", method = RequestMethod.POST)
+	public ModelAndView tester_proposal(@RequestParam("proposal") String proposal, 
+			@RequestParam("proposalDescription") String proposalDescription) {
+		Bid bid = new Bid();
+		float proposals = Float.parseFloat(proposal);
+		bid.setAmount(proposals);
+		bid.setDescription(proposalDescription);
+		//add code for calling userFacade.updateBid and do whole wiring for bid db
+		return new ModelAndView("hello");
 	}
 		
 	public void setUserFacade(UserFacade userFacade) {
