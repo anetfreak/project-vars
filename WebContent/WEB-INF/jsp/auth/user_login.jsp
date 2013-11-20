@@ -66,7 +66,7 @@
 		var member = profiles.values[0];
 		$('#loginOptions').css('display', 'none');
 		$('#userProfile').css('display', 'block');
-		$('#profile').html("<div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
+		$('#profile').html("<img src=" + member.pictureUrl + "></img><div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
 	};
 	
 </script>
