@@ -56,13 +56,13 @@
 	
 	function onLinkedInLoad() {
 		IN.Event.on(IN, "auth", linkedInAuth);
-	};
+	}
 	
 	function linkedInAuth() {
 		IN.API.Profile("me")
 		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl")
 		.result(displayProfile);
-	};
+	}
 	
 	function displayProfile(profiles) {
 		var member = profiles.values[0];
@@ -76,8 +76,11 @@
 	    .result(showConnections);
 	}
 	
-	function showConnections() {
-			
+	function showConnections(connections) {
+		var connection = connections.values[22];
+		$('#connections').html("<img src=" + connection.pictureUrl + "></img><div id=\"" + connection.id + "\">Name - " +  connection.firstName + " " + connection.lastName + "<br/><div>Current Status - '" + connection.headline + "'</div>");
+		//connection = connections.values[1];
+		//$('#connections').html($('#connections').html() + "<br/><br/><img src=" + connection.pictureUrl + "></img><div id=\"" + connection.id + "\">Name - " +  connection.firstName + " " + connection.lastName + "<br/><div>Current Status - '" + connection.headline + "'</div>");
 	}
 	
 </script>
@@ -128,6 +131,7 @@
 			
 			<div id="userProfile" style="margin: 80px 0px 0px 50px; display: none;">
 				<div id="profile" class="span4"></div>
+				<div id="connections" class="span4"></div>
 			</div>
 			
 		</div>
