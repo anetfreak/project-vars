@@ -29,6 +29,7 @@ CREATE TABLE `tester` (
   `user_id` int(11) DEFAULT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
+  `linkedin_url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_tester_user_id_idx` (`user_id`),
   CONSTRAINT `fk_tester_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION

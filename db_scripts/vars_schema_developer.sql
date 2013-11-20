@@ -29,6 +29,7 @@ CREATE TABLE `developer` (
   `user_id` int(11) NOT NULL,
   `first_name` varchar(100) DEFAULT NULL,
   `last_name` varchar(100) DEFAULT NULL,
+  `linkedIn_url` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_developer_user_id_idx` (`user_id`),
   CONSTRAINT `fk_developer_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
