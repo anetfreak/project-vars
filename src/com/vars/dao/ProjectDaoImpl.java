@@ -91,9 +91,9 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	
 	@Override
 	public List<Project> getNewProjects() {
-		int tester_id = 0;
+		
 		List<Project> projects = getJdbcTemplate().query(GET_PROJECTS_TESTER,
-				new Object[] { tester_id }, new RowMapper<Project>() {
+				new Object[] { }, new RowMapper<Project>() {
 					@Override
 					public Project mapRow(ResultSet rs, int rowNum)
 							throws SQLException {

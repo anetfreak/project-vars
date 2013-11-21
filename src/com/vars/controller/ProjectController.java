@@ -47,6 +47,7 @@ public class ProjectController {
 		if(user != null) {
 			if(user.getIsTester()) {
 				projects = projectFacade.getNewProjects();
+				System.out.println("NEW projects: count is: "+projects.size());
 				modelAndView = new ModelAndView("tester_home", "projects", projects);
 			} else {
 				projects = projectFacade.getProjectDev(user.getDeveloper().getId());
