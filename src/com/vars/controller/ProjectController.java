@@ -46,12 +46,10 @@ public class ProjectController {
 		User user = (User) session.getAttribute("user"); 
 		if(user != null) {
 			if(user.getIsTester()) {
-				//Tester
 				projects = projectFacade.getNewProjects();
 				modelAndView = new ModelAndView("tester_home", "projects", projects);
 			} else {
-				//developer
-				projects = projectFacade.getProjectDev(1);
+				projects = projectFacade.getProjectDev(user.getDeveloper().getId());
 				modelAndView = new ModelAndView("owner_home", "projects", projects ); 
 			}
 		} else {

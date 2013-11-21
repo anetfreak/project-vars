@@ -32,19 +32,15 @@ public class AuthenticationController {
 		user.setUserName(email);
 		user.setPassword(password);
 		
-		User userDb = userFacade.getUser(user);
+		User userDb = userFacade.getUser(user.getUserName());
 		if(userDb!=null){
-			//TODO - Verify password form the DB
-//			System.out.println("user username:" +user.getUserName());
-			if(userDb.getUserName().equals(user.getUserName())){
+			if(userDb.getUserName().equals(user.getUserName()) && userDb.getPassword().equals(user.getPassword())){
 				session.setAttribute("user", userDb);
 				session.setAttribute("sessionId", session.getId());
 			}
 			modelAndView.setViewName("hello");
 		}
 		else{
-//			System.out.println("Login Failed");
-//			System.out.println("In AuthenticationController:No record of user found in db");
 			modelAndView.setViewName("auth/user_login");
 		}
 		return modelAndView;

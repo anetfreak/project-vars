@@ -28,7 +28,7 @@
 <%-- 	 					</c:otherwise> --%>
 <%--  					</c:choose> --%>
 					
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hi, ${user.userName}<span class="caret"></span></a>
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hi, ${user.developer.firstName}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 				      <li><a href="showProfile.htm">Profile</a></li>
 				      <li><a href="logout.htm">Logout</a></li>

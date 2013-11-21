@@ -11,13 +11,11 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	
 	@Override
 	public void createProject(Project project) {
-		// TODO Auto-generated method stub
 		projectDao.createProject(project);
 	}
 
 	@Override
 	public Project getProject(Integer id) {
-		// TODO Auto-generated method stub
 		return projectDao.getProject(id);
 	}
 	
@@ -26,8 +24,7 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	}
 	
 	@Override
-	public List<Project> getProjectDev(Integer id)
-	{
+	public List<Project> getProjectDev(Integer id) {
 		return projectDao.getProjectDev(id);	
 	}
 	
