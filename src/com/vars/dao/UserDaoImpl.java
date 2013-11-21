@@ -2,6 +2,7 @@ package com.vars.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
@@ -33,6 +34,8 @@ private static final String UPDATE_USER = "UPDATE user set username =? , passwor
 	private static final String UPDATE_DEVELOPER = "UPDATE developer set first_name =?, last_name=? where user_id = ?";
 	
 	private static final String UPDATE_TESTER = "UPDATE tester set first_name =?, last_name =? where user_id =?";
+	
+	private static final String CHECK_LINKED_IN_USER = "select distinct(linkedin_id) from user where lower(linkedin_id) = lower(?)";
 
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
@@ -110,6 +113,17 @@ private static final String UPDATE_USER = "UPDATE user set username =? , passwor
 			user.setDeveloper(developer);
 		}
 		return user;
+	}
+
+	@Override
+	public boolean checkInUser(String linkedInId) {
+		boolean exists = false;
+        List existingEmail = getJdbcTemplate().queryForList(
+        		CHECK_LINKED_IN_USER, new Object[] { linkedInId }, String.class);
+        if (!existingEmail.isEmpty()) {
+            exists = true;
+        }
+        return exists;
 	}
 
 }

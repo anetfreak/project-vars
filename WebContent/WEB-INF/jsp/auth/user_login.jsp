@@ -36,6 +36,18 @@
 			}
 		});
 		
+		var loginAJAX = function() {
+			$.ajax({
+				url : "login.htm",
+			    type: "POST",
+			    success:function(data, textStatus, jqXHR){
+			    },
+			    error: function(jqXHR, textStatus, errorThrown){
+			    	alert("Could not process request.. " + errorThrown);
+			    }
+			});
+		};
+		
 		var validEmail = function() {
 			var email = $('#email');
 			var EMAIL_PATTERN = /^([a-zA-Z0-9_\-\.]+([+])?[a-zA-Z0-9_\-\.]+)@((\[[0-2]{1}[0-5]{1}[0-5]{1}\.[0-2]{1}[0-5]{1}[0-5]{1}\.[0-2]{1}[0-5]{1}[0-5]{1}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-2]{1}[0-5]{1}[0-5]{1})(\]?)$/;
@@ -76,6 +88,25 @@
 		$('#loginOptions').css('display', 'none');
 		$('#userProfile').css('display', 'block');
 		$('#profile').html("<img src=" + member.pictureUrl + "></img><div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
+		
+		$.ajax({
+			url : "checkINUser.htm",
+		    type: "POST",
+		    data : "id=" + member.id,
+		    success:function(data, textStatus, jqXHR){
+		    	alert(data.response);
+		    	if(data.response == "exists"){
+// 		    		alert("Need to sign in linked in user now..");
+					
+		    	} else {
+// 		    		alert("Need to sign up a new user via linked in....");
+					
+		    	}
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
 		
 	}
 	

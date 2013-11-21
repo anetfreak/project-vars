@@ -29,5 +29,10 @@ public class UserFacadeImpl implements UserFacade{
 	public void setUserDao(UserDao userDao) {
 		this.userDao = userDao;
 	}
+
+	@Override
+	public boolean checkInUser(String linkedInId) {
+		return userDao.checkInUser(linkedInId);
+	}
 	
 }

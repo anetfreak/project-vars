@@ -1,5 +1,8 @@
 package com.vars.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vars.domain.Developer;
+import com.vars.domain.Response;
 import com.vars.domain.Tester;
 import com.vars.domain.User;
 import com.vars.facade.UserFacade;
@@ -17,6 +21,7 @@ import com.vars.facade.UserFacade;
 public class AuthenticationController {
 
 	private UserFacade userFacade;
+	private static final String VIEW_NAME = "commonJsonView";
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.GET)
 	public ModelAndView showLogin() {
@@ -91,6 +96,21 @@ public class AuthenticationController {
 		
 		session.invalidate();
 		return new ModelAndView("home");
+	}
+	
+	@RequestMapping(value = "/checkINUser.htm", method = RequestMethod.POST)
+	public ModelAndView signup(@RequestParam("id") String linkedInId) {
+		ModelAndView modelAndView = new ModelAndView(VIEW_NAME);
+		Response response = null;
+		boolean exists = userFacade.checkInUser(linkedInId);
+		if(exists)
+			response = new Response("exists");
+		else
+			response = new Response("newUser");
+		
+		Map<String, Object> modelMap = new HashMap<String, Object>();
+		modelMap.put("response", response.getResponse());
+		return new ModelAndView(VIEW_NAME, "result", modelMap);
 	}
 
 	public void setUserFacade(UserFacade userFacade) {
