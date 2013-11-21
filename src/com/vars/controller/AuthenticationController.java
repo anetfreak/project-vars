@@ -1,5 +1,7 @@
 package com.vars.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,24 +25,29 @@ public class AuthenticationController {
 
 	@RequestMapping(value = "/login.htm", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam("email") String email,
-			@RequestParam("password") String password) {
+			@RequestParam("password") String password,
+			HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
 		User user = new User();
-		//User userDb = new User();
 		user.setUserName(email);
 		user.setPassword(password);
 		
 		User userDb = userFacade.getUser(user);
 		if(userDb!=null){
-			System.out.println("user username:" +user.getUserName());
+			//TODO - Verify password form the DB
+//			System.out.println("user username:" +user.getUserName());
 			if(userDb.getUserName().equals(user.getUserName())){
-				System.out.println("Login success");
-			} 
+				session.setAttribute("user", userDb);
+				session.setAttribute("sessionId", session.getId());
+			}
+			modelAndView.setViewName("hello");
 		}
 		else{
-			System.out.println("Login Failed");
-			System.out.println("In AuthenticationController:No record of user found in db");
+//			System.out.println("Login Failed");
+//			System.out.println("In AuthenticationController:No record of user found in db");
+			modelAndView.setViewName("auth/user_login");
 		}
-		return new ModelAndView("hello");
+		return modelAndView;
 	}
 
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.GET)
@@ -76,6 +83,13 @@ public class AuthenticationController {
 		userFacade.createUser(user);
 
 		return new ModelAndView("hello");
+	}
+	
+	@RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
+	public ModelAndView logout(HttpSession session) {
+		
+		session.invalidate();
+		return new ModelAndView("home");
 	}
 
 	public void setUserFacade(UserFacade userFacade) {

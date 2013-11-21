@@ -7,14 +7,24 @@
 			<a class="brand" href="/project-vars/"><span style="color: white; margin: 0px 10px 0px 10px;">MakeItUsable!</span></a>
 			<ul class="nav">
 				<li><a href="/project-vars/" style="color: white;">Home</a></li>
-				<li ><a href="#" style="color: white;">Link</a></li>
-				<li><a href="#" style="color: white;">Link</a></li>
+				<li><a href="viewProjects.htm" style="color: white;">View Projects</a></li>
 			</ul>
-			<ul class="nav" style=" float:right;">
+			<% if(session.getAttribute("user") == null) { %>
+			<ul id="loginMenu" class="nav" style=" float:right;">
 				<li><a href="login.htm" style="color: white;">Login</a></li>
-				<li><a href="signup.htm" style="color: white;">Sign Up</a></li> 
-				<li><a href="viewProjects.htm" style="color: white;">Project Owner</a></li>
+				<li><a href="signup.htm" style="color: white;">Sign Up</a></li>
 			</ul>
+			<% } else { %>
+			<ul id="loggedInMenu" class="nav" style=" float:right; padding-right: 35px;">
+				<li class="dropdown" id="loggedInDown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello, User</a>
+					<ul class="dropdown-menu">
+				      <li><a href="showProfile.htm">Profile</a></li>
+				      <li><a href="logout.htm">Logout</a></li>
+				    </ul>
+			    </li>
+			</ul>
+			<% } %>
 		</div>
 	</div>
 </div>
