@@ -34,7 +34,6 @@ public class UserController {
 		modelAndView.addObject("user", user);
 		return modelAndView;
 	}*/
-	
 	@RequestMapping(value = "/tester_proposal.htm", method = RequestMethod.POST)
 	public ModelAndView tester_proposal(@RequestParam("projectTitle") String projectTitle, @RequestParam("proposal") String proposal, 
 			@RequestParam("proposalDescription") String proposalDescription) {
@@ -50,7 +49,7 @@ public class UserController {
 		//add code for calling userFacade.updateBid and do whole wiring for bid db
 		return new ModelAndView("hello");
 	}
-		
+	
 	public void setUserFacade(UserFacade userFacade) {
 		this.userFacade = userFacade;
 	}

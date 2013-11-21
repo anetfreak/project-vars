@@ -10,6 +10,7 @@ import com.vars.domain.Bid;
 import com.vars.domain.Developer;
 import com.vars.domain.Tester;
 import com.vars.domain.User;
+import com.vars.facade.BidFacade;
 import com.vars.facade.UserFacade;
 
 @Controller

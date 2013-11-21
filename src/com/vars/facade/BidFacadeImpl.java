@@ -20,13 +20,13 @@ public class BidFacadeImpl implements BidFacade {
 	}
 
 	@Override
-	public List<Project> getBidsForProject(Integer id) {
+	public List<Bid> getBidsForProject(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
-	public List<Project> getBidsForTester(Integer id) {
+	public List<Bid> getBidsForTester(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
