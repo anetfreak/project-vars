@@ -19,19 +19,21 @@
 <script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
 <script
 	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//code.jquery.com/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
-$(document).ready(function(){
-	$('#submitProject').click(function(event) {
-		//Validate email
-			var projectTitle = $('#ProjectTitleInput').val();
+	$(document).ready(function () {
+	   $('#submitProject').click(function(event) {
+		   
+		   var projectTitle = $('#ProjectTitleInput').val();
 			var domain = $('#DomainInput').val();
 			var description = $('#DescriptionInput').val();
-			
+		   
 			$.ajax({
 				url : "projectowner_home.htm",
 			    type: "POST",
-			    data : "projectTitle=" + projectTitle + "&domain=" + domain + "&description="+ description,
+			    data : "projectTitle=" + projectTitle + "&domain=" + domain + "&description=" + description,
 			    success:function(data, textStatus, jqXHR){
 			    	window.location.href="hello.htm";
 			    },
@@ -39,6 +41,7 @@ $(document).ready(function(){
 			    	alert("Could not process request.. " + errorThrown);
 			    }
 			});
+	   });
 	});
 
 </script>
@@ -93,9 +96,8 @@ $(document).ready(function(){
 								<tr>
 									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-											<button type="submit" class="btn btn-default"
-												id="submitProject">Submit</button>
-										</div></td>
+									<input type="submit" class="btn btn-default" id="submitProject" value="Submit"/>
+								</div></td>
 								</tr>
 							</table>
 
