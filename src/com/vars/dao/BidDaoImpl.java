@@ -2,6 +2,7 @@ package com.vars.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
@@ -44,13 +45,12 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	}
 
 	@Override
-	public List<Bid> getBidsForProjectDev(Integer id) {
+	public ArrayList<Bid> getBidsForProjectDev(Integer id) {
 		// returns a list of all bids related to a particular project
 		List<Bid> bids = getJdbcTemplate().query(GET_BIDS_PROJ,
 				new Object[] { id }, new RowMapper<Bid>() {
 					@Override
-					public Bid mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
+					public Bid mapRow(ResultSet rs, int rowNum) throws SQLException {
 						Bid bid = new Bid();
 						bid.setId(rs.getInt(1));
 						bid.setProjectId(rs.getInt(2));
@@ -60,11 +60,11 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 						return bid;
 					}
 				});
-		return bids;
+		return (ArrayList<Bid>) bids;
 	}
 
 	@Override
-	public List<Bid> getBidsForTester(Integer id) {
+	public ArrayList<Bid> getBidsForTester(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}

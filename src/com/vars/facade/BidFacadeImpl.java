@@ -1,6 +1,6 @@
 package com.vars.facade;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import com.vars.dao.BidDao;
 import com.vars.domain.Bid;
@@ -21,13 +21,13 @@ public class BidFacadeImpl implements BidFacade {
 	}
 
 	@Override
-	public List<Bid> getBidsForProject(Integer id) {
+	public ArrayList<Bid> getBidsForProject(Integer id) {
 		// TODO Auto-generated method stub
 		return bidDao.getBidsForProjectDev(id);
 	}
 
 	@Override
-	public List<Bid> getBidsForTester(Integer id) {
+	public ArrayList<Bid> getBidsForTester(Integer id) {
 		// TODO Auto-generated method stub
 		return bidDao.getBidsForTester(id);
 	}

@@ -122,7 +122,7 @@
 											</tr>
 											<c:forEach var="p" items="${projects}">
 												<tr>
-												<td><a href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
+												<td><a href="/project-vars/project/devp_project/${p.project_id}.htm">${p.project_id}</a></td>
 												<td>${p.title}</a></td>
 												<td>${p.description}</td>
 												<td>${p.domain}</td>
