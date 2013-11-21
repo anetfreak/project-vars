@@ -10,19 +10,19 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-			$('#bids').click(function(event) {
-				var projectId = $('#projectId').val();
-				$.ajax({
-					url : "bids/" + projectId + ".htm",
-				    type: "GET",
-				    success:function(data, textStatus, jqXHR){
-				    	window.location.href="viewProjects.htm";
-				    },
-				    error: function(jqXHR, textStatus, errorThrown){
-				    	alert("Could not process request.. " + errorThrown);
-				    }
-				});
-			});
+// 			$('#bids').click(function(event) {
+// 				var projectId = $('#projectId').val();
+// 				$.ajax({
+// 					url : "/project-vars/project/bids/" + projectId + ".htm",
+// 				    type: "GET",
+// // 				    success:function(data, textStatus, jqXHR){
+// // 				    	//window.location.href="project_bids.htm";
+// // 				    },
+// 				    error: function(jqXHR, textStatus, errorThrown){
+// 				    	alert("Could not process request.. " + errorThrown);
+// 				    }
+// 				});
+// 			});
 			
 		});
 	</script>
@@ -87,7 +87,7 @@
 								<td></td>
 								<td></td>
 								<td><div class="btn-group">
-										<input type="button" class="btn btn-primary" id="bids" value="View All Bids"/>
+										<a href="/project-vars/project/bids/${project.project_id}.htm" class="btn btn-primary" id="bids">View All Bids</a>
 									</div>
 								</td>
 							</tr>

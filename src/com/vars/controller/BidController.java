@@ -55,10 +55,10 @@ public class BidController {
 		return new ModelAndView("tester_proposal", "project", project);
 	}
 	
-	@RequestMapping(value = "/bids/{projectId}.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/bids/{projectId}.htm", method = RequestMethod.GET)
 	public ModelAndView showBids(@PathVariable("projectId") Integer id) {
 		
-		return new ModelAndView("bid", "bids", bidFacade.getBidsForProject(id));
+		return new ModelAndView("project_bids", "bids", bidFacade.getBidsForProject(id));
 	}
 	
 	public void setBidFacade(BidFacade bidFacade) {
