@@ -2,6 +2,8 @@ package com.vars.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vars.domain.Project;
+import com.vars.domain.User;
 import com.vars.facade.ProjectFacade;
 
 @Controller
@@ -37,19 +40,24 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
-	public ModelAndView showProjectsForDev() {
+	public ModelAndView showProjectsForDev(HttpSession session) {
 		//getProjectDev needs developer Id to fetch 
-		projects = projectFacade.getProjectDev(1);
-		
-		return new ModelAndView("owner_home", "projects", projects );
-	}
-	
-	@RequestMapping(value = "/viewNewProjects.htm", method = RequestMethod.GET)
-	public ModelAndView showNewProjectsForTest() {
-		//getProjectDev needs tester Id to fetch 
-		projects = projectFacade.getNewProjects();
-		System.out.println("In showNewProjectsForTest");
-		return new ModelAndView("tester_home", "projects", projects);
+		ModelAndView modelAndView;
+		User user = (User) session.getAttribute("user"); 
+		if(user != null) {
+			if(user.getIsTester()) {
+				//Tester
+				projects = projectFacade.getNewProjects();
+				modelAndView = new ModelAndView("tester_home", "projects", projects);
+			} else {
+				//developer
+				projects = projectFacade.getProjectDev(1);
+				modelAndView = new ModelAndView("owner_home", "projects", projects ); 
+			}
+		} else {
+			modelAndView = new ModelAndView("owner_home", "projects", null);
+		}
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/viewTesterProjects.htm", method = RequestMethod.GET)

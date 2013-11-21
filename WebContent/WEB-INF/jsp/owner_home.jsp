@@ -99,9 +99,8 @@
 										</div></td>
 								</tr>
 								<tr>
-									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-default" id="submitProject" value="Submit"/>
+									<input type="submit" class="btn btn-primary" id="submitProject" value="Submit"/>
 								</div></td>
 								</tr>
 							</table>
