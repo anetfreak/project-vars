@@ -25,6 +25,29 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	private static final String INSERT_TESTER = "INSERT into tester (user_id, first_name, last_name) values (?, ?, ?)";
 	
 	private static final String INSERT_BID = "INSERT into bid (project_id, tester_id, description, amount) values (?, ?, ?, ?)";
+
+private static final String UPDATE_USER = "UPDATE user set username =? , password =? where id = ?";
+	
+	private static final String UPDATE_DEVELOPER = "UPDATE developer set first_name =?, last_name=? where user_id = ?";
+	
+	private static final String UPDATE_TESTER = "UPDATE tester set first_name =?, last_name =? where user_id =?";
+
+	public void updateUser(User user) {
+		// TODO Auto-generated method stub
+		getJdbcTemplate().update(UPDATE_USER, new Object[]{user.getUserName(), user.getPassword(), user.getId()});
+		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
+		
+		System.out.println("userID: "+userId);
+		user.setId(userId);
+		if(user.isTester()) {
+			user.getTester().setUserId(userId);
+			getJdbcTemplate().update(UPDATE_TESTER, new Object[]{user.getTester().getFirstName(), user.getTester().getLastName(), user.getId()} );
+		} else {
+			user.getDeveloper().setUserId(userId);
+			System.out.println("Developer: userID:"+user.getDeveloper().getUserId());
+			getJdbcTemplate().update(UPDATE_DEVELOPER, new Object[]{user.getDeveloper().getFirstName(), user.getDeveloper().getLastName(), user.getId()} );
+		}
+	}
 	
 	public void createUser(User user) {
 		// TODO Auto-generated method stub

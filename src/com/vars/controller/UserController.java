@@ -26,7 +26,41 @@ public class UserController {
 	public ModelAndView createUser() {
 		return new ModelAndView();
 	}
+	@RequestMapping(value = "/showProfile.htm", method = RequestMethod.GET)
+	public ModelAndView showLogin() {
+		return new ModelAndView("/user_profile");
+	}
 	
+
+	
+	@RequestMapping(value = "/showProfile.htm", method = RequestMethod.POST)
+	public ModelAndView updateInfo(@RequestParam("fname") String fname, 
+			@RequestParam("lname") String lname, 
+			@RequestParam("email") String email,
+			@RequestParam("password") String password){	
+		User user = new User();
+		Developer developer = new Developer();
+		Tester tester = new Tester();
+		
+		user.setId(2);
+		// get user object from session
+		int userType = 0;
+		
+		if(userType == 0) {
+			developer.setFirstName(fname);
+			developer.setLastName(lname);
+		} else {
+			tester.setFirstName(fname);
+			tester.setLastName(lname);
+		}
+		user.setUserName(email);
+		user.setPassword(password);
+		user.setDeveloper(developer);
+		user.setTester(tester);
+		userFacade.updateUser(user);
+		return new ModelAndView("hello");
+	}
+
 	/*@RequestMapping(value = "/user.htm", method = RequestMethod.GET)
 	public ModelAndView getUser(Integer id) {
 		User user = userFacade.getUser(1);

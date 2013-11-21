@@ -24,6 +24,7 @@ public class UserFacadeImpl implements UserFacade{
 	@Override
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
+		userDao.updateUser(user);
 		
 	}
 	

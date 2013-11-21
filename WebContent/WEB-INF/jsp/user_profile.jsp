@@ -27,6 +27,54 @@
 			});
 		});
 	</script>
+	<script>
+	function checkPasswordMatch(){
+		//var checkPasswordMatch = function() {
+		   var password = $("#passwordInput").val();
+		   var rePassword = $("#reEnterPasswordInput").val();
+			
+		  if (password != rePassword)
+		      $("#divCheckPasswordMatch").html("Passwords do not match!");
+		   else{
+	     $("#divCheckPasswordMatch").html("Passwords match.");  
+		 }
+		}
+	</script>
+		
+	<script type="text/javascript">
+
+	
+	$(document).ready(function() {
+		$("#reEnterPasswordInput").keyup(checkPasswordMatch());
+		 $('#updateprofilebtn').click(function(event) {
+			  var fname = $('#First_Name').val();
+			   var lname = $('#Last_Name').val();
+			   var email = $('#Email_Id').val();
+			   var password = $('#passwordInput').val();
+			 //  var reenterpassword = $('#reEnterPasswordInput').val();
+			   
+			   $.ajax({
+					url : "user_profile.htm",
+				    type: "POST",
+				    data : "First_Name=" + fname + "&Last_Name=" + lname + "&Email_Id=" + email + "&passwordInput=" + password + "&reEnterPasswordInput=" +reenterpassword,
+				    success:function(data, textStatus, jqXHR){
+				    	window.location.href="hello.htm";
+				    },
+				    error: function(jqXHR, textStatus, errorThrown){
+				    	alert("Could not process request.. " + errorThrown);
+				    }
+		 });
+	});
+	});
+
+	
+	</script>
+
+</head>
+<body>
+	<%@include file="./layout/header.jsp"%>
+
+	
 
 	<div id="container" style="padding-top: 40px;">
 		<div class="container-fluid">
@@ -47,16 +95,16 @@
 							<tr>
 								<td><h2 class="label label-primary">First Name</h2></td>
 								<td></td>
-								<td><div class="col-sm-10">
-										<p class="form-control-static" id="firstNameInput">NameFromDB</p>
+								<td><div class="controls">
+										<input type="text" id="FirstName" placeholder="First Name" disabled>
 									</div></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h2 class="label label-primary">Last Name</h2></td>
 								<td></td>
-								<td><div class="col-sm-10">
-										<p class="form-control-static" id="lastNameInput">NameFromDB</p>
+								<td><div class="controls">
+										<input type="text" id="LastName" placeholder="Last Name" disabled>
 									</div>
 								</td>
 							</tr>
@@ -64,8 +112,8 @@
 							<tr>
 								<td><h2 class="label label-primary">Email</h2></td>
 								<td></td>
-								<td><div class="col-sm-10">
-										<p class="form-control-static" id="emailInput">EmailFromDB</p>
+								<td><div class="controls">
+										<input type="text" id="EmailId" placeholder="Email" disabled>
 									</div>
 								</td>
 							</tr>
@@ -94,7 +142,7 @@
 								<td><h2 class="label label-primary">First Name</h2></td>
 								<td></td>
 								<td><div class="input-group">
-										<input type="Email" id="FirstName" class="form-control"
+										<input type="Email" id="First_Name" class="form-control"
 											placeholder="First Name">
 									</div></td>
 							</tr>
@@ -103,7 +151,7 @@
 								<td><h2 class="label label-primary">Last Name</h2></td>
 								<td></td>
 								<td><div class="input-group">
-										<input type="Email" id="LastName" class="form-control"
+										<input type="Email" id="Last_Name" class="form-control"
 											placeholder="Last Name">
 									</div></td>
 							</tr>
@@ -112,7 +160,7 @@
 								<td><h2 class="label label-primary">Email</h2></td>
 								<td></td>
 								<td><div class="input-group">
-										<input type="Email" id="EmailId" class="form-control"
+										<input type="Email" id="Email_Id" class="form-control"
 											placeholder="Email Id">
 									</div></td>
 							</tr>
@@ -131,8 +179,11 @@
 								<td></td>
 								<td><div class="input-group">
 										<input type="password" id="reEnterPasswordInput"
-											class="form-control" placeholder="Re-enter Password">
+											class="required" placeholder="Re-enter Password" onChange="checkPasswordMatch();">
 									</div></td>
+									<td>
+									<div class="registrationFormAlert" id="divCheckPasswordMatch"></div>
+									</td>
 							</tr>
 							<tr></tr>
 							<tr></tr>
@@ -140,7 +191,7 @@
 								<td></td>
 								<td></td>
 								<td><div class="btn-group">
-										<input type="submit" class="btn"  value="Update Profile"/>
+										<input type="submit" class="btn" id="updateprofilebtn"  value="Update Profile"/>
 									</div>
 								</td>
 							</tr>
