@@ -52,6 +52,15 @@ public class ProjectController {
 		return new ModelAndView("tester_home", "projects", projects);
 	}
 	
+	@RequestMapping(value = "/viewTesterProjects.htm", method = RequestMethod.GET)
+	public ModelAndView getProjectTest() {
+		//getProjectDev needs tester Id to fetch
+		int id = 1;
+		projects = projectFacade.getProjectTest(id);
+		System.out.println("In viewTesterProjects");
+		return new ModelAndView("tester_home", "projects", projects);
+	}
+	
 	@RequestMapping(value = "/project/view_project{id}.htm", method = RequestMethod.GET)
 	public ModelAndView showProject(@PathVariable("id") String id) {
 		Project project = projectFacade.getProject(Integer.parseInt(id));
