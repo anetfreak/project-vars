@@ -33,14 +33,13 @@
 							<div id="bids">
 								<table class="table table-striped table-bordered">
 									<tr>
-										<th>ID</th>
 										<th>Tester ID</th>
 										<th>Proposal Description</th>
 										<th>Amount</th>
 									</tr>
-									<c:forEach var="b" items="${bids}">
+									<c:forEach var="p" items="${bids}">
 										<tr>
-										<td><a href="/project-vars/project/view_bids${p.project_id}.htm">${p.project_id}</a></td>
+										<td><a href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
 										<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
 										<td>${p.description}</td>
 										<td>${p.domain}</td>

@@ -1,7 +1,10 @@
 package com.vars.dao;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.vars.domain.Bid;
@@ -10,7 +13,7 @@ import com.vars.domain.Project;
 public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	
 	private static final String INSERT_BID = "INSERT into bid (project_id, tester_id, description, amount) values (?, ?, ?, ?)";
-
+	private static final String GET_BIDS_PROJ = "SELECT * from bid where project_id = ?";
 	public void createBid(Bid bid) {
 		Project project = new Project();
 		int testerId = 1;
@@ -42,8 +45,22 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 
 	@Override
 	public List<Bid> getBidsForProjectDev(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		// returns a list of all bids related to a particular project
+		List<Bid> bids = getJdbcTemplate().query(GET_BIDS_PROJ,
+				new Object[] { id }, new RowMapper<Bid>() {
+					@Override
+					public Bid mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						Bid bid = new Bid();
+						bid.setId(rs.getInt(1));
+						bid.setProjectId(rs.getInt(2));
+						bid.setTester(rs.getInt(3));
+						bid.setDescription(rs.getString(4));
+						bid.setAmount(rs.getFloat(5));
+						return bid;
+					}
+				});
+		return bids;
 	}
 
 	@Override

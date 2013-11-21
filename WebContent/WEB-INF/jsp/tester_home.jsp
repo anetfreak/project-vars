@@ -84,7 +84,7 @@
 								</c:when>
 								<c:otherwise>
 									<div id="projects">
-										<h5>Sorry, no projects found under you name.. Start by posting a project <a href="#PostNewProject" data-toggle="tab">here</a></h5>
+										<h5>Sorry, there are no available new projects. Check later.</h5>
 									</div>
 								</c:otherwise>
 							</c:choose>

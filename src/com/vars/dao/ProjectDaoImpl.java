@@ -17,7 +17,7 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	private static final String GET_PROJECT = "select title, description, domain, devp_id, tester_id from project where id = ?";
 	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id, tester_id) values (?, ?, ?, ?, ?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ?";
-	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id = ?";
+	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id IS NULL";
 	
 	@Override
 	public void createProject(Project project) {
