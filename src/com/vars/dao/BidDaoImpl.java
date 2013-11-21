@@ -18,7 +18,7 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	private static final String GET_BIDS_PROJ = "SELECT * from bid where project_id = ?";
 	private static final String GET_TESTERS_PROJ = "select * from project where tester_id = ?";
 	private static final String INSERT_BID_IN_PROJECT = "UPDATE project set tester_id =? where id =?";
-	
+	private static final String GET_BID = "SELECT * from bid where id=?";
 	public void createBid(Bid bid) {
 		Project project = new Project();
 		project.setProject_id(bid.getProjectId());
@@ -28,8 +28,21 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 
 	@Override
 	public Bid getBid(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return getJdbcTemplate().queryForObject(GET_BID,
+				new Object[] { id }, new RowMapper<Bid>() {
+					@Override
+					public Bid mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						Bid bid = new Bid();
+						bid.setId(rs.getInt(1));
+						bid.setProjectId(rs.getInt(2));
+						bid.setTester(rs.getInt(3));
+						bid.setDescription(rs.getString(4));
+						bid.setAmount(rs.getFloat(5));
+						
+						return bid;
+					}
+				});
 	}
 
 	@Override
@@ -88,6 +101,8 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	@Override
 	public void setBidForProject(Bid bid) {
 		// TODO Auto-generated method stub
-		getJdbcTemplate().update(INSERT_BID_IN_PROJECT, new Object[]{bid.getProjectId()});
+		
+		
+		getJdbcTemplate().update(INSERT_BID_IN_PROJECT, new Object[]{bid.getTester(), bid.getProjectId()});
 	}
 }

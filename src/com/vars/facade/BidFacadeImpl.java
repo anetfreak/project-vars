@@ -18,8 +18,8 @@ public class BidFacadeImpl implements BidFacade {
 
 	@Override
 	public Bid getBid(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+		return bidDao.getBid(id);
+		
 	}
 
 	@Override

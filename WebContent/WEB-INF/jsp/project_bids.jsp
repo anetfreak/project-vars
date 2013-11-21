@@ -16,7 +16,7 @@ $(document).ready(function () {
 	   var bidIdinput = $("input:radio[name=bidRadio]:checked").val();
 		//params to be displayed here are not handled - projName,Desc,etc	  
 		$.ajax({
-			url : "/bids/selectBid.htm",
+			url : "/project-vars/bids/selectBid.htm",
 		    type: "POST",
 		    data : "bidIdinput=" + bidIdinput,
 		    success:function(data, textStatus, jqXHR){
