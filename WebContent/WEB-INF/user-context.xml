@@ -40,6 +40,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	
 	<bean id="bidController" class="com.vars.controller.BidController">
 		<property name="bidFacade" ref="bidFacade" />
+		<property name="projectFacade" ref="projectFacade" />
 	</bean>
 	
 	<bean id="authenticationController" class="com.vars.controller.AuthenticationController">

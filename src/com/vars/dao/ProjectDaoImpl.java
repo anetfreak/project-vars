@@ -11,7 +11,7 @@ import com.vars.domain.Project;
 
 public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 
-	private static final String GET_PROJECT = "select title, description, domain, devp_id, tester_id from project where id = ?";
+	private static final String GET_PROJECT = "select id, title, description, domain, devp_id, tester_id from project where id = ?";
 	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id) values (?, ?, ?, ?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ? order by id";
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id IS NULL order by id";
@@ -30,6 +30,7 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 					public Project mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
 						Project project = new Project();
+						project.setProject_id(rs.getInt("id"));
 						project.setTitle(rs.getString("title"));
 						project.setDeveloper_id(rs.getInt("devp_id"));
 						project.setTester_id(rs.getInt("tester_id"));

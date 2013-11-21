@@ -71,8 +71,7 @@ public class ProjectController {
 	public ModelAndView getProjectTest() {
 		//getProjectDev needs tester Id to fetch
 		int id = 1;
-		projects = projectFacade.getProjectTest(id);
-		System.out.println("In viewTesterProjects");
+		projects = projectFacade.getProjectTest(id);;
 		return new ModelAndView("tester_home", "projects", projects);
 	}
 	

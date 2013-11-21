@@ -4,23 +4,9 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - View Project</title>
+<title>MakeItUsable! - Project Details</title>
 
-<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.min.css">
-<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script type="text/javascript">
-
-</script>
+<%@include file="/WEB-INF/jsp/includes.jsp" %>
 <style type="text/css">
 #sidebar-list {
 	font-size: 14px;
@@ -28,23 +14,23 @@
 </style>
 </head>
 <body>
-	<div id="header">
-		<div class="navbar">
-			<div class="navbar-inner">
-				<a class="brand" href="#"><span style="color: black;">MakeItUsable!</span></a>
-				<ul class="nav">
-					<li><a href="hello.htm">Home</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="#">Link</a></li>
-					<li class="divider-vertical"></li>
-					<li><a href="#">Link</a></li>
-				</ul>
+<%@include file="/WEB-INF/jsp/layout/header.jsp" %>
+	
+	<div id="container" style="padding: 50px 0px 70px 0px;">
+		<%
+			if (session.getAttribute("user") == null) {
+		%>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<p>
+					Please <a href="login.htm">login</a> to view this page.
+				</p>
 			</div>
 		</div>
-	</div>
-	
-				
-	<div id="container" style="padding-top: 40px;">
+		<%
+			} else {
+		%>
+		<div id="container" style="padding-top: 40px;">
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2">
@@ -101,26 +87,26 @@
 								<tr>
 									<td><h2 class="label label-primary">Bids</h2></td>
 									<td></td>
-									<td><a href="bids.html">Show all bids</a></td>
+									<td><a href="/project-vars/project/bids/${project.project_id}.htm">Bid this project!</a></td>
 								</tr>
 								<tr></tr>
 								<tr></tr>
 								<tr>
 									<td></td>
 									<td></td>
-									<td><div class="btn-group">
-  										<button type="submit" class="btn">Update Profile</button>
-									</div></td>
+									<td><div class="col-sm-offset-2 col-sm-10">
+									<input type="submit" class="btn btn-default" id="submit" value="Update Profile"/>
+								</div></td>
 								</tr>
 							</table>
 						</div>
 					</div>
 				</div>
 			</div>
+			</div>
+			<% } %>
 		</div>
-	
-
-	<div id="footer"></div>
+<%@include file="/WEB-INF/jsp/layout/footer.jsp" %>
 
 </body>
 </html>
