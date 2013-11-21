@@ -51,9 +51,9 @@ public class ProjectController {
 			if(user.getIsTester()) {
 				projects = projectFacade.getNewProjects();
 				if(projects.size() <= 0)
-					modelAndView = new ModelAndView("owner_home", "projects", null);
+					modelAndView = new ModelAndView("tester_home", "projects", null);
 				else
-					modelAndView = new ModelAndView("owner_home", "projects", projects );
+					modelAndView = new ModelAndView("tester_home", "projects", projects );
 			} else {
 				projects = projectFacade.getProjectDev(user.getDeveloper().getId());
 				if(projects.size() <= 0)
@@ -62,7 +62,7 @@ public class ProjectController {
 					modelAndView = new ModelAndView("owner_home", "projects", projects );
 			}
 		} else {
-			modelAndView = new ModelAndView("owner_home", "projects", null);
+			modelAndView = new ModelAndView("auth/user_login");
 		}
 		return modelAndView;
 	}

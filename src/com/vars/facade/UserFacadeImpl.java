@@ -16,9 +16,8 @@ public class UserFacadeImpl implements UserFacade{
 
 	@Override
 	public User getUser(String userName) {
-			return userDao.getUser(userName);
-		
-		}
+		return userDao.getUser(userName);
+	}
 	
 	@Override
 	public void updateUser(User user) {
