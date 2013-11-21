@@ -35,7 +35,7 @@
 			    type: "POST",
 			    data : "projectTitle=" + projectTitle + "&domain=" + domain + "&description=" + description,
 			    success:function(data, textStatus, jqXHR){
-			    	window.location.href="hello.htm";
+			    	window.location.href="viewProjects.htm";
 			    },
 			    error: function(jqXHR, textStatus, errorThrown){
 			    	alert("Could not process request.. " + errorThrown);
