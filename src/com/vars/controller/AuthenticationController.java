@@ -56,12 +56,12 @@ public class AuthenticationController {
 			@RequestParam("lname") String lname, 
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
-			@RequestParam("userType") Integer userType) {
+			@RequestParam("userType") String userType) {
 		User user = new User();
 		Developer developer = new Developer();
 		Tester tester = new Tester();
-
-		if(userType == 0) {
+		System.out.println("User Type is"+ userType);
+		if(userType.equals("Tester")) {
 			user.setIsTester(false);
 			developer.setFirstName(fname);
 			developer.setLastName(lname);
