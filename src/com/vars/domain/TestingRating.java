@@ -3,7 +3,7 @@ package com.vars.domain;
 public class TestingRating {
 private Integer testerId;
 private Integer developerId;
-private float rating;
+private Float rating;
 
 public Integer getTesterId() {
 	return testerId;
@@ -17,10 +17,10 @@ public Integer getDeveloperId() {
 public void setDeveloperId(Integer developerId) {
 	this.developerId = developerId;
 }
-public float getRating() {
+public Float getRating() {
 	return rating;
 }
-public void setRating(float rating) {
+public void setRating(Float rating) {
 	this.rating = rating;
 }
 

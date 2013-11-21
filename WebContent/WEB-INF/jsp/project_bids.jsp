@@ -8,6 +8,30 @@
 
 <%@include file="/WEB-INF/jsp/includes.jsp" %>
 
+<script type="text/javascript">
+	
+$(document).ready(function () {
+   
+   $('#submit').click(function(event) {
+	   var bidIdinput = $("input:radio[name=bidRadio]:checked").val();
+		//params to be displayed here are not handled - projName,Desc,etc	  
+		$.ajax({
+			url : "/bids/selectBid.htm",
+		    type: "POST",
+		    data : "bidIdinput=" + bidIdinput,
+		    success:function(data, textStatus, jqXHR){
+		    	window.location.href="/project-vars/viewProjects.htm";
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
+   });
+});
+	
+	
+</script>
+
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/layout/header.jsp" %>
@@ -55,7 +79,24 @@
 										<td>$${b.amount}</td>
 									</tr>
 									</c:forEach>
-								</table>
+											<tr>
+											</tr>
+											<tr>
+											</tr>
+											<tr>
+												<td></td>
+												<td></td>
+
+												<td>
+													<div class="col-sm-offset-2 col-sm-10">
+														<input type="submit" class="btn btn-default" id="submit"
+															value="Submit" />
+													</div>
+
+												</td>
+
+											</tr>
+										</table>
 							</div>
 						</div>
 						</c:when>

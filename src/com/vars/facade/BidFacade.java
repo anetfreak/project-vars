@@ -11,4 +11,5 @@ public interface BidFacade {
 	ArrayList<Bid> getBidsForProject(Integer id);
 	ArrayList<Project> getProjectsForTester(Integer id);
 	boolean checkIfBidMade(Integer project_id, Integer id);
+	void setBidForProject(Bid bid);
 }

@@ -11,4 +11,5 @@ public interface BidDao {
 	ArrayList<Bid> getBidsForProjectDev(Integer id);
 	ArrayList<Project> getProjectsForTester(Integer id);
 	boolean checkIfBidMade(Integer project_id, Integer id);
+	void setBidForProject(Bid bid);
 }

@@ -44,5 +44,11 @@ public class BidFacadeImpl implements BidFacade {
 		return bidDao.checkIfBidMade(project_id, id);
 	}
 
+	@Override
+	public void setBidForProject(Bid bid) {
+		// TODO Auto-generated method stub
+		bidDao.setBidForProject(bid);
+	}
+
 	
 }
