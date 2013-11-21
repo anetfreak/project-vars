@@ -1,5 +1,7 @@
 package com.vars.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -55,10 +57,14 @@ public class BidController {
 		return new ModelAndView("tester_proposal", "project", project);
 	}
 	
-	@RequestMapping(value = "/project/bids/{projectId}.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/bids/{projectId}.htm", method = RequestMethod.GET)
 	public ModelAndView showBids(@PathVariable("projectId") Integer id) {
 		
-		return new ModelAndView("project_bids", "bids", bidFacade.getBidsForProject(id));
+		ArrayList<Bid> bids = bidFacade.getBidsForProject(id);
+		if(bids.size() <= 0)
+			return new ModelAndView("project_bids", "bids", null);
+		else
+			return new ModelAndView("project_bids", "bids", bids);
 	}
 	
 	public void setBidFacade(BidFacade bidFacade) {

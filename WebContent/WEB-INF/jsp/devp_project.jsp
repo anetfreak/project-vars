@@ -87,7 +87,7 @@
 								<td></td>
 								<td></td>
 								<td><div class="btn-group">
-										<a href="/project-vars/project/bids/${project.project_id}.htm" class="btn btn-primary" id="bids">View All Bids</a>
+										<a href="/project-vars/bids/${project.project_id}.htm" class="btn btn-primary" id="bids">View All Bids</a>
 									</div>
 								</td>
 							</tr>
