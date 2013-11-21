@@ -7,11 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vars.domain.Bid;
-import com.vars.domain.Developer;
-import com.vars.domain.Tester;
-import com.vars.domain.User;
 import com.vars.facade.BidFacade;
-import com.vars.facade.UserFacade;
 
 @Controller
 public class BidController {
@@ -29,7 +25,7 @@ public class BidController {
 		float proposals = Float.parseFloat(proposal);
 		bid.setAmount(proposals);
 		bid.setDescription(proposalDescription);
-		bidFacade.updateProposal(bid);
+		bidFacade.createBid(bid);
 		//add code for calling userFacade.updateBid and do whole wiring for bid db
 		return new ModelAndView("hello");
 	}

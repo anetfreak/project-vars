@@ -2,19 +2,20 @@ package com.vars.facade;
 
 import java.util.List;
 
-import com.vars.dao.ProjectDao;
+import com.vars.dao.BidDao;
 import com.vars.domain.Bid;
-import com.vars.domain.Project;
 
 public class BidFacadeImpl implements BidFacade {
 
+	private BidDao bidDao;
+	
 	@Override
 	public void createBid(Bid bid) {
 		// TODO Auto-generated method stub
 	}
 
 	@Override
-	public Project getBid(Integer id) {
+	public Bid getBid(Integer id) {
 		// TODO Auto-generated method stub
 		return null;
 	}
@@ -22,13 +23,17 @@ public class BidFacadeImpl implements BidFacade {
 	@Override
 	public List<Bid> getBidsForProject(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return bidDao.getBidsForProjectDev(id);
 	}
 
 	@Override
 	public List<Bid> getBidsForTester(Integer id) {
 		// TODO Auto-generated method stub
-		return null;
+		return bidDao.getBidsForTester(id);
+	}
+
+	public void setBidDao(BidDao bidDao) {
+		this.bidDao = bidDao;
 	}
 	
 }
