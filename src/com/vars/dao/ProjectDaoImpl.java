@@ -2,31 +2,24 @@ package com.vars.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.vars.domain.Project;
-import com.vars.domain.User;
 
 public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 
 	private static final String GET_PROJECT = "select title, description, domain, devp_id, tester_id from project where id = ?";
-	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id, tester_id) values (?, ?, ?, ?, ?)";
+	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id) values (?, ?, ?, ?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ?";
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id IS NULL";
 	
 	@Override
 	public void createProject(Project project) {
 		// TODO Auto-generated method stub
-		getJdbcTemplate().update(
-				INSERT_PROJECT,
-				new Object[] { project.getTitle(), project.getDescription(),
-						project.getDomain(), project.getDeveloper_id(),
-						project.getTester_id() });
+		getJdbcTemplate().update( INSERT_PROJECT, new Object[] { project.getTitle(), project.getDescription(), project.getDomain(), project.getDeveloper_id() });
 	}
 
 	@Override

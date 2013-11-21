@@ -28,13 +28,16 @@ public class ProjectController {
 	@RequestMapping(value = "/project.htm", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam("projectTitle") String projectTitle,
 			@RequestParam("domain") String domain,
-			@RequestParam("description") String description) {
+			@RequestParam("description") String description,
+			HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		
 		Project project = new Project();
 		project.setTitle(projectTitle);
 		project.setDescription(description);
-		project.setDeveloper_id(1);
-		project.setTester_id(1);
+		project.setDeveloper_id(user.getDeveloper().getId());
 		project.setDomain(domain);
+		
 		projectFacade.createProject(project);
 		return new ModelAndView("owner_home");
 	}

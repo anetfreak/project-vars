@@ -54,7 +54,7 @@ CREATE TABLE `developer` (
   PRIMARY KEY (`id`),
   KEY `fk_developer_user_id_idx` (`user_id`),
   CONSTRAINT `fk_developer_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -70,13 +70,13 @@ CREATE TABLE `project` (
   `description` varchar(200) DEFAULT NULL,
   `domain` varchar(200) DEFAULT NULL,
   `devp_id` int(11) NOT NULL,
-  `tester_id` int(11) NOT NULL,
+  `tester_id` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
   KEY `fk_project_devp_id_idx` (`devp_id`),
   KEY `fk_project_tester_id_idx` (`tester_id`),
-  CONSTRAINT `fk_project_devp_id` FOREIGN KEY (`devp_id`) REFERENCES `developer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_project_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  CONSTRAINT `fk_project_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_project_devp_id` FOREIGN KEY (`devp_id`) REFERENCES `developer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -111,8 +111,8 @@ CREATE TABLE `tester_rating` (
   `rating` decimal(3,2) NOT NULL,
   KEY `fk_rating_devp_id_idx` (`developer_id`),
   KEY `fk_rating_tester_id_idx` (`tester_id`),
-  CONSTRAINT `fk_rating_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `fk_rating_devp_id` FOREIGN KEY (`developer_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+  CONSTRAINT `fk_rating_devp_id` FOREIGN KEY (`developer_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  CONSTRAINT `fk_rating_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -129,7 +129,7 @@ CREATE TABLE `user` (
   `password` varchar(100) NOT NULL,
   `istester` tinyint(4) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -141,4 +141,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-20 20:35:48
+-- Dump completed on 2013-11-21  5:14:02
