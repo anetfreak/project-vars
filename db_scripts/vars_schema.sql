@@ -28,7 +28,7 @@ CREATE TABLE `bid` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `project_id` int(11) NOT NULL,
   `tester_id` int(11) NOT NULL,
-  `desc` varchar(200) DEFAULT NULL,
+  `description` varchar(200) DEFAULT NULL,
   `amount` decimal(10,2) NOT NULL DEFAULT '0.00',
   PRIMARY KEY (`id`),
   KEY `fk_bid_project_id_idx` (`project_id`),
@@ -54,7 +54,7 @@ CREATE TABLE `developer` (
   PRIMARY KEY (`id`),
   KEY `fk_developer_user_id_idx` (`user_id`),
   CONSTRAINT `fk_developer_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -76,7 +76,7 @@ CREATE TABLE `project` (
   KEY `fk_project_tester_id_idx` (`tester_id`),
   CONSTRAINT `fk_project_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_project_devp_id` FOREIGN KEY (`devp_id`) REFERENCES `developer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,7 +95,7 @@ CREATE TABLE `tester` (
   PRIMARY KEY (`id`),
   KEY `fk_tester_user_id_idx` (`user_id`),
   CONSTRAINT `fk_tester_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -128,8 +128,9 @@ CREATE TABLE `user` (
   `username` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL,
   `istester` tinyint(4) NOT NULL,
+  `linkedin_id` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
@@ -141,4 +142,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2013-11-21  5:14:02
+-- Dump completed on 2013-11-21 11:49:31
