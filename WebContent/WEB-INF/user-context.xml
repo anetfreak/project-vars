@@ -23,14 +23,14 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	</bean>
 	
 	<bean id="projectDao" class="com.vars.dao.ProjectDaoImpl">
-    	<property name="dataSource" ref="dataSource" />
-    </bean>
-    
-    <bean id="projectFacade" class="com.vars.facade.ProjectFacadeImpl" p:userDao-ref="projectDao"/>
-	
-	<bean id="projectController" class="com.vars.controller.ProjectController">
-		<property name="projectFacade" ref="projectFacade" />
-	</bean>
+<property name="dataSource" ref="dataSource" />
+</bean>
+
+<bean id="projectFacade" class="com.vars.facade.ProjectFacadeImpl" p:projectDao-ref="projectDao"/>
+
+<bean id="projectController" class="com.vars.controller.ProjectController">
+<property name="projectFacade" ref="projectFacade" />
+</bean>
 	
 	<bean id="authenticationController" class="com.vars.controller.AuthenticationController">
 	 	<property name="userFacade" ref="userFacade" />

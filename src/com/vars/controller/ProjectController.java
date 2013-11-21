@@ -18,6 +18,10 @@ public class ProjectController {
 
 	private ProjectFacade projectFacade;
 	
+	public void setProjectFacade(ProjectFacade projectFacade) {
+		this.projectFacade = projectFacade;
+	}
+
 	@RequestMapping(value = "/projectowner_home.htm", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam("projectTitle") String projectTitle,
 			@RequestParam("domain") String domain,

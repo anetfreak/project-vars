@@ -36,12 +36,17 @@ public class UserController {
 	}*/
 	
 	@RequestMapping(value = "/tester_proposal.htm", method = RequestMethod.POST)
-	public ModelAndView tester_proposal(@RequestParam("proposal") String proposal, 
+	public ModelAndView tester_proposal(@RequestParam("projectTitle") String projectTitle, @RequestParam("proposal") String proposal, 
 			@RequestParam("proposalDescription") String proposalDescription) {
+		
+		System.out.println("Project Title: "+projectTitle);
+		System.out.println("Proposal amount: "+proposal);
+		System.out.println("Proposal Desc: "+proposalDescription);
 		Bid bid = new Bid();
 		float proposals = Float.parseFloat(proposal);
 		bid.setAmount(proposals);
 		bid.setDescription(proposalDescription);
+		userFacade.updateProposal(bid);
 		//add code for calling userFacade.updateBid and do whole wiring for bid db
 		return new ModelAndView("hello");
 	}
