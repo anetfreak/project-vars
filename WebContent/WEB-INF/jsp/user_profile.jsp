@@ -134,6 +134,20 @@
 							
 							
 							<tr></tr>
+							
+							<tr>
+								<td><h2 class="label label-primary">Role</h2></td>
+								<td></td>
+								<c:choose>
+									<c:when test="${user.isTester}">
+										<td><span>Tester</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span>Developer Group / Project Owner</span></td>
+									</c:otherwise>
+								</c:choose>
+							</tr>
+							
 							<tr></tr>
 							<tr>
 								<td></td>
