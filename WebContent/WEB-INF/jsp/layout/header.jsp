@@ -19,16 +19,15 @@
 			<% } else { %>
 			<ul id="loggedInMenu" class="nav" style=" float:right; padding-right: 35px;">
 				<li class="dropdown" id="loggedInDown">
-<%-- 					<c:choose> --%>
-<%-- 					    <c:when test="${user.isTester}"> --%>
-<%-- 					    	<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.tester.firstName}</a> --%>
-<%-- 					    </c:when> --%>
-<%-- 	 					<c:otherwise> --%>
-<%-- 	 						<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.developer.firstName}</a> --%>
-<%-- 	 					</c:otherwise> --%>
-<%--  					</c:choose> --%>
+					<c:choose>
+					    <c:when test="${user.isTester}">
+					    	<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.tester.firstName} <span class="caret"></span></a>
+					    </c:when>
+	 					<c:otherwise>
+	 						<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.developer.firstName} <span class="caret"></span></a>
+	 					</c:otherwise>
+ 					</c:choose>
 					
-					<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hi, ${user.developer.firstName}<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 				      <li><a href="showProfile.htm">Profile</a></li>
 				      <li><a href="logout.htm">Logout</a></li>
