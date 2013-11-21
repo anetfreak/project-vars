@@ -8,82 +8,65 @@
 
 <%@include file="includes.jsp"%>
 
-
-<style type="text/css">
-#sidebar-list {
-	font-size: 14px;
-}
-</style>
-</head>
-<body>
-	<%@include file="./layout/header.jsp"%>
-
-	<script type="text/javascript">
+<script type="text/javascript">
 		$(document).ready(function() {
 			$('#updateinformation').click(function(event) {
 				$('#UserProfile').css('display', 'none');
 				$('#UpdateProfile').css('display', 'block');
 
 			});
-		});
-	</script>
-	<script>
-	function checkPasswordMatch(){
-		//var checkPasswordMatch = function() {
-		   var password = $("#passwordInput").val();
-		   var rePassword = $("#reEnterPasswordInput").val();
 			
-		  if (password != rePassword)
-		      $("#divCheckPasswordMatch").html("Passwords do not match!");
-		   else{
-	     $("#divCheckPasswordMatch").html("Passwords match.");  
-		 }
+			$("#reEnterPasswordInput").keyup(checkPasswordMatch());
+			 $('#updateprofilebtn').click(function(event) {
+				  var fname = $('#First_Name').val();
+				   var lname = $('#Last_Name').val();
+				   var email = $('#Email_Id').val();
+				   var password = $('#passwordInput').val();
+				 //  var reenterpassword = $('#reEnterPasswordInput').val();
+				   
+				   $.ajax({
+						url : "user_profile.htm",
+					    type: "POST",
+					    data : "First_Name=" + fname + "&Last_Name=" + lname + "&Email_Id=" + email + "&passwordInput=" + password + "&reEnterPasswordInput=" +reenterpassword,
+					    success:function(data, textStatus, jqXHR){
+					    	window.location.href="hello.htm";
+					    },
+					    error: function(jqXHR, textStatus, errorThrown){
+					    	alert("Could not process request.. " + errorThrown);
+					    }
+			 });
+			});
+			 
+		});
+
+		function checkPasswordMatch() {
+			//var checkPasswordMatch = function() {
+			var password = $("#passwordInput").val();
+			var rePassword = $("#reEnterPasswordInput").val();
+	
+			if (password != rePassword)
+				$("#divCheckPasswordMatch").html("Passwords do not match!");
+			else {
+				$("#divCheckPasswordMatch").html("Passwords match.");
+			}
 		}
-	</script>
-		
-	<script type="text/javascript">
-
-	
-	$(document).ready(function() {
-		$("#reEnterPasswordInput").keyup(checkPasswordMatch());
-		 $('#updateprofilebtn').click(function(event) {
-			  var fname = $('#First_Name').val();
-			   var lname = $('#Last_Name').val();
-			   var email = $('#Email_Id').val();
-			   var password = $('#passwordInput').val();
-			 //  var reenterpassword = $('#reEnterPasswordInput').val();
-			   
-			   $.ajax({
-					url : "user_profile.htm",
-				    type: "POST",
-				    data : "First_Name=" + fname + "&Last_Name=" + lname + "&Email_Id=" + email + "&passwordInput=" + password + "&reEnterPasswordInput=" +reenterpassword,
-				    success:function(data, textStatus, jqXHR){
-				    	window.location.href="hello.htm";
-				    },
-				    error: function(jqXHR, textStatus, errorThrown){
-				    	alert("Could not process request.. " + errorThrown);
-				    }
-		 });
-	});
-	});
-
-	
 	</script>
 
 </head>
+
 <body>
 	<%@include file="./layout/header.jsp"%>
 
-	
-
 	<div id="container" style="padding-top: 40px;">
+	
+	<% if(session.getAttribute("user") == null) { %>
+		<div class="container-fluid">
+			<div class="row-fluid"><p>Please <a href="login.htm">login</a> to view this page.</p></div>
+		</div>
+	<% } else { %>
+	
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div id="sidebar" class="span2">
-					<!--Sidebar content-->
-					<ul id="sidebar-list" class="nav nav-list">
-					</ul>
-				</div>
 
 				<div class="tab-content" id="UserProfile">
 					<div class="tab-pane active">
@@ -95,29 +78,61 @@
 							<tr>
 								<td><h2 class="label label-primary">First Name</h2></td>
 								<td></td>
-								<td><div class="controls">
-										<input type="text" id="FirstName" placeholder="First Name" disabled>
-									</div></td>
+								<c:choose>
+									<c:when test="${user.isTester}">
+										<td><span>${user.tester.firstName}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span>${user.developer.firstName}</span></td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h2 class="label label-primary">Last Name</h2></td>
 								<td></td>
-								<td><div class="controls">
-										<input type="text" id="LastName" placeholder="Last Name" disabled>
-									</div>
-								</td>
+								<c:choose>
+									<c:when test="${user.isTester}">
+										<td><span>${user.tester.lastName}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span>${user.developer.lastName}</span></td>
+									</c:otherwise>
+								</c:choose>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h2 class="label label-primary">Email</h2></td>
 								<td></td>
-								<td><div class="controls">
-										<input type="text" id="EmailId" placeholder="Email" disabled>
-									</div>
-								</td>
+								<td><span>${user.userName}</span></td>
 							</tr>
 
+							<tr></tr>
+							<tr>
+								<td><h2 class="label label-primary">LinkedIn URL</h2></td>
+								<td></td>
+								<c:choose>
+									<c:when test="${user.isTester}">
+										<td><span>${user.tester.linkedInUrl}</span></td>
+									</c:when>
+									<c:otherwise>
+										<td><span>${user.developer.linkedInUrl}</span></td>
+									</c:otherwise>
+								</c:choose>
+							</tr>
+							
+							<c:choose>
+								<c:when test="${user.isTester}">
+								<tr></tr>
+								<tr>
+									<td><h2 class="label label-primary">Rating</h2></td>
+									<td></td>
+									<td><span>3.25</span></td>
+								</tr>
+								</c:when>
+							</c:choose>
+							
+							
 							<tr></tr>
 							<tr></tr>
 							<tr>
@@ -202,10 +217,10 @@
 
 
 		</div>
+		<% } %>
 	</div>
 
-
-	<div id="footer"></div>
+<%@include file="./layout/footer.jsp"%>
 
 </body>
 </html>

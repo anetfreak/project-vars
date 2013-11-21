@@ -1,5 +1,7 @@
 package com.vars.controller;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -22,8 +24,9 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/showProfile.htm", method = RequestMethod.GET)
-	public ModelAndView showLogin() {
-		return new ModelAndView("/user_profile");
+	public ModelAndView showLogin(HttpSession session) {
+		User user = (User) session.getAttribute("user");
+		return new ModelAndView("/user_profile", "user", user);
 	}
 	
 
