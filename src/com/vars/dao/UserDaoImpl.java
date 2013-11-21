@@ -24,7 +24,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	
 	private static final String INSERT_TESTER = "INSERT into tester (user_id, first_name, last_name) values (?, ?, ?)";
 	
-	private static final String INSERT_BID = "INSERT into bid (project_id, tester_id, desc, amount) values (?, ?, ?, ?)";
+	private static final String INSERT_BID = "INSERT into bid (project_id, tester_id, description, amount) values (?, ?, ?, ?)";
 	
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
@@ -79,11 +79,12 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	
 	public void updateProposal(Bid bid) {
 		Project project = new Project();
-		int testerId = 420;
+		int testerId = 1;
 		int projectId = 1;
 		project.setProject_id(projectId);
 		project.setTester_id(testerId);
-		getJdbcTemplate().update(INSERT_BID, new Object[]{project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
+		getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
+		//getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
 		//getJdbcTemplate().update(INSERT_BID, new Object[]{projectId, testerId, bid.getDescription(), bid.getAmount()});
 		//This is to fetch project related fields from db for mapping bid with project
 		/*List<Project> projects = getJdbcTemplate().query(GET_PROJECT, new Object[]{}, new RowMapper<User>(){
