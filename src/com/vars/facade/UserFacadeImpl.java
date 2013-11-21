@@ -1,7 +1,6 @@
 package com.vars.facade;
 
 import com.vars.dao.UserDao;
-import com.vars.domain.Bid;
 import com.vars.domain.User;
 
 public class UserFacadeImpl implements UserFacade{
@@ -32,7 +31,4 @@ public class UserFacadeImpl implements UserFacade{
 		this.userDao = userDao;
 	}
 	
-	public void updateProposal(Bid bid){
-		userDao.updateProposal(bid);
-	}
 }

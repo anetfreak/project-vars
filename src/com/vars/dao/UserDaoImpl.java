@@ -9,8 +9,8 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.vars.domain.Bid;
-import com.vars.domain.User;
 import com.vars.domain.Project;
+import com.vars.domain.User;
 
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
@@ -39,7 +39,7 @@ private static final String UPDATE_USER = "UPDATE user set username =? , passwor
 		
 		System.out.println("userID: "+userId);
 		user.setId(userId);
-		if(user.isTester()) {
+		if(user.getIsTester()) {
 			user.getTester().setUserId(userId);
 			getJdbcTemplate().update(UPDATE_TESTER, new Object[]{user.getTester().getFirstName(), user.getTester().getLastName(), user.getId()} );
 		} else {
@@ -93,34 +93,6 @@ private static final String UPDATE_USER = "UPDATE user set username =? , passwor
 			}
 		});*/
 		return userDb;
-	}
-
-	public void updateUser(User user) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	public void updateProposal(Bid bid) {
-		Project project = new Project();
-		int testerId = 1;
-		int projectId = 1;
-		project.setProject_id(projectId);
-		project.setTester_id(testerId);
-		getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
-		//getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
-		//getJdbcTemplate().update(INSERT_BID, new Object[]{projectId, testerId, bid.getDescription(), bid.getAmount()});
-		//This is to fetch project related fields from db for mapping bid with project
-		/*List<Project> projects = getJdbcTemplate().query(GET_PROJECT, new Object[]{}, new RowMapper<User>(){
-			@Override
-			public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
-				Project project = new Project();
-				project.setTitle(title);
-				project.setDescription(description);
-				project.setDomain(domain);
-				project.setDeveloper_id(developer_id);
-				return project;
-			}
-		});*/
 	}
 
 }
