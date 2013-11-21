@@ -76,9 +76,9 @@ public class ProjectController {
 		return new ModelAndView("tester_home", "projects", projects);
 	}
 	
-	@RequestMapping(value = "/project/view_project{id}.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/tester_project/{id}.htm", method = RequestMethod.GET)
 	public ModelAndView showProject(@PathVariable("id") String id) {
 		Project project = projectFacade.getProject(Integer.parseInt(id));
-		return new ModelAndView("view_project", "project", project);
+		return new ModelAndView("tester_project", "project", project);
 	}
 }

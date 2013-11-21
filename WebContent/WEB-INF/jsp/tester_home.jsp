@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>VARS</title>
+<title>MakeItUsable! - Tester Home</title>
 
 <%@include file="/WEB-INF/jsp/includes.jsp" %>
 <style type="text/css">
@@ -95,8 +95,8 @@
 											<c:forEach var="p" items="${projects}">
 												<tr>
 													<td><a
-														href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
-													<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
+														href="/project-vars/project/tester_project/${p.project_id}.htm">${p.project_id}</a></td>
+													<td>${p.title}</td>
 													<td>${p.description}</td>
 													<td>${p.domain}</td>
 													<td>${p.developer_id}</td>

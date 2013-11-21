@@ -1,26 +1,38 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
 	pageEncoding="US-ASCII"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - Sign Up</title>
+<title>MakeItUsable! - Bids of Project</title>
 
-<%@include file="includes.jsp" %>
-
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
-<script type="text/javascript"> $(document).ready(function(){ $("#subForm").validate(); }); </script>
-<script src="http://jquery.bassistance.de/validate/additional-methods.js"></script>
-<script type="text/javascript">
-</script>
-
+<%@include file="/WEB-INF/jsp/includes.jsp" %>
+<style type="text/css">
+#sidebar-list {
+	font-size: 14px;
+}
+</style>
+</head>
 </head>
 <body>
-<%@include file="/WEB-INF/jsp/includes.jsp" %>
-	<%@include file="/WEB-INF/jsp/layout/header.jsp" %>
+<%@include file="/WEB-INF/jsp/layout/header.jsp" %>
+
 
 <div id="container" style="padding: 50px 0px 70px 0px;">
+<%
+			if (session.getAttribute("user") == null) {
+		%>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<p>
+					Please <a href="login.htm">login</a> to view this page.
+				</p>
+			</div>
+		</div>
+		<%
+			} else {
+		%>
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2" style="margin: 0px 20px 0px 20px;">
@@ -37,27 +49,24 @@
 										<th>Proposal Description</th>
 										<th>Amount</th>
 									</tr>
-									<c:forEach var="p" items="${bids}">
+									<c:forEach var="b" items="${bids}">
 										<tr>
-										<td><a href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
-										<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
-										<td>${p.description}</td>
-										<td>${p.domain}</td>
+										<td><a href="/project-vars/project/view_project${b.tester_id}.htm">${b.tester_id}</a></td>
+										<td>${b.description}</td>
+										<td>${b.amount}</td>
 									</tr>
 									</c:forEach>
 								</table>
-							</div>
-							<div id="project">
-								${project2.title }, ${project2.domain}, ${project2.description}						
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<% } %>
 	</div>
 
-	<%@include file="/WEB-INF/jsp/layout/footer.jsp" %>
+		<%@include file="/WEB-INF/jsp/layout/footer.jsp" %>
 
 </body>
 </html>
