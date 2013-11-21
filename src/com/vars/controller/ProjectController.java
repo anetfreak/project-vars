@@ -47,11 +47,16 @@ public class ProjectController {
 		if(user != null) {
 			if(user.getIsTester()) {
 				projects = projectFacade.getNewProjects();
-				System.out.println("NEW projects: count is: "+projects.size());
-				modelAndView = new ModelAndView("tester_home", "projects", projects);
+				if(projects.size() <= 0)
+					modelAndView = new ModelAndView("owner_home", "projects", null);
+				else
+					modelAndView = new ModelAndView("owner_home", "projects", projects );
 			} else {
 				projects = projectFacade.getProjectDev(user.getDeveloper().getId());
-				modelAndView = new ModelAndView("owner_home", "projects", projects ); 
+				if(projects.size() <= 0)
+					modelAndView = new ModelAndView("owner_home", "projects", null);
+				else
+					modelAndView = new ModelAndView("owner_home", "projects", projects );
 			}
 		} else {
 			modelAndView = new ModelAndView("owner_home", "projects", null);
