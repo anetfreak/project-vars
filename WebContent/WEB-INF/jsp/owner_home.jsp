@@ -45,6 +45,9 @@
 	});
 
 </script>
+
+<%@include file="/WEB-INF/jsp/includes.jsp" %>
+
 <style type="text/css">
 #sidebar-list {
 	font-size: 14px;
@@ -52,7 +55,7 @@
 </style>
 </head>
 <body>
-	<%@include file="/WEB-INF/jsp/includes.jsp" %>
+	
 	<%@include file="/WEB-INF/jsp/layout/header.jsp" %>
 
 	<div id="container" style="padding: 50px 0px 70px 0px;">
@@ -108,7 +111,7 @@
 						</div>
 						<div class="tab-pane active" id="ViewMyProjects">
 							<c:choose>
-								<c:when test="${projects eq null}">
+								<c:when test="${projects ne null}">
 									<div id="projects">
 										<table class="table table-striped table-bordered">
 											<tr>
