@@ -43,7 +43,7 @@ $(document).ready(function () {
 		    type: "POST",
 		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password + "&userType=" + userType,
 		    success:function(data, textStatus, jqXHR){
-		    	window.location.href="hello.htm";
+		    	window.location.href="viewProjects.htm";
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
 		    	alert("Could not process request.. " + errorThrown);

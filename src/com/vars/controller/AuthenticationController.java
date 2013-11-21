@@ -38,7 +38,7 @@ public class AuthenticationController {
 				session.setAttribute("user", userDb);
 				session.setAttribute("sessionId", session.getId());
 			}
-			modelAndView.setViewName("hello");
+			modelAndView.setViewName("home");
 		}
 		else{
 			modelAndView.setViewName("auth/user_login");
@@ -56,7 +56,9 @@ public class AuthenticationController {
 			@RequestParam("lname") String lname, 
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
-			@RequestParam("userType") Integer userType) {
+			@RequestParam("userType") Integer userType,
+			HttpSession session) {
+		
 		User user = new User();
 		Developer developer = new Developer();
 		Tester tester = new Tester();
@@ -77,8 +79,11 @@ public class AuthenticationController {
 		user.setDeveloper(developer);
 		user.setTester(tester);
 		userFacade.createUser(user);
+		
+		session.setAttribute("user", userFacade.getUser(user.getUserName()));
+		session.setAttribute("sessionId", session.getId());
 
-		return new ModelAndView("hello");
+		return new ModelAndView("home");
 	}
 	
 	@RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
