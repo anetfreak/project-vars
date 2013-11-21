@@ -8,6 +8,7 @@ public class User {
 	private Developer developer;
 	private Tester tester;
 	private boolean isTester;
+	private String linkedInId;
 	
 	public Integer getId() {
 		return id;
@@ -44,5 +45,11 @@ public class User {
 	}
 	public void setIsTester(boolean isTester) {
 		this.isTester = isTester;
+	}
+	public String getLinkedInId() {
+		return linkedInId;
+	}
+	public void setLinkedInId(String linkedInId) {
+		this.linkedInId = linkedInId;
 	}
 }
