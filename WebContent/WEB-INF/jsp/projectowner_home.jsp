@@ -103,24 +103,33 @@
 
 						</div>
 						<div class="tab-pane active" id="ViewMyProjects">
-							<div id="projects">
-								<table class="table table-striped table-bordered">
-									<tr>
-										<th>ID</th>
-										<th>Project Title</th>
-										<th>Description</th>
-										<th>Domain</th>
-									</tr>
-									<c:forEach var="p" items="${projects}">
-										<tr>
-										<td><a href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
-										<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
-										<td>${p.description}</td>
-										<td>${p.domain}</td>
-									</tr>
-									</c:forEach>
-								</table>
-							</div>
+							<c:choose>
+								<c:when test="${projects eq null}">
+									<div id="projects">
+										<table class="table table-striped table-bordered">
+											<tr>
+												<th>ID</th>
+												<th>Project Title</th>
+												<th>Description</th>
+												<th>Domain</th>
+											</tr>
+											<c:forEach var="p" items="${projects}">
+												<tr>
+												<td><a href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
+												<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
+												<td>${p.description}</td>
+												<td>${p.domain}</td>
+											</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div id="projects">
+										<h5>Sorry, no projects found under you name.. Start by posting a project <a href="#PostNewProject" data-toggle="tab">here</a></h5>
+									</div>
+								</c:otherwise>
+							</c:choose>
 							<div id="project">
 								${project2.title }, ${project2.domain}, ${project2.description}						
 							</div>

@@ -40,10 +40,8 @@ public class ProjectController {
 	public ModelAndView showProjectsForDev() {
 		//getProjectDev needs developer Id to fetch 
 		projects = projectFacade.getProjectDev(1);
-		if(projects.size() > 0)
+		
 		return new ModelAndView("projectowner_home", "projects", projects );
-		else
-		return null;
 	}
 	
 	//@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
