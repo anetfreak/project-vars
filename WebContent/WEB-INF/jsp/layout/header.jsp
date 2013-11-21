@@ -6,9 +6,11 @@
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div class="navbar-inner">
 			<a class="brand" href="/project-vars/"><span style="color: white; margin: 0px 10px 0px 10px;">MakeItUsable!</span></a>
+			<% if(session.getAttribute("user") != null) { %>
 			<ul class="nav">
 				<li><a href="viewProjects.htm" style="color: white;">View Projects</a></li>
 			</ul>
+			<% } %>
 			<% if(session.getAttribute("user") == null) { %>
 			<ul id="loginMenu" class="nav" style=" float:right;">
 				<li><a href="login.htm" style="color: white;">Login</a></li>

@@ -31,7 +31,7 @@
 			var description = $('#DescriptionInput').val();
 		   
 			$.ajax({
-				url : "projectowner_home.htm",
+				url : "project.htm",
 			    type: "POST",
 			    data : "projectTitle=" + projectTitle + "&domain=" + domain + "&description=" + description,
 			    success:function(data, textStatus, jqXHR){
@@ -56,6 +56,11 @@
 	<%@include file="/WEB-INF/jsp/layout/header.jsp" %>
 
 	<div id="container" style="padding: 50px 0px 70px 0px;">
+	<% if(session.getAttribute("user") == null) { %>
+		<div class="container-fluid">
+			<div class="row-fluid"><p>Please <a href="login.htm">login</a> to view this page.</p></div>
+		</div>
+	<% } else { %>
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2" style="margin: 0px 20px 0px 20px;">
@@ -94,9 +99,8 @@
 										</div></td>
 								</tr>
 								<tr>
-									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-default" id="submitProject" value="Submit"/>
+									<input type="submit" class="btn btn-primary" id="submitProject" value="Submit"/>
 								</div></td>
 								</tr>
 							</table>
@@ -126,18 +130,16 @@
 								</c:when>
 								<c:otherwise>
 									<div id="projects">
-										<h5>Sorry, no projects found under you name.. Start by posting a project <a href="#PostNewProject" data-toggle="tab">here</a></h5>
+										<p>Sorry, no projects found under you name.. Start by posting a project <a href="#PostNewProject" data-toggle="tab">here</a></p>
 									</div>
 								</c:otherwise>
 							</c:choose>
-							<div id="project">
-								${project2.title }, ${project2.domain}, ${project2.description}						
-							</div>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		<% } %>
 	</div>
 
 	<%@include file="/WEB-INF/jsp/layout/footer.jsp" %>
