@@ -63,7 +63,7 @@
 									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="titleInput">TitleFromDB</p>
+    									  <p class="form-control-static" id="titleInput">${project.title }</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
@@ -71,7 +71,15 @@
 									<td><h2 class="label label-primary">Description</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="descriptionInput">DescriptionFromDB</p>
+    									  <p class="form-control-static" id="descriptionInput">${project.description }</p>
+  										  </div></td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td><h2 class="label label-primary">Domain</h2></td>
+									<td></td>
+									<td><div class="col-sm-10">
+    									  <p class="form-control-static" id="descriptionInput">${project.domain }</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
@@ -79,7 +87,7 @@
 									<td><h2 class="label label-primary">Tester Name</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="NameInput">TesterFromDB</p>
+    									  <p class="form-control-static" id="NameInput">${project.tester_id}</p>
   										  </div></td>
 								</tr>
 								<tr></tr>

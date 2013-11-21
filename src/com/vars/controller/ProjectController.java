@@ -1,6 +1,5 @@
 package com.vars.controller;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -17,7 +16,12 @@ import com.vars.facade.ProjectFacade;
 public class ProjectController {
 
 	private ProjectFacade projectFacade;
+	private List<Project> projects = null;
 	
+	public void setProjectFacade(ProjectFacade projectFacade) {
+		this.projectFacade = projectFacade;
+	}
+
 	@RequestMapping(value = "/projectowner_home.htm", method = RequestMethod.POST)
 	public ModelAndView login(@RequestParam("projectTitle") String projectTitle,
 			@RequestParam("domain") String domain,
@@ -35,7 +39,7 @@ public class ProjectController {
 	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
 	public ModelAndView showProjectsForDev() {
 		//getProjectDev needs developer Id to fetch 
-		List<Project> projects = projectFacade.getProjectDev(1);
+		projects = projectFacade.getProjectDev(1);
 		if(projects.size() > 0)
 		return new ModelAndView("projectowner_home", "projects", projects );
 		else
@@ -48,15 +52,9 @@ public class ProjectController {
 		//return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectTest(1));
 	//}
 	
-	@RequestMapping(value = "/project/{id}.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/project/view_project{id}.htm", method = RequestMethod.GET)
 	public ModelAndView showProject(@PathVariable("id") String id) {
-		Project project2 = new Project();
-		project2.setTitle("Title 2");
-		project2.setDescription("Description 2");
-		project2.setDeveloper_id(2);
-		project2.setTester_id(2);
-		project2.setDomain("Domain 2");
-		
-		return new ModelAndView("projectowner_home", "project2", project2);
+		Project project = projectFacade.getProject(Integer.parseInt(id));
+		return new ModelAndView("view_project", "project", project);
 	}
 }

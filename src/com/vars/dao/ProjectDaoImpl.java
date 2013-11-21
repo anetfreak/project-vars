@@ -14,7 +14,7 @@ import com.vars.domain.User;
 
 public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 
-	private static final String GET_PROJECT = "select title, devp_id, tester_id from project where id = ?";
+	private static final String GET_PROJECT = "select title, description, domain, devp_id, tester_id from project where id = ?";
 	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id, tester_id) values (?, ?, ?, ?, ?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ?";
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id = ?";
@@ -40,6 +40,8 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 						project.setTitle(rs.getString("title"));
 						project.setDeveloper_id(rs.getInt("devp_id"));
 						project.setTester_id(rs.getInt("tester_id"));
+						project.setDomain(rs.getString("domain"));
+						project.setDescription(rs.getString("description"));
 						return project;
 					}
 				});
