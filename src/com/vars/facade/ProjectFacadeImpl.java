@@ -35,4 +35,9 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	public List<Project> getProjectTest(Integer id){
 		return projectDao.getProjectTest(id);
 	}
+	
+	@Override
+	public List<Project> getNewProjects(){
+		return projectDao.getNewProjects();
+	}
 }

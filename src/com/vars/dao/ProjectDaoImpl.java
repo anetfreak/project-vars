@@ -18,7 +18,7 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id, tester_id) values (?, ?, ?, ?, ?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ?";
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id = ?";
-
+	
 	@Override
 	public void createProject(Project project) {
 		// TODO Auto-generated method stub
@@ -72,6 +72,28 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	public List<Project> getProjectTest(Integer id) {
 		List<Project> projects = getJdbcTemplate().query(GET_PROJECTS_TESTER,
 				new Object[] { id }, new RowMapper<Project>() {
+					@Override
+					public Project mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						Project project = new Project();
+						project.setProject_id(rs.getInt(1));
+						project.setTitle(rs.getString(2));
+						project.setDescription(rs.getString(3));
+						project.setDomain(rs.getString(4));
+						project.setDeveloper_id(rs.getInt(5));
+						project.setTester_id(rs.getInt(6));
+						return project;
+					}
+				});
+
+		return projects;
+	}
+	
+	@Override
+	public List<Project> getNewProjects() {
+		int tester_id = 0;
+		List<Project> projects = getJdbcTemplate().query(GET_PROJECTS_TESTER,
+				new Object[] { tester_id }, new RowMapper<Project>() {
 					@Override
 					public Project mapRow(ResultSet rs, int rowNum)
 							throws SQLException {

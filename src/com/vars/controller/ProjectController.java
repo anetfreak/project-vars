@@ -44,11 +44,13 @@ public class ProjectController {
 		return new ModelAndView("projectowner_home", "projects", projects );
 	}
 	
-	//@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
-	//public ModelAndView showProjectsForTest() {
+	@RequestMapping(value = "/viewNewProjects.htm", method = RequestMethod.GET)
+	public ModelAndView showNewProjectsForTest() {
 		//getProjectDev needs tester Id to fetch 
-		//return new ModelAndView("projectowner_home", "projects", projectFacade.getProjectTest(1));
-	//}
+		projects = projectFacade.getNewProjects();
+		System.out.println("In showNewProjectsForTest");
+		return new ModelAndView("tester_home", "projects", projects);
+	}
 	
 	@RequestMapping(value = "/project/view_project{id}.htm", method = RequestMethod.GET)
 	public ModelAndView showProject(@PathVariable("id") String id) {

@@ -9,4 +9,5 @@ public interface ProjectDao {
 	Project getProject(Integer id);
 	List<Project> getProjectDev(Integer id);
 	List<Project> getProjectTest(Integer id);
+	List<Project> getNewProjects();
 }

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=US-ASCII"
 	pageEncoding="US-ASCII"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -49,18 +50,52 @@
 				<div id="sidebar" class="span2">
 					<!--Sidebar content-->
 					<ul id="sidebar-list" class="nav nav-list">
-						<li class="nav-header">Project Options</li>
-						<li class="active"><a href="#PostNewProject"
-							data-toggle="tab">View new Project</a></li>
-						<li><a href="#ViewMyProjects" data-toggle="tab">My Projects</a></li>
+						<li class="nav-header">Tester Options</li>
+						<li class="active"><a href="#ShowNewProjects"
+							data-toggle="tab">Show New Projects</a></li>
+						<li><a href="#ViewMyProjects" data-toggle="tab">View My Projects</a></li>
 					</ul>
 				</div>
 				<div>
 					<div class="tab-content">
-						<div class="tab-pane active" id="PostNewProject">
+						<div class="tab-pane active" id="ShowNewProjects">
+						<c:choose>
+								<c:when test="${projects eq null}">
+									<div id="projects">
+										<table class="table table-striped table-bordered">
+											<tr>
+												<th>ID</th>
+												<th>Project Title</th>
+												<th>Description</th>
+												<th>Domain</th>
+												<th>Developer ID</th>
+											</tr>
+											<c:forEach var="p" items="${projects}">
+												<tr>
+												<td><a href="/project-vars/project/view_project${p.project_id}.htm">${p.project_id}</a></td>
+												<td><a href="/project-vars/project/${p.title}.htm">${p.title}</a></td>
+												<td>${p.description}</td>
+												<td>${p.domain}</td>
+												<td>${p.developer_id}</td>
+											</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div id="projects">
+										<h5>Sorry, no projects found under you name.. Start by posting a project <a href="#PostNewProject" data-toggle="tab">here</a></h5>
+									</div>
+								</c:otherwise>
+							</c:choose>
+							<div id="project">
+								${project2.title }, ${project2.domain}, ${project2.description}						
+							</div>
+						</div>
+						
+						<div class="tab-pane" id="ViewMyProjects">
 						...
 						</div>
-						<div class="tab-pane" id="ViewMyProjects">...</div>
 					</div>
 				</div>
 			</div>
