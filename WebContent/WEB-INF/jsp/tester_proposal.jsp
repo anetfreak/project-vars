@@ -28,11 +28,11 @@ $(document).ready(function () {
 		//params to be displayed here are not handled - projName,Desc,etc	  
 	   
 		$.ajax({
-			url : "tester_proposal.htm",
+			url : "/project-vars/tester_proposal.htm",
 		    type: "POST",
 		    data : "projectTitle=" + projectTitle + "&proposal=" + proposal + "&proposalDescription=" + proposalDescription,
 		    success:function(data, textStatus, jqXHR){
-		    	window.location.href="hello.htm";
+		    	window.location.href="/project-vars/viewProjects.htm";
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
 		    	alert("Could not process request.. " + errorThrown);

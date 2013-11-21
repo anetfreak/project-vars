@@ -1,5 +1,6 @@
 package com.vars.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -13,14 +14,18 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.vars.domain.Project;
 import com.vars.domain.User;
+import com.vars.facade.BidFacade;
 import com.vars.facade.ProjectFacade;
 
 @Controller
 public class ProjectController {
 
 	private ProjectFacade projectFacade;
-	private List<Project> projects = null;
-	
+	private BidFacade bidFacade;
+	public void setBidFacade(BidFacade bidFacade) {
+		this.bidFacade = bidFacade;
+	}
+
 	public void setProjectFacade(ProjectFacade projectFacade) {
 		this.projectFacade = projectFacade;
 	}
@@ -45,17 +50,35 @@ public class ProjectController {
 	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
 	public ModelAndView showProjectsForDev(HttpSession session) {
 		//getProjectDev needs developer Id to fetch 
-		ModelAndView modelAndView;
+		ModelAndView modelAndView = new ModelAndView();
 		User user = (User) session.getAttribute("user"); 
 		if(user != null) {
 			if(user.getIsTester()) {
-				projects = projectFacade.getNewProjects();
-				if(projects.size() <= 0)
-					modelAndView = new ModelAndView("tester_home", "projects", null);
+				ArrayList<Project> newProjects = projectFacade.getNewProjects();
+				System.out.println("New Projects count"+ newProjects.size());
+				
+				ArrayList<Project> myProjects = bidFacade.getProjectsForTester(user.getTester().getId());
+				System.out.println("My Projects count"+ myProjects.size());
+				
+				modelAndView.setViewName("tester_home");
+				
+				if(newProjects.size() <= 0) {
+					modelAndView.addObject("newProjects", null);
+				} else {
+					modelAndView.addObject("newProjects", newProjects);
+				}
+				
+				if(myProjects.size() <= 0)
+				{
+					modelAndView.addObject("myProjects", null);
+				}
 				else
-					modelAndView = new ModelAndView("tester_home", "projects", projects );
+				{
+					modelAndView.addObject("myProjects", myProjects);
+				}
+				
 			} else {
-				projects = projectFacade.getProjectDev(user.getDeveloper().getId());
+				List<Project> projects = projectFacade.getProjectDev(user.getDeveloper().getId());
 				if(projects.size() <= 0)
 					modelAndView = new ModelAndView("owner_home", "projects", null);
 				else
@@ -71,7 +94,7 @@ public class ProjectController {
 	public ModelAndView getProjectTest() {
 		//getProjectDev needs tester Id to fetch
 		int id = 1;
-		projects = projectFacade.getProjectTest(id);;
+		List<Project> projects = projectFacade.getProjectTest(id);;
 		return new ModelAndView("tester_home", "projects", projects);
 	}
 	

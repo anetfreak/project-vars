@@ -48,7 +48,7 @@
 					<div class="tab-content">
 						<div class="tab-pane active" id="ShowNewProjects">
 							<c:choose>
-								<c:when test="${projects ne null}">
+								<c:when test="${newProjects ne null}">
 									<div id="projects">
 										<table class="table table-striped table-bordered">
 											<tr>
@@ -58,7 +58,7 @@
 												<th>Domain</th>
 												<th>Developer ID</th>
 											</tr>
-											<c:forEach var="p" items="${projects}">
+											<c:forEach var="p" items="${newProjects}">
 												<tr>
 													<td><a
 														href="/project-vars/project/tester_project/${p.project_id}.htm">${p.project_id}</a></td>
@@ -82,7 +82,7 @@
 
 						<div class="tab-pane" id="ViewMyProjects">
 							<c:choose>
-								<c:when test="${projects eq null}">
+								<c:when test="${myProjects ne null}">
 									<div id="projects">
 										<table class="table table-striped table-bordered">
 											<tr>
@@ -92,7 +92,7 @@
 												<th>Domain</th>
 												<th>Developer ID</th>
 											</tr>
-											<c:forEach var="p" items="${projects}">
+											<c:forEach var="p" items="${myProjects}">
 												<tr>
 													<td><a
 														href="/project-vars/project/tester_project/${p.project_id}.htm">${p.project_id}</a></td>

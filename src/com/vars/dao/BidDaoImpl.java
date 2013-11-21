@@ -14,7 +14,9 @@ import com.vars.domain.Project;
 public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	
 	private static final String INSERT_BID = "INSERT into bid (project_id, tester_id, description, amount) values (?, ?, ?, ?)";
+	private static final String CHECK_IF_BID = "SELECT * from bid where project_id = ? && tester_id = ?";
 	private static final String GET_BIDS_PROJ = "SELECT * from bid where project_id = ?";
+	private static final String GET_TESTERS_PROJ = "select * from project where tester_id = ?";
 	public void createBid(Bid bid) {
 		Project project = new Project();
 		int testerId = 1;
@@ -22,20 +24,6 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 		project.setProject_id(projectId);
 		project.setTester_id(testerId);
 		getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
-		//getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
-		//getJdbcTemplate().update(INSERT_BID, new Object[]{projectId, testerId, bid.getDescription(), bid.getAmount()});
-		//This is to fetch project related fields from db for mapping bid with project
-		/*List<Project> projects = getJdbcTemplate().query(GET_PROJECT, new Object[]{}, new RowMapper<User>(){
-		@Override
-		public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
-			Project project = new Project();
-			project.setTitle(title);
-			project.setDescription(description);
-			project.setDomain(domain);
-			project.setDeveloper_id(developer_id);
-			return project;
-		}
-	});*/
 	}
 
 	@Override
@@ -64,8 +52,36 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	}
 
 	@Override
-	public ArrayList<Bid> getBidsForTester(Integer id) {
-		// TODO Auto-generated method stub
-		return null;
+	public ArrayList<Project> getProjectsForTester(Integer id) {
+		List<Project> projects = getJdbcTemplate().query(GET_TESTERS_PROJ,
+				new Object[] { id }, new RowMapper<Project>() {
+					@Override
+					public Project mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Project project = new Project();
+						project.setProject_id(rs.getInt(1));
+						project.setTitle(rs.getString(2));
+						project.setDescription(rs.getString(3));
+						project.setDomain(rs.getString(4));
+						return project;
+					}
+				});
+		return (ArrayList<Project>) projects;
+	}
+
+	@Override
+	public boolean checkIfBidMade(Integer project_id, Integer id) {
+		List<Bid> bids = getJdbcTemplate().query(CHECK_IF_BID,
+				new Object[] { project_id, id }, new RowMapper<Bid>() {
+					@Override
+					public Bid mapRow(ResultSet rs, int rowNum) throws SQLException {
+						Bid bid = new Bid();
+						bid.setAmount(rs.getFloat(5));
+						return bid;
+					}
+				});
+		
+		if(bids.size() > 0)
+		return true;
+		return false;
 	}
 }

@@ -29,6 +29,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
     <bean id="projectFacade" class="com.vars.facade.ProjectFacadeImpl" p:projectDao-ref="projectDao"/>
 	
 	<bean id="projectController" class="com.vars.controller.ProjectController">
+		<property name="bidFacade" ref="bidFacade" />
 		<property name="projectFacade" ref="projectFacade" />
 	</bean>
 	

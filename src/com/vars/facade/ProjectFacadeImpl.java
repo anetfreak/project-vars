@@ -1,5 +1,6 @@
 package com.vars.facade;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.vars.dao.ProjectDao;
@@ -34,7 +35,7 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	}
 	
 	@Override
-	public List<Project> getNewProjects(){
+	public ArrayList<Project> getNewProjects(){
 		return projectDao.getNewProjects();
 	}
 }

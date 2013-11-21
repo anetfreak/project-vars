@@ -47,12 +47,41 @@ public class BidController {
 		bid.setDescription(proposalDescription);
 		bidFacade.createBid(bid);
 		//add code for calling userFacade.updateBid and do whole wiring for bid db
-		modelAndView.setViewName("hello");
+		
+		ArrayList<Project> newProjects = projectFacade.getNewProjects();
+		ArrayList<Project> myProjects = bidFacade.getProjectsForTester(user.getTester().getId());
+		modelAndView.setViewName("tester_home");
+		
+		if (newProjects.size() <= 0) {
+			modelAndView.addObject("newProjects", null);
+		} else {
+			
+			for (Project project : newProjects) {
+				if(bidFacade.checkIfBidMade(project.getProject_id(), tester.getId()))
+				{
+				project.setTester_id(1);
+				}
+			}
+			modelAndView.addObject("newProjects", newProjects);
+		}
+
+		if (myProjects.size() <= 0) {
+			modelAndView.addObject("myProjects", null);
+		} else {
+			modelAndView.addObject("myProjects", myProjects);
+		}
+		
 		return modelAndView;
 	}
 	
+	//@RequestMapping(value = "/project/bids/{id}.htm", method = RequestMethod.GET)
+	//public ModelAndView passProject(@PathVariable("id") String id) {
+		//Project project = projectFacade.getProject(Integer.parseInt(id));
+		//return new ModelAndView("tester_proposal", "project", project);
+	//}
+	
 	@RequestMapping(value = "/project/bids/{id}.htm", method = RequestMethod.GET)
-	public ModelAndView passProject(@PathVariable("id") String id) {
+	public ModelAndView getTesterProjects(@PathVariable("id") String id) {
 		Project project = projectFacade.getProject(Integer.parseInt(id));
 		return new ModelAndView("tester_proposal", "project", project);
 	}

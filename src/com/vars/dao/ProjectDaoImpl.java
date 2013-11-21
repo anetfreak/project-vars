@@ -2,6 +2,7 @@ package com.vars.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
@@ -84,7 +85,7 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	}
 	
 	@Override
-	public List<Project> getNewProjects() {
+	public ArrayList<Project> getNewProjects() {
 		
 		List<Project> projects = getJdbcTemplate().query(GET_PROJECTS_TESTER,
 				new Object[] { }, new RowMapper<Project>() {
@@ -102,6 +103,6 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 					}
 				});
 
-		return projects;
+		return (ArrayList<Project>) projects;
 	}
 }
