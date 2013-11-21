@@ -54,7 +54,7 @@ private static final String UPDATE_USER = "UPDATE user set username =? , passwor
 	public void createUser(User user) {
 		// TODO Auto-generated method stub
 		//Make DB call to insert user here
-		getJdbcTemplate().update(INSERT_USER, new Object[]{user.getUserName(), user.getPassword(), user.getIsTester()? 1 : 0});
+		getJdbcTemplate().update(INSERT_USER, new Object[]{user.getUserName(), user.getPassword(), user.getIsTester() ? 1 : 0});
 		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
 		
 		System.out.println("userID: "+userId);
@@ -64,7 +64,6 @@ private static final String UPDATE_USER = "UPDATE user set username =? , passwor
 			getJdbcTemplate().update(INSERT_TESTER, new Object[]{user.getId(), user.getTester().getFirstName(), user.getTester().getLastName()} );
 		} else {
 			user.getDeveloper().setUserId(userId);
-			System.out.println("Developer: userID:"+user.getDeveloper().getUserId());
 			getJdbcTemplate().update(INSERT_DEVELOPER, new Object[]{user.getId(), user.getDeveloper().getFirstName(), user.getDeveloper().getLastName()} );
 		}
 	}

@@ -36,14 +36,7 @@ $(document).ready(function () {
 	   var lname = $('#lastNameInput').val();
 	   var email = $('#emailInput').val();
 	   var password = $('#passwordInput').val();
-	   var userTypeDeveloper = $('#userTypeInputDeveloper').val();
-	   var userTypeTester = $('#userTypeInputTester').val();
-	   var userType;
-	   
-	   if(userTypeTester == "1")
-		   userType = 1;
-	   else if(userTypeDeveloper == "0")
-	   	userType = 0;
+	   var userType = $("input:radio[name=userTypeInput]:checked").val();
 	   
 		$.ajax({
 			url : "signup.htm",
@@ -128,11 +121,11 @@ $(document).ready(function () {
 									<td><div class="col-lg-6">
    											 <div class="input-group">
       											<span class="input-group-addon">
-        											<input name="userTypeInput" id="userTypeInpuDeveloper" type="radio" class="required" value="0">
+        											<input name="userTypeInput" id="userTypeInputDeveloper" type="radio" class="required" value="0">
       											</span>
       											<h2 class="label label-primary">Project Owner</h2>
-      											
-      											<input name="userTypeInput" id="userTypeInputTester" type="radio" class="required" value="1">
+      											<span>
+      												<input name="userTypeInput" id="userTypeInputTester" type="radio" class="required" value="1">
       											</span>
       											<h2 class="label label-primary">Tester</h2>
     										</div><!-- /input-group -->
