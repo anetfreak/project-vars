@@ -16,7 +16,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 		<property name="driverClassName" value="com.mysql.jdbc.Driver"/>
 		<property name="url" value="jdbc:mysql://localhost:3306/vars_schema"/>
 		<property name="username" value="root"/>
-		<property name="password" value="root"/>
+		<property name="password" value="vab"/>
 	</bean>
 	
 	<bean id="txnManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
