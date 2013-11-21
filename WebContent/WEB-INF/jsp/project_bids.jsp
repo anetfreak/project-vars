@@ -49,8 +49,8 @@
 									<c:forEach var="b" items="${bids}">
 										<tr>
 										<td><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></td>
-										<td><a href="/project-vars/project/devp_project/${b.project_id}.htm">${b.project_id}</a></td>
-										<td>${b.tester_id}</td>
+										<td><a href="/project-vars/project/devp_project/${b.projectId}.htm">${b.projectId}</a></td>
+										<td>${b.tester}</td>
 										<td>${b.description}</td>
 										<td>$${b.amount}</td>
 									</tr>

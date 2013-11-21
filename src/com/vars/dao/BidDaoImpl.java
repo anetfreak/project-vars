@@ -19,10 +19,8 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 	private static final String GET_TESTERS_PROJ = "select * from project where tester_id = ?";
 	public void createBid(Bid bid) {
 		Project project = new Project();
-		int testerId = 1;
-		int projectId = 1;
-		project.setProject_id(projectId);
-		project.setTester_id(testerId);
+		project.setProject_id(bid.getProjectId());
+		project.setTester_id(bid.getTester());
 		getJdbcTemplate().update(INSERT_BID, new Object[] {project.getProject_id(), project.getTester_id(), bid.getDescription(), bid.getAmount()});
 	}
 

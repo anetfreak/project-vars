@@ -29,22 +29,21 @@ public class BidController {
 	}
 
 	@RequestMapping(value = "tester_proposal.htm", method = RequestMethod.POST)
-	public ModelAndView tester_proposal(@RequestParam("projectTitle") String projectTitle, 
-			@RequestParam("proposal") String proposal, 
+	public ModelAndView tester_proposal(@RequestParam("projectId") Integer projectId, 
+			@RequestParam("proposal") Float proposal, 
 			@RequestParam("proposalDescription") String proposalDescription,
 			HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
-		System.out.println("Project Title: "+projectTitle);
 		System.out.println("Proposal amount: "+proposal);
 		System.out.println("Proposal Desc: "+proposalDescription);
 		Bid bid = new Bid();
 		User user = (User) session.getAttribute("user");
-		float proposals = Float.parseFloat(proposal);
 
 		Tester tester = user.getTester();
 		bid.setTester(tester.getId());
-		bid.setAmount(proposals);
+		bid.setAmount(proposal);
 		bid.setDescription(proposalDescription);
+		bid.setProjectId(projectId);
 		bidFacade.createBid(bid);
 		//add code for calling userFacade.updateBid and do whole wiring for bid db
 		
@@ -59,7 +58,7 @@ public class BidController {
 			for (Project project : newProjects) {
 				if(bidFacade.checkIfBidMade(project.getProject_id(), tester.getId()))
 				{
-				project.setTester_id(1);
+				project.setTester_id(user.getTester().getId());
 				}
 			}
 			modelAndView.addObject("newProjects", newProjects);
@@ -81,8 +80,8 @@ public class BidController {
 	//}
 	
 	@RequestMapping(value = "/project/bids/{id}.htm", method = RequestMethod.GET)
-	public ModelAndView getTesterProjects(@PathVariable("id") String id) {
-		Project project = projectFacade.getProject(Integer.parseInt(id));
+	public ModelAndView getTesterProjects(@PathVariable("id") Integer id) {
+		Project project = projectFacade.getProject(id);
 		return new ModelAndView("tester_proposal", "project", project);
 	}
 	

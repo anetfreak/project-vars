@@ -22,7 +22,7 @@
 $(document).ready(function () {
    
    $('#submit').click(function(event) {
-	   var projectTitle = $('#projectTitle').val();
+	   var projectId = $('#projectId').val();
 	   var proposal = $('#proposal').val();
 	   var proposalDescription = $('#proposalDescription').val();
 		//params to be displayed here are not handled - projName,Desc,etc	  
@@ -30,7 +30,7 @@ $(document).ready(function () {
 		$.ajax({
 			url : "/project-vars/tester_proposal.htm",
 		    type: "POST",
-		    data : "projectTitle=" + projectTitle + "&proposal=" + proposal + "&proposalDescription=" + proposalDescription,
+		    data : "projectId=" + projectId + "&proposal=" + proposal + "&proposalDescription=" + proposalDescription,
 		    success:function(data, textStatus, jqXHR){
 		    	window.location.href="/project-vars/viewProjects.htm";
 		    },
@@ -79,6 +79,7 @@ $(document).ready(function () {
 										<u>Tester Proposal</u>
 									</h2>
 								</tr>
+								<input type="hidden" id="projectId" name="projectId" value="${project.project_id }"/>
 								<tr>
 									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
