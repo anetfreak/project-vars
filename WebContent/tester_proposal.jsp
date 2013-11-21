@@ -28,7 +28,7 @@
 $(document).ready(function () {
    
    $('#submit').click(function(event) {
-	   
+	   var projectTitle = $('#projectTitle').val();
 	   var proposal = $('#proposal').val();
 	   var proposalDescription = $('#proposalDescription').val();
 		//params to be displayed here are not handled - projName,Desc,etc	  
@@ -36,7 +36,7 @@ $(document).ready(function () {
 		$.ajax({
 			url : "tester_proposal.htm",
 		    type: "POST",
-		    data : "proposal=" + proposal + "&proposalDescription=" + proposalDescription,
+		    data : "projectTitle=" + projectTitle + "&proposal=" + proposal + "&proposalDescription=" + proposalDescription,
 		    success:function(data, textStatus, jqXHR){
 		    	window.location.href="hello.htm";
 		    },
@@ -89,7 +89,7 @@ $(document).ready(function () {
 									<td><h2 class="label label-primary">Project Title</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input class="input-xlarge" id="disabledInput" type="text"
+											<input class="input-xlarge" id="projectTitle" disabled="disabled" type="text"
 												disabled>
 										</div></td>
 								</tr>
@@ -134,7 +134,7 @@ $(document).ready(function () {
 											<span class="label label-primary">Proposal Description</span>
 										</h2></td>
 									<td></td>
-									<td><textarea rows="4" class="required"placeholder="Description regarding proposal "></textarea></td>
+									<td><textarea rows="4" class="required" id="proposalDescription" placeholder="Description regarding proposal "></textarea></td>
 								</tr>
 								<tr> </tr>
 								<tr> </tr>
