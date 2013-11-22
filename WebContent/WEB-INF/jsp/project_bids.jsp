@@ -12,21 +12,20 @@
 	
 $(document).ready(function () {
    
-   $('#submit').click(function(event) {
-	   var bidIdinput = $("input:radio[name=bidRadio]:checked").val();
-		//params to be displayed here are not handled - projName,Desc,etc	  
-		$.ajax({
-			url : "/project-vars/bids/selectBid.htm",
-		    type: "POST",
-		    data : "bidIdinput=" + bidIdinput,
-		    success:function(data, textStatus, jqXHR){
-		    	window.location.href="/project-vars/viewProjects.htm";
-		    },
-		    error: function(jqXHR, textStatus, errorThrown){
-		    	alert("Could not process request.. " + errorThrown);
-		    }
-		});
-   });
+//    $('#submit').click(function(event) {
+// 	   var bidIdinput = $("input:radio[name=bidRadio]:checked").val();
+// 		//params to be displayed here are not handled - projName,Desc,etc	  
+// 		$.ajax({
+// 			url : "selectBid/" + bidIdinput + ".htm",
+// 		    type: "GET",
+// 		    success:function(data, textStatus, jqXHR){
+// 		    	window.location.href="viewProjects.htm";
+// 		    },
+// 		    error: function(jqXHR, textStatus, errorThrown){
+// 		    	alert("Could not process request.. " + errorThrown);
+// 		    }
+// 		});
+//    });
 });
 	
 	
@@ -72,7 +71,7 @@ $(document).ready(function () {
 									</tr>
 									<c:forEach var="b" items="${bids}">
 										<tr>
-										<td><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></td>
+										<td><a href="/project-vars/bids/selectBid/${b.id}.htm"><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></a></td>
 										<td><a href="/project-vars/project/devp_project/${b.projectId}.htm">${b.projectId}</a></td>
 										<td>${b.tester}</td>
 										<td>${b.description}</td>

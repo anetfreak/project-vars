@@ -17,7 +17,7 @@
 			<div style="padding: 150px 20px 70px 50px;">
 				<h1 style="font-family: Calibri; font-style: italic;">Welcome to MakeItUsable!</h1>
 				<p>A superb platform where developer groups and usability testers interact..</p>
-				<input class="btn btn-large btn-success" type="button" value="Know more" style="border-radius: 0px;"/>
+				<a href="/project-vars/about.htm" class="btn btn-large btn-success">Know More</a>
 			</div>
 		</div>
 	</div>
