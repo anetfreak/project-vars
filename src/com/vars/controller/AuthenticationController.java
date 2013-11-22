@@ -50,6 +50,15 @@ public class AuthenticationController {
 		}
 		return modelAndView;
 	}
+	
+	@RequestMapping(value = "inLogin.htm", method = RequestMethod.POST)
+	public ModelAndView inLogin(@RequestParam("id") String linkedInId, HttpSession session) {
+		User user = userFacade.getInUser(linkedInId);
+		session.setAttribute("user", user);
+		session.setAttribute("sessionId", session.getId());
+		
+		return new ModelAndView("viewProjects.htm");
+	}
 
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.GET)
 	public ModelAndView showSignup() {
@@ -99,7 +108,7 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(value = "/checkINUser.htm", method = RequestMethod.POST)
-	public ModelAndView signup(@RequestParam("id") String linkedInId) {
+	public ModelAndView checkInUser(@RequestParam("id") String linkedInId) {
 		ModelAndView modelAndView = new ModelAndView(VIEW_NAME);
 		Response response = null;
 		boolean exists = userFacade.checkInUser(linkedInId);

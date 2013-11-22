@@ -36,17 +36,19 @@
 			}
 		});
 		
-		var loginAJAX = function() {
-			$.ajax({
-				url : "login.htm",
-			    type: "POST",
-			    success:function(data, textStatus, jqXHR){
-			    },
-			    error: function(jqXHR, textStatus, errorThrown){
-			    	alert("Could not process request.. " + errorThrown);
-			    }
-			});
-		};
+// 		var loginAJAX = function(linkedInId) {
+// 			$.ajax({
+// 				url : "login.htm",
+// 			    type: "POST",
+// 			    data: "id=" + linkedInId,
+// 			    success:function(data, textStatus, jqXHR){
+// 			    	window.location.href="viewProjects.htm";
+// 			    },
+// 			    error: function(jqXHR, textStatus, errorThrown){
+// 			    	alert("Could not process request.. " + errorThrown);
+// 			    }
+// 			});
+// 		};
 		
 		var validEmail = function() {
 			var email = $('#email');
@@ -68,6 +70,20 @@
 		
 	});
 	
+	var loginAJAX = function(linkedInId) {
+		$.ajax({
+			url : "/project-vars/inLogin.htm",
+		    type: "POST",
+		    data: "id=" + linkedInId,
+		    success:function(data, textStatus, jqXHR){
+		    	window.location.href="viewProjects.htm";
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
+	};
+	
 	function onLinkedInLoad() {
 		IN.Event.on(IN, "auth", linkedInAuth);
 	}
@@ -87,26 +103,22 @@
 		var member = profiles.values[0];
 		$('#loginOptions').css('display', 'none');
 		$('#userProfile').css('display', 'block');
-		$('#profile').html("<img src=" + member.pictureUrl + "></img><div id=\"" + member.id + "\">Hello " +  member.firstName + " " + member.lastName + "<br/><div>You are currently '" + member.headline + "' and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/> Your primary industry is " + member.industry + "</div></div>");
+		$('#profile').html("<img src=" + member.pictureUrl + "></img><br/><div id=\"" + member.id + "\">Hello <b>" +  member.firstName + " " + member.lastName + "</b><br/><br/><div>You are currently <b>'" + member.headline + "'</b> and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/><br/> Your primary industry is <b>" + member.industry + "</b></div></div>");
 		
-		$.ajax({
-			url : "checkINUser.htm",
-		    type: "POST",
-		    data : "id=" + member.id,
-		    success:function(data, textStatus, jqXHR){
-		    	alert(data.response);
-		    	if(data.response == "exists"){
-// 		    		alert("Need to sign in linked in user now..");
-					
-		    	} else {
-// 		    		alert("Need to sign up a new user via linked in....");
-					
-		    	}
-		    },
-		    error: function(jqXHR, textStatus, errorThrown){
-		    	alert("Could not process request.. " + errorThrown);
-		    }
-		});
+// 		$.ajax({
+// 			url : "checkINUser.htm",
+// 		    type: "POST",
+// 		    data : "id=" + member.id,
+// 		    success:function(data, textStatus, jqXHR){
+// 		    	if(data.response == "exists"){
+// 		    		loginAJAX(member.id);
+// 		    	} else {
+// 		    	}
+// 		    },
+// 		    error: function(jqXHR, textStatus, errorThrown){
+// 		    	alert("Could not process request.. " + errorThrown);
+// 		    }
+// 		});
 		
 	}
 	

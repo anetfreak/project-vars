@@ -20,6 +20,11 @@ public class UserFacadeImpl implements UserFacade{
 	}
 	
 	@Override
+	public User getInUser(String inId) {
+		return userDao.getInUser(inId);
+	}
+	
+	@Override
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
 		userDao.updateUser(user);

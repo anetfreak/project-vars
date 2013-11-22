@@ -12,4 +12,6 @@ public interface UserFacade {
 	
 	boolean checkInUser(String linkedInId);
 
+	User getInUser(String inId);
+
 }
