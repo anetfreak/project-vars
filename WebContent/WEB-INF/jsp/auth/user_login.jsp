@@ -93,10 +93,10 @@
 		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl")
 		.result(displayProfile);
 		
-// 		IN.API.Connections("me")
-// 	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
-// 	    .result(showConnections)
-// 		.error(connectionError);
+		IN.API.Connections("me")
+	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
+	    .result(showConnections)
+		.error(connectionError);
 	}
 	
 	function displayProfile(profiles) {

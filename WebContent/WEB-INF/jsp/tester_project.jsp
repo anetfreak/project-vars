@@ -80,7 +80,7 @@
 								<tr>
 									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
 									<td></td>
-									<td><textarea id="resultsInput" disabled="disabled" class="proposalDescription-Input" rows="3">DataFromDB</textarea>
+									<td><textarea id="resultsInput" disabled="disabled" class="proposalDescription-Input" rows="3"></textarea>
 									</td>
 								</tr>
 								<tr></tr>

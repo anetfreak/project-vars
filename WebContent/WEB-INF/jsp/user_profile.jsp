@@ -113,10 +113,10 @@
 								<td></td>
 								<c:choose>
 									<c:when test="${user.isTester}">
-										<td><span>${user.tester.linkedInUrl}</span></td>
+										<td><span><a href="${user.tester.linkedInUrl}">${user.tester.linkedInUrl}</a></span></td>
 									</c:when>
 									<c:otherwise>
-										<td><span>${user.developer.linkedInUrl}</span></td>
+										<td><span><a href="${user.developer.linkedInUrl}">${user.developer.linkedInUrl}</a></span></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>
