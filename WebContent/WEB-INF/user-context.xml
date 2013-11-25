@@ -60,4 +60,16 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 			advice-ref="userTxnAdvice" />			
 	</aop:config>
 	
+	<bean id="handlerMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+		<property name="mappings">
+			<props>
+				<prop key="/signup">authenticationController</prop>
+				<prop key="/login.htm">authenticationController</prop>
+				<prop key="/logout.htm">authenticationController</prop>
+				<prop key="/inLogin.htm">authenticationController</prop>
+				<prop key="/checkINUser.htm">authenticationController</prop>
+			</props>
+		</property>
+	</bean>
+	
 </beans>

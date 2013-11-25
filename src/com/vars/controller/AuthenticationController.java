@@ -51,7 +51,7 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "inLogin.htm", method = RequestMethod.POST)
+	@RequestMapping(value = "/inLogin.htm", method = RequestMethod.POST)
 	public ModelAndView inLogin(@RequestParam("id") String linkedInId, HttpSession session) {
 		User user = userFacade.getInUser(linkedInId);
 		session.setAttribute("user", user);

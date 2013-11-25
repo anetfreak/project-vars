@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=US-ASCII"
-	pageEncoding="US-ASCII"%>
+<%@ page language="java" contentType="text/html; charset=US-ASCII" pageEncoding="US-ASCII"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -10,8 +9,9 @@
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75wgepnpou4y46
   authorize: true
+  credentials_cookie: true
   scope: r_network
-  onLoad: onLinkedInLoad
+  onLoad : onLinkedInLoad
 </script>
 
 <script type="text/javascript">
@@ -36,20 +36,6 @@
 			}
 		});
 		
-// 		var loginAJAX = function(linkedInId) {
-// 			$.ajax({
-// 				url : "login.htm",
-// 			    type: "POST",
-// 			    data: "id=" + linkedInId,
-// 			    success:function(data, textStatus, jqXHR){
-// 			    	window.location.href="viewProjects.htm";
-// 			    },
-// 			    error: function(jqXHR, textStatus, errorThrown){
-// 			    	alert("Could not process request.. " + errorThrown);
-// 			    }
-// 			});
-// 		};
-		
 		var validEmail = function() {
 			var email = $('#email');
 			var EMAIL_PATTERN = /^([a-zA-Z0-9_\-\.]+([+])?[a-zA-Z0-9_\-\.]+)@((\[[0-2]{1}[0-5]{1}[0-5]{1}\.[0-2]{1}[0-5]{1}[0-5]{1}\.[0-2]{1}[0-5]{1}[0-5]{1}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-2]{1}[0-5]{1}[0-5]{1})(\]?)$/;
@@ -72,7 +58,7 @@
 	
 	var loginAJAX = function(linkedInId) {
 		$.ajax({
-			url : "/project-vars/inLogin.htm",
+			url : "inLogin.htm",
 		    type: "POST",
 		    data: "id=" + linkedInId,
 		    success:function(data, textStatus, jqXHR){
@@ -84,26 +70,50 @@
 		});
 	};
 	
-	function onLinkedInLoad() {
-		IN.Event.on(IN, "auth", linkedInAuth);
+	function onLinkedInLoad () {
+		IN.Event.on(IN, "auth", function() {onLinkedInAuth();});
+		IN.Event.on(IN, "logout", function() {onLinkedInLogout();});
 	}
 	
-	function linkedInAuth() {
+	function onLinkedInLogout() {
+		$('#loggedInMenu').css('display','none');
+		$('#loginMenu').css('display','block');
+	}
+	
+// 		IN.API.Connections("me")
+// 	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
+// 	    .result(showConnections)
+// 		.error(connectionError);
+
+	function onLinkedInAuth() {
 		IN.API.Profile("me")
 		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl")
 		.result(displayProfile);
-		
-		IN.API.Connections("me")
-	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
-	    .result(showConnections)
-		.error(connectionError);
 	}
 	
 	function displayProfile(profiles) {
 		var member = profiles.values[0];
-		$('#loginOptions').css('display', 'none');
-		$('#userProfile').css('display', 'block');
-		$('#profile').html("<img src=" + member.pictureUrl + "></img><br/><div id=\"" + member.id + "\">Hello <b>" +  member.firstName + " " + member.lastName + "</b><br/><br/><div>You are currently <b>'" + member.headline + "'</b> and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/><br/> Your primary industry is <b>" + member.industry + "</b></div></div>");
+		var loggedInHtml = "<ul id='loggedInMenu' class='nav' style='float:right; padding-right: 35px;'>";
+		loggedInHtml = loggedInHtml + "<li class='dropdown' id='loggedInDown'>";
+		loggedInHtml = loggedInHtml + "<a class='dropdown-toggle' data-toggle='dropdown' href='#loggedInDown' style='color: white;'>Hello " + member.firstName + " <span class='caret'></span></a>";
+		loggedInHtml = loggedInHtml + "<ul class='dropdown-menu'>";
+		loggedInHtml = loggedInHtml + "<li><a href='showProfile.htm'>Profile</a></li>";
+		loggedInHtml = loggedInHtml + "<li><a href='#' onclick='IN.User.logout();'>Logout</a></li>";
+		loggedInHtml = loggedInHtml + "</ul>";
+		loggedInHtml = loggedInHtml + "</li>";
+		loggedInHtml = loggedInHtml + "</ul>";
+		
+		$('#loginMenu').css('display','none');
+		var existingMenu = $('#headerNav').html();		
+		$('#headerNav').html(existingMenu + loggedInHtml);
+		window.location.href = "/project-vars/";
+	}
+	
+	
+		
+// 		$('#loginOptions').css('display', 'none');
+// 		$('#userProfile').css('display', 'block');
+// 		$('#profile').html("<img src=" + member.pictureUrl + "></img><br/><div id=\"" + member.id + "\">Hello <b>" +  member.firstName + " " + member.lastName + "</b><br/><br/><div>You are currently <b>'" + member.headline + "'</b> and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/><br/> Your primary industry is <b>" + member.industry + "</b></div></div>");
 		
 // 		$.ajax({
 // 			url : "checkINUser.htm",
@@ -112,15 +122,15 @@
 // 		    success:function(data, textStatus, jqXHR){
 // 		    	if(data.response == "exists"){
 // 		    		loginAJAX(member.id);
-// 		    	} else {
 // 		    	}
 // 		    },
 // 		    error: function(jqXHR, textStatus, errorThrown){
 // 		    	alert("Could not process request.. " + errorThrown);
 // 		    }
 // 		});
-		
-	}
+// 	}
+
+	
 	
 	function showConnections(connections) {
 		var conn = connections.values;
