@@ -9,7 +9,6 @@
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75wgepnpou4y46
   authorize: true
-  credentials_cookie: true
   scope: r_network
   onLoad : onLinkedInLoad
 </script>
@@ -93,21 +92,21 @@
 	
 	function displayProfile(profiles) {
 		var member = profiles.values[0];
-		var loggedInHtml = "<ul id='loggedInMenu' class='nav' style='float:right; padding-right: 35px;'>";
-		loggedInHtml = loggedInHtml + "<li class='dropdown' id='loggedInDown'>";
-		loggedInHtml = loggedInHtml + "<a class='dropdown-toggle' data-toggle='dropdown' href='#loggedInDown' style='color: white;'>Hello " + member.firstName + " <span class='caret'></span></a>";
-		loggedInHtml = loggedInHtml + "<ul class='dropdown-menu'>";
-		loggedInHtml = loggedInHtml + "<li><a href='showProfile.htm'>Profile</a></li>";
-		loggedInHtml = loggedInHtml + "<li><a href='#' onclick='IN.User.logout();'>Logout</a></li>";
-		loggedInHtml = loggedInHtml + "</ul>";
-		loggedInHtml = loggedInHtml + "</li>";
-		loggedInHtml = loggedInHtml + "</ul>";
+// 		var loggedInHtml = "<ul id='loggedInMenu' class='nav' style='float:right; padding-right: 35px;'>";
+// 		loggedInHtml = loggedInHtml + "<li class='dropdown' id='loggedInDown'>";
+// 		loggedInHtml = loggedInHtml + "<a class='dropdown-toggle' data-toggle='dropdown' href='#loggedInDown' style='color: white;'>Hello " + member.firstName + " <span class='caret'></span></a>";
+// 		loggedInHtml = loggedInHtml + "<ul class='dropdown-menu'>";
+// 		loggedInHtml = loggedInHtml + "<li><a href='showProfile.htm'>Profile</a></li>";
+// 		loggedInHtml = loggedInHtml + "<li><a href='#' onclick='IN.User.logout();'>Logout</a></li>";
+// 		loggedInHtml = loggedInHtml + "</ul>";
+// 		loggedInHtml = loggedInHtml + "</li>";
+// 		loggedInHtml = loggedInHtml + "</ul>";
 		
-		$('#loginMenu').css('display','none');
-		var existingMenu = $('#headerNav').html();		
-		$('#headerNav').html(existingMenu + loggedInHtml);
-		window.location.href = "/project-vars/";
-	}
+// 		$('#loginMenu').css('display','none');
+// 		var existingMenu = $('#headerNav').html();		
+// 		$('#headerNav').html(existingMenu + loggedInHtml);
+// 		window.location.href = "/project-vars/";
+// 	}
 	
 	
 		
@@ -115,20 +114,18 @@
 // 		$('#userProfile').css('display', 'block');
 // 		$('#profile').html("<img src=" + member.pictureUrl + "></img><br/><div id=\"" + member.id + "\">Hello <b>" +  member.firstName + " " + member.lastName + "</b><br/><br/><div>You are currently <b>'" + member.headline + "'</b> and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/><br/> Your primary industry is <b>" + member.industry + "</b></div></div>");
 		
-// 		$.ajax({
-// 			url : "checkINUser.htm",
-// 		    type: "POST",
-// 		    data : "id=" + member.id,
-// 		    success:function(data, textStatus, jqXHR){
-// 		    	if(data.response == "exists"){
-// 		    		loginAJAX(member.id);
-// 		    	}
-// 		    },
-// 		    error: function(jqXHR, textStatus, errorThrown){
-// 		    	alert("Could not process request.. " + errorThrown);
-// 		    }
-// 		});
-// 	}
+		$.ajax({
+			url : "checkINUser.htm",
+		    type: "POST",
+		    data : "id=" + member.id,
+		    success:function(data, textStatus, jqXHR){
+		    	window.location.href = "/project-vars/";
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
+	}
 
 	
 	

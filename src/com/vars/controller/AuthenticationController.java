@@ -108,18 +108,23 @@ public class AuthenticationController {
 	}
 	
 	@RequestMapping(value = "/checkINUser.htm", method = RequestMethod.POST)
-	public ModelAndView checkInUser(@RequestParam("id") String linkedInId) {
-		ModelAndView modelAndView = new ModelAndView(VIEW_NAME);
+	public ModelAndView checkInUser(@RequestParam("id") String linkedInId, HttpSession session) {
+		ModelAndView modelAndView;
 		Response response = null;
 		boolean exists = userFacade.checkInUser(linkedInId);
-		if(exists)
+		if(exists) {
 			response = new Response("exists");
-		else
+			User user = userFacade.getInUser(linkedInId);
+			session.setAttribute("user", user);
+			session.setAttribute("sessionId", session.getId());
+			
+			modelAndView = new ModelAndView("viewProjects.htm");
+		} else {
 			response = new Response("newUser");
+			modelAndView = new ModelAndView("signup.htm");
+		}
 		
-		Map<String, Object> modelMap = new HashMap<String, Object>();
-		modelMap.put("response", response.getResponse());
-		return new ModelAndView(VIEW_NAME, "result", modelMap);
+		return modelAndView;
 	}
 
 	public void setUserFacade(UserFacade userFacade) {
