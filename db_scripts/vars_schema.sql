@@ -51,7 +51,7 @@ CREATE TABLE `developer` (
 PRIMARY KEY (`id`),
 KEY `fk_developer_user_id_idx` (`user_id`),
 CONSTRAINT `fk_developer_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -78,7 +78,7 @@ KEY `fk_project_devp_id_idx` (`devp_id`),
 KEY `fk_project_tester_id_idx` (`tester_id`),
 CONSTRAINT `fk_project_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 CONSTRAINT `fk_project_devp_id` FOREIGN KEY (`devp_id`) REFERENCES `developer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -94,7 +94,7 @@ CREATE TABLE `tester` (
 PRIMARY KEY (`id`),
 KEY `fk_tester_user_id_idx` (`user_id`),
 CONSTRAINT `fk_tester_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -131,8 +131,9 @@ CREATE TABLE `user` (
 `last_name` varchar(100) DEFAULT NULL,
 `istester` tinyint(4) NOT NULL,
 `linkedin_id` varchar(50) DEFAULT NULL,
+`linkedin_url` varchar(100) DEFAULT NULL,
 PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
