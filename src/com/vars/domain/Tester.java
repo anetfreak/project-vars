@@ -5,9 +5,6 @@ import java.util.ArrayList;
 public class Tester {
 	private Integer id;
 	private Integer userId;
-	private String firstName;
-	private String lastName;
-	private String linkedInUrl;
 	private ArrayList<TestingRating> ratings;
 	private Float averageRating;
 	
@@ -16,12 +13,6 @@ public class Tester {
 	}
 	public void setRatings(ArrayList<TestingRating> ratings) {
 		this.ratings = ratings;
-	}
-	public String getLinkedInUrl() {
-		return linkedInUrl;
-	}
-	public void setLinkedInUrl(String linkedInUrl) {
-		this.linkedInUrl = linkedInUrl;
 	}
 	
 	public Integer getId() {
@@ -36,18 +27,7 @@ public class Tester {
 	public void setUserId(Integer userId) {
 		this.userId = userId;
 	}
-	public String getFirstName() {
-		return firstName;
-	}
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-	public String getLastName() {
-		return lastName;
-	}
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+
 	public Float getAverageRating() {
 		Float avg = 0.0f;
 		Integer numberOfRatings = this.ratings.size();

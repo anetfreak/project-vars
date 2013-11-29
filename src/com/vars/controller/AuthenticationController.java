@@ -79,19 +79,21 @@ public class AuthenticationController {
 
 		if(userType == 0) {
 			user.setIsTester(false);
-			developer.setFirstName(fname);
-			developer.setLastName(lname);
-			developer.setLinkedInUrl("test url");
+			//developer.setFirstName(fname);
+			//developer.setLastName(lname);
+			//developer.setLinkedInUrl("test url");
 		} else {
 			user.setIsTester(true);
-			tester.setFirstName(fname);
-			tester.setLastName(lname);
-			tester.setLinkedInUrl("test url");
+			//tester.setFirstName(fname);
+			//tester.setLastName(lname);
+			//tester.setLinkedInUrl("test url");
 		}
 		user.setUserName(email);
 		user.setPassword(password);
 		user.setDeveloper(developer);
 		user.setTester(tester);
+		user.setFirstName(fname);
+		user.setLastName(lname);
 		userFacade.createUser(user);
 		
 		session.setAttribute("user", userFacade.getUser(user.getUserName()));

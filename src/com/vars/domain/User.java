@@ -8,8 +8,17 @@ public class User {
 	private Developer developer;
 	private Tester tester;
 	private boolean isTester;
+	private String firstName;
+	private String lastName;
 	private String linkedInId;
+	private String linkedInUrl;
 	
+	public String getLinkedInUrl() {
+		return linkedInUrl;
+	}
+	public void setLinkedInUrl(String linkedInUrl) {
+		this.linkedInUrl = linkedInUrl;
+	}
 	public Integer getId() {
 		return id;
 	}
@@ -52,4 +61,17 @@ public class User {
 	public void setLinkedInId(String linkedInId) {
 		this.linkedInId = linkedInId;
 	}
+	public String getFirstName() {
+		return firstName;
+	}
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+	public String getLastName() {
+		return lastName;
+	}
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 }
