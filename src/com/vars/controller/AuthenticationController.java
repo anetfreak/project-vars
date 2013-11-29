@@ -98,7 +98,7 @@ public class AuthenticationController {
 		
 		session.setAttribute("user", userFacade.getUser(user.getUserName()));
 		session.setAttribute("sessionId", session.getId());
-
+		System.out.println("Signup completed for user" + user.getFirstName() );
 		return new ModelAndView("home");
 	}
 	

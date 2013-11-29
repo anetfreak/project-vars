@@ -45,16 +45,18 @@ public class UserController {
 		int userType = 0;
 		
 		if(userType == 0) {
-			developer.setFirstName(fname);
-			developer.setLastName(lname);
+			//developer.setFirstName(fname);
+			//developer.setLastName(lname);
 		} else {
-			tester.setFirstName(fname);
-			tester.setLastName(lname);
+			//tester.setFirstName(fname);
+			//tester.setLastName(lname);
 		}
 		user.setUserName(email);
 		user.setPassword(password);
 		user.setDeveloper(developer);
 		user.setTester(tester);
+		user.setFirstName(fname);
+		user.setLastName(lname);
 		userFacade.updateUser(user);
 		return new ModelAndView("hello");
 	}

@@ -21,10 +21,10 @@
 				<li class="dropdown" id="loggedInDown">
 					<c:choose>
 					    <c:when test="${user.isTester}">
-					    	<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.tester.firstName} <span class="caret"></span></a>
+					    	<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.firstName} <span class="caret"></span></a>
 					    </c:when>
 	 					<c:otherwise>
-	 						<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.developer.firstName} <span class="caret"></span></a>
+	 						<a class="dropdown-toggle" data-toggle="dropdown" href="#loggedInDown" style="color: white;">Hello ${user.firstName} <span class="caret"></span></a>
 	 					</c:otherwise>
  					</c:choose>
 					

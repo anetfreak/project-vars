@@ -80,10 +80,10 @@
 								<td></td>
 								<c:choose>
 									<c:when test="${user.isTester}">
-										<td><span>${user.tester.firstName}</span></td>
+										<td><span>${user.firstName}</span></td>
 									</c:when>
 									<c:otherwise>
-										<td><span>${user.developer.firstName}</span></td>
+										<td><span>${user.firstName}</span></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>
@@ -93,10 +93,10 @@
 								<td></td>
 								<c:choose>
 									<c:when test="${user.isTester}">
-										<td><span>${user.tester.lastName}</span></td>
+										<td><span>${user.lastName}</span></td>
 									</c:when>
 									<c:otherwise>
-										<td><span>${user.developer.lastName}</span></td>
+										<td><span>${user.lastName}</span></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>
@@ -113,10 +113,10 @@
 								<td></td>
 								<c:choose>
 									<c:when test="${user.isTester}">
-										<td><span><a href="${user.tester.linkedInUrl}">${user.tester.linkedInUrl}</a></span></td>
+										<td><span><a href="${user.linkedInUrl}">${user.linkedInUrl}</a></span></td>
 									</c:when>
 									<c:otherwise>
-										<td><span><a href="${user.developer.linkedInUrl}">${user.developer.linkedInUrl}</a></span></td>
+										<td><span><a href="${user.linkedInUrl}">${user.linkedInUrl}</a></span></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>
