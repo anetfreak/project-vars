@@ -13,14 +13,14 @@ import com.vars.domain.Project;
 public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 
 	private static final String GET_PROJECT = "select id, title, description, domain, devp_id, tester_id from project where id = ?";
-	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id) values (?, ?, ?, ?)";
+	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id,project_url,min_budget,max_budget,project_skills,project_users) values (?, ?, ?, ?,?,?,?,?,?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ? order by id";
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id IS NULL order by id";
 	
 	@Override
 	public void createProject(Project project) {
 		// TODO Auto-generated method stub
-		getJdbcTemplate().update( INSERT_PROJECT, new Object[] { project.getTitle(), project.getDescription(), project.getDomain(), project.getDeveloper_id() });
+		getJdbcTemplate().update( INSERT_PROJECT, new Object[] { project.getTitle(), project.getDescription(), project.getDomain(), project.getDeveloper_id(),project.getProject_url(),project.getMin_budget(),project.getMax_budget(),project.getProject_skills(),project.getProject_users() });
 	}
 
 	@Override

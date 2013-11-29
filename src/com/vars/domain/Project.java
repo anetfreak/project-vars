@@ -7,6 +7,13 @@ public class Project {
 	private Integer developer_id;
 	private Integer tester_id;
 	private String domain;
+	private String project_url;
+	private Integer min_budget;
+	private Integer max_budget;
+	private String project_skills;
+	private String project_users;
+	
+	
 	
 	public Integer getProject_id() {
 		return project_id;
@@ -43,6 +50,36 @@ public class Project {
 	}
 	public void setDomain(String domain) {
 		this.domain = domain;
+	}
+	public String getProject_users() {
+		return project_users;
+	}
+	public void setProject_users(String project_users) {
+		this.project_users = project_users;
+	}
+	public String getProject_skills() {
+		return project_skills;
+	}
+	public void setProject_skills(String project_skills) {
+		this.project_skills = project_skills;
+	}
+	public Integer getMax_budget() {
+		return max_budget;
+	}
+	public void setMax_budget(Integer max_budget) {
+		this.max_budget = max_budget;
+	}
+	public Integer getMin_budget() {
+		return min_budget;
+	}
+	public void setMin_budget(Integer min_budget) {
+		this.min_budget = min_budget;
+	}
+	public String getProject_url() {
+		return project_url;
+	}
+	public void setProject_url(String project_url) {
+		this.project_url = project_url;
 	}
 	
 	}

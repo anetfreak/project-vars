@@ -34,7 +34,12 @@ public class ProjectController {
 	public ModelAndView login(@RequestParam("projectTitle") String projectTitle,
 			@RequestParam("domain") String domain,
 			@RequestParam("description") String description,
-			HttpSession session) {
+			@RequestParam("projectURL") String projectURL,
+			@RequestParam("minBudget") int minBudget,
+			@RequestParam("maxBudget") int maxBudget,
+			@RequestParam("projectSkills") String projectSkills,
+			@RequestParam("projectUsers") String projectUsers,
+						HttpSession session) {
 		User user = (User) session.getAttribute("user");
 		
 		Project project = new Project();
@@ -42,6 +47,11 @@ public class ProjectController {
 		project.setDescription(description);
 		project.setDeveloper_id(user.getDeveloper().getId());
 		project.setDomain(domain);
+		project.setProject_url(projectURL);
+		project.setMin_budget(minBudget);
+		project.setMax_budget(maxBudget);
+		project.setProject_skills(projectSkills);
+		project.setProject_users(projectUsers);
 		
 		projectFacade.createProject(project);
 		return new ModelAndView("owner_home");
