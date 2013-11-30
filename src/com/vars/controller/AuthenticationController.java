@@ -33,14 +33,11 @@ public class AuthenticationController {
 			@RequestParam("password") String password,
 			HttpSession session) {
 		ModelAndView modelAndView = new ModelAndView();
-		User user = new User();
-		user.setUserName(email);
-		user.setPassword(password);
 		
-		User userDb = userFacade.getUser(user.getUserName());
-		if(userDb!=null){
-			if(userDb.getUserName().equals(user.getUserName()) && userDb.getPassword().equals(user.getPassword())){
-				session.setAttribute("user", userDb);
+		User user = userFacade.getUser(email);
+		if(user!=null){
+			if(user.getUserName().equals(email) && user.getPassword().equals(password)){
+				session.setAttribute("user", user);
 				session.setAttribute("sessionId", session.getId());
 			}
 			modelAndView.setViewName("home");
