@@ -153,13 +153,13 @@
 									<div id="projects">
 										<table class="table table-striped table-bordered">
 											<tr>
-												<th>Developer ID</th>
+												<th>Project Owner</th>
 												<th>Rating</th>
 												<th>Date</th>
 											</tr>
 											<c:forEach var="p" items="${ratings}">
 												<tr>
-													<td>${p.developerId}</a></td>
+													<td>${p.developerName}</td>
 													<td>${p.rating}</td>
 													<td>${p.date}</td>
 												</tr>

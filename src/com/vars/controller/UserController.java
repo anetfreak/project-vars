@@ -42,7 +42,10 @@ public class UserController {
 			
 			ratings = userFacade.getRatingForTester(user.getTester().getId());
 			for (TestingRating testingRating : ratings) {
-				ratingAverage += testingRating.getRating(); 
+				ratingAverage += testingRating.getRating();
+				Developer developer = userFacade.getDeveloper(testingRating.getDeveloperId());
+				User userDev = userFacade.getUserForId((developer.getUserId()));
+				testingRating.setDeveloperName(userDev.getFirstName());
 			}
 			ratingAverage = ratingAverage/ratings.size();
 			ratingAverage = (float)(Math.round(ratingAverage*100.0)/100.0);

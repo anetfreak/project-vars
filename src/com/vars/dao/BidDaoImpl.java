@@ -75,6 +75,8 @@ public class BidDaoImpl extends JdbcDaoSupport implements BidDao {
 						project.setTitle(rs.getString(2));
 						project.setDescription(rs.getString(3));
 						project.setDomain(rs.getString(4));
+						project.setDeveloper_id(rs.getInt(5));
+						project.setTester_id(rs.getInt(6));
 						return project;
 					}
 				});

@@ -8,9 +8,16 @@ private Integer developerId;
 private Float rating;
 private Integer id;
 private Date date;
+private String developerName;
 
 public Integer getTesterId() {
 	return testerId;
+}
+public String getDeveloperName() {
+	return developerName;
+}
+public void setDeveloperName(String developerName) {
+	this.developerName = developerName;
 }
 public Integer getId() {
 	return id;

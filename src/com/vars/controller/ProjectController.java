@@ -70,6 +70,7 @@ public class ProjectController {
 	@RequestMapping(value = "/viewProjects.htm", method = RequestMethod.GET)
 	public ModelAndView showProjectsForDev(HttpSession session) {
 		//getProjectDev needs developer Id to fetch 
+		System.out.println("at Controller for view projects");
 		ModelAndView modelAndView = new ModelAndView();
 		User user = (User) session.getAttribute("user"); 
 		if(user != null) {
@@ -77,7 +78,7 @@ public class ProjectController {
 				ArrayList<Project> newProjects = projectFacade.getNewProjects();
 				
 				System.out.println("New Projects count"+ newProjects.size());
-				
+				System.out.println("getting my projects for tester" +user.getTester().getId());
 				ArrayList<Project> myProjects = bidFacade.getProjectsForTester(user.getTester().getId());
 				System.out.println("My Projects count"+ myProjects.size());
 				
@@ -86,6 +87,7 @@ public class ProjectController {
 				if(newProjects.size() <= 0) {
 					modelAndView.addObject("newProjects", null);
 				} else {
+					System.out.println("In new Projects!!");
 					for (Project project : newProjects) {
 						Developer developer =  userFacade.getDeveloper(project.getDeveloper_id());
 						User userd = userFacade.getUserForId((developer.getUserId()));
@@ -93,6 +95,7 @@ public class ProjectController {
 					}
 												
 					modelAndView.addObject("newProjects", newProjects);
+					System.out.println("out of new Projects!!");
 				}
 				
 				if(myProjects.size() <= 0)
@@ -101,12 +104,16 @@ public class ProjectController {
 				}
 				else
 				{
+					System.out.println("In my Projects!!");
 					for (Project project : myProjects) {
+						System.out.println("project " + project.getTitle());
+						System.out.println("project " + project.getDeveloper_id());
 						Developer developer =  userFacade.getDeveloper(project.getDeveloper_id());
 						User userd = userFacade.getUserForId((developer.getUserId()));
 						project.setDeveloperName(userd.getFirstName());
 					}
 					modelAndView.addObject("myProjects", myProjects);
+					System.out.println("out of my Projects!!");
 				}
 				
 			} else {
@@ -119,6 +126,7 @@ public class ProjectController {
 		} else {
 			modelAndView = new ModelAndView("auth/user_login");
 		}
+		System.out.println("returning from view projects!");
 		return modelAndView;
 	}
 	
@@ -133,7 +141,11 @@ public class ProjectController {
 	
 	@RequestMapping(value = "/project/tester_project/{id}.htm", method = RequestMethod.GET)
 	public ModelAndView showProject(@PathVariable("id") String id) {
-		Project project = projectFacade.getProject(Integer.parseInt(id));
+		System.out.println("at tester_project start" + id);
+		Project project = null;
+		if(id != null)
+		project = projectFacade.getProject(Integer.parseInt(id));
+		System.out.println("at tester_project end " + id);
 		return new ModelAndView("tester_project", "project", project);
 	}
 	

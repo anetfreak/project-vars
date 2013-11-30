@@ -266,6 +266,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	}
 
 	public Developer getDeveloperForId(Integer id) {
+		System.out.println("Getting developer for id"+ id);
 		Developer developer = getJdbcTemplate().queryForObject(GET_DEVELOPER_FOR_ID, new Object[]{id}, new RowMapper<Developer>(){
 			@Override
 			public Developer mapRow(ResultSet rs, int rowNum) throws SQLException {
