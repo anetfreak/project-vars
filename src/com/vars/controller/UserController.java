@@ -29,8 +29,6 @@ public class UserController {
 		return new ModelAndView("/user_profile", "user", user);
 	}
 	
-
-	
 	@RequestMapping(value = "/showProfile.htm", method = RequestMethod.POST)
 	public ModelAndView updateInfo(@RequestParam("fname") String fname, 
 			@RequestParam("lname") String lname, 

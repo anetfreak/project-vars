@@ -78,27 +78,13 @@
 							<tr>
 								<td><h2 class="label label-primary">First Name</h2></td>
 								<td></td>
-								<c:choose>
-									<c:when test="${user.isTester}">
 										<td><span>${user.firstName}</span></td>
-									</c:when>
-									<c:otherwise>
-										<td><span>${user.firstName}</span></td>
-									</c:otherwise>
-								</c:choose>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h2 class="label label-primary">Last Name</h2></td>
 								<td></td>
-								<c:choose>
-									<c:when test="${user.isTester}">
 										<td><span>${user.lastName}</span></td>
-									</c:when>
-									<c:otherwise>
-										<td><span>${user.lastName}</span></td>
-									</c:otherwise>
-								</c:choose>
 							</tr>
 							<tr></tr>
 							<tr>
@@ -111,14 +97,7 @@
 							<tr>
 								<td><h2 class="label label-primary">LinkedIn URL</h2></td>
 								<td></td>
-								<c:choose>
-									<c:when test="${user.isTester}">
 										<td><span><a href="${user.linkedInUrl}">${user.linkedInUrl}</a></span></td>
-									</c:when>
-									<c:otherwise>
-										<td><span><a href="${user.linkedInUrl}">${user.linkedInUrl}</a></span></td>
-									</c:otherwise>
-								</c:choose>
 							</tr>
 							
 							<c:choose>
