@@ -100,23 +100,22 @@ CONSTRAINT `fk_tester_user_id` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) 
 --
 -- Table structure for table `tester_rating`
 --
-
 DROP TABLE IF EXISTS `tester_rating`;
 /*!40101 SET @saved_cs_client = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `tester_rating` (
+`id` int(11) NOT NULL AUTO_INCREMENT,
 `tester_id` int(11) NOT NULL,
 `developer_id` int(11) NOT NULL,
 `rating` decimal(3,2) NOT NULL,
 `ratingdate` date NOT NULL, 
+PRIMARY KEY (`id`),
 KEY `fk_rating_devp_id_idx` (`developer_id`),
 KEY `fk_rating_tester_id_idx` (`tester_id`),
-CONSTRAINT `fk_rating_devp_id` FOREIGN KEY (`developer_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+CONSTRAINT `fk_rating_devp_id` FOREIGN KEY (`developer_id`) REFERENCES `developer` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
 CONSTRAINT `fk_rating_tester_id` FOREIGN KEY (`tester_id`) REFERENCES `tester` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
-
---
 -- Table structure for table `user`
 --
 

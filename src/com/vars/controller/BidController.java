@@ -30,6 +30,15 @@ public class BidController {
 		this.projectFacade = projectFacade;
 	}
 
+	public void setBidFacade(BidFacade bidFacade) {
+		this.bidFacade = bidFacade;
+	}
+	
+
+	public void setUserFacade(UserFacade userFacade) {
+		this.userFacade = userFacade;
+	}
+	
 	@RequestMapping(value = "tester_proposal.htm", method = RequestMethod.POST)
 	public ModelAndView tester_proposal(@RequestParam("projectId") Integer projectId, 
 			@RequestParam("proposal") Float proposal, 
@@ -81,10 +90,6 @@ public class BidController {
 		//return new ModelAndView("tester_proposal", "project", project);
 	//}
 	
-	public void setUserFacade(UserFacade userFacade) {
-		this.userFacade = userFacade;
-	}
-
 	@RequestMapping(value = "/project/bids/{id}.htm", method = RequestMethod.GET)
 	public ModelAndView getTesterProjects(@PathVariable("id") Integer id) {
 		Project project = projectFacade.getProject(id);
@@ -115,9 +120,4 @@ public class BidController {
 		bidFacade.setBidForProject(bid);
 		return new ModelAndView("viewProjects.htm");
 	}
-	
-	public void setBidFacade(BidFacade bidFacade) {
-		this.bidFacade = bidFacade;
-	}
-
 }
