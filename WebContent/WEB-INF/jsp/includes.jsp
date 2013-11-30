@@ -18,6 +18,13 @@
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap.min.css"/>
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-responsive.css"/>
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-responsive.min.css"/>
+
+			<!-- Rating includes -->
+			<script type="text/javascript" src="<%=request.getContextPath()%>/star-rating/jquery.MetaData.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/star-rating/jquery.rating.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/star-rating/jquery.rating.pack.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/star-rating/jquery.form.js"/></script>
+			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/star-rating/jquery.rating.css"/>
 			
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/global.js"/></script>
 	</head>
