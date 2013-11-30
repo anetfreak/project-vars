@@ -67,35 +67,40 @@
 	
 		<div class="container-fluid">
 			<div class="row-fluid">
-
-				<div class="tab-content" id="UserProfile">
-					<div class="tab-pane active">
+				<div id="UserProfile" style="margin: 0px 0px 10px 30px;">
+				<div><h3>User Profile </h3></div>
+				<div class="row-fluid"> 
+				<c:choose>
+				<c:when test="${user.isTester}">
+					<div class="span2" style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
+						<h5> Rating </h5>
+						<div id="rating"><h6>3.5/5</h6></div>
+					</div>
+				</c:when>
+				</c:choose>
+					<div class="span8">
 						<table>
-							<!--Body content-->
 							<tr>
-								<h3>User information </h3>
-							</tr>
-							<tr>
-								<td><h2 class="label label-primary">First Name</h2></td>
+								<td><h5>First Name</h5></td>
 								<td></td>
 										<td><span>${user.firstName}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Last Name</h2></td>
+								<td><h5>Last Name</h5></td>
 								<td></td>
 										<td><span>${user.lastName}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Email</h2></td>
+								<td><h5>Email</h5></td>
 								<td></td>
 								<td><span>${user.userName}</span></td>
 							</tr>
 
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">LinkedIn URL</h2></td>
+		 						<td><h5>LinkedIn URL</h5></td>
 								<td></td>
 										<td><span><a href="${user.linkedInUrl}">${user.linkedInUrl}</a></span></td>
 							</tr>
@@ -104,7 +109,7 @@
 								<c:when test="${user.isTester}">
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Rating</h2></td>
+									<td><h5>Rating</h5></td>
 									<td></td>
 									<td><span>3.25</span></td>
 								</tr>
@@ -115,7 +120,7 @@
 							<tr></tr>
 							
 							<tr>
-								<td><h2 class="label label-primary">Role</h2></td>
+								<td><h5>Role</h5></td>
 								<td></td>
 								<c:choose>
 									<c:when test="${user.isTester}">
@@ -131,12 +136,16 @@
 							<tr>
 								<td></td>
 								<td></td>
-								<td><div class="btn-group">
-										<input type="submit" class="btn" id="updateinformation" value="Update Information"/>
-									</div>
+								<td>
 								</td>
 							</tr>
 						</table>
+					</div>
+					</div>
+					<div class="row-fluid">
+						<div class="btn-group" style="margin-top: 20px;">
+								<input type="submit" class="btn" id="updateinformation" value="Update Information"/>
+						</div>
 					</div>
 				</div>
 				<div class="tab-content" id="UpdateProfile" style="display: none;">
