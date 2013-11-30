@@ -2,13 +2,16 @@ package com.vars.dao;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.vars.domain.Developer;
+import com.vars.domain.Project;
 import com.vars.domain.Tester;
+import com.vars.domain.TestingRating;
 import com.vars.domain.User;
 
 public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
@@ -24,6 +27,8 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	private static final String GET_TESTER = "select id from tester where user_id = ?";
 	
 	private static final String GET_TESTER_FOR_ID = "select user_id from tester where id = ?";
+		
+	private static final String GET_RATING = "select id, developer_id, rating, ratingdate from tester_rating where tester_id = ?";
 	
 	private static final String GET_DEVELOPER_FOR_ID = "select user_id from developer where id = ?";
 	
@@ -241,6 +246,25 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	}
 
 	@Override
+
+	public ArrayList<TestingRating> getRatingForTester(Integer id) {
+		List<TestingRating> testingRatings = getJdbcTemplate().query(GET_RATING,
+				new Object[] { id }, new RowMapper<TestingRating>() {
+					@Override
+					public TestingRating mapRow(ResultSet rs, int rowNum)
+							throws SQLException {
+						TestingRating testingRating = new TestingRating();
+						testingRating.setId(rs.getInt("id"));
+						testingRating.setDeveloperId(rs.getInt("developer_id"));
+						testingRating.setRating(rs.getFloat("rating"));
+						testingRating.setDate(rs.getDate("ratingdate"));
+						return testingRating;
+					}
+				});
+
+		return (ArrayList<TestingRating>) testingRatings;
+	}
+
 	public Developer getDeveloperForId(Integer id) {
 		Developer developer = getJdbcTemplate().queryForObject(GET_DEVELOPER_FOR_ID, new Object[]{id}, new RowMapper<Developer>(){
 			@Override
@@ -253,6 +277,4 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		developer.setId(id);
 		return developer;
 	}
-
-
-	}
+}

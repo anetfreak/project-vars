@@ -1,5 +1,7 @@
 package com.vars.controller;
 
+import java.util.ArrayList;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -9,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.vars.domain.Developer;
+import com.vars.domain.Project;
 import com.vars.domain.Tester;
+import com.vars.domain.TestingRating;
 import com.vars.domain.User;
 import com.vars.facade.UserFacade;
 
@@ -25,8 +29,30 @@ public class UserController {
 
 	@RequestMapping(value = "/showProfile.htm", method = RequestMethod.GET)
 	public ModelAndView showLogin(HttpSession session) {
+		ModelAndView modelAndView = new ModelAndView();
+		ArrayList<TestingRating> ratings = null;
+		modelAndView.setViewName("/user_profile");
+		Float ratingAverage = 0.0f;
 		User user = (User) session.getAttribute("user");
-		return new ModelAndView("/user_profile", "user", user);
+		Tester tester = new Tester();
+		
+		if(user.getIsTester())
+		{
+			tester.setUserId(user.getId());
+			
+			ratings = userFacade.getRatingForTester(user.getTester().getId());
+			for (TestingRating testingRating : ratings) {
+				ratingAverage += testingRating.getRating(); 
+			}
+			ratingAverage = ratingAverage/ratings.size();
+			ratingAverage = (float)(Math.round(ratingAverage*100.0)/100.0);
+			tester.setAverageRating(ratingAverage);
+			user.getTester().setAverageRating(ratingAverage);
+		}
+		modelAndView.addObject("user", user);
+		modelAndView.addObject("ratings", ratings);
+		modelAndView.addObject("tester", tester);
+		return modelAndView;
 	}
 	
 	@RequestMapping(value = "/showProfile.htm", method = RequestMethod.POST)

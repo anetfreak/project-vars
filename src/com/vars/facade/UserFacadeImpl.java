@@ -1,8 +1,11 @@
 package com.vars.facade;
 
+import java.util.ArrayList;
+
 import com.vars.dao.UserDao;
 import com.vars.domain.Developer;
 import com.vars.domain.Tester;
+import com.vars.domain.TestingRating;
 import com.vars.domain.User;
 
 public class UserFacadeImpl implements UserFacade{
@@ -53,6 +56,11 @@ public class UserFacadeImpl implements UserFacade{
 	}
 
 	@Override
+	public ArrayList<TestingRating> getRatingForTester(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.getRatingForTester(id);
+	}
+
 	public Developer getDeveloper(Integer id) {
 		// TODO Auto-generated method stub
 		return userDao.getDeveloperForId(id);

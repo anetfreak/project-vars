@@ -1,7 +1,10 @@
 package com.vars.facade;
 
+import java.util.ArrayList;
+
 import com.vars.domain.Developer;
 import com.vars.domain.Tester;
+import com.vars.domain.TestingRating;
 import com.vars.domain.User;
 
 public interface UserFacade {
@@ -20,6 +23,7 @@ public interface UserFacade {
 
 	User getUserForId(Integer id);
 
-	Developer getDeveloper(Integer id);
-	
+	ArrayList<TestingRating> getRatingForTester(Integer id);
+
+	Developer getDeveloper(Integer id);	
 }

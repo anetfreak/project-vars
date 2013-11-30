@@ -74,7 +74,7 @@
 				<c:when test="${user.isTester}">
 					<div class="span2" style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
 						<h5> Rating </h5>
-						<div id="rating"><h6>3.5/5</h6></div>
+						<div id="rating"><h6>${tester.averageRating}</h6></div>
 					</div>
 				</c:when>
 				</c:choose>
@@ -111,7 +111,7 @@
 								<tr>
 									<td><h5>Rating</h5></td>
 									<td></td>
-									<td><span>3.25</span></td>
+									<td><span>${tester.averageRating}</span></td>
 								</tr>
 								</c:when>
 							</c:choose>
@@ -147,6 +147,27 @@
 								<input type="submit" class="btn" id="updateinformation" value="Update Information"/>
 						</div>
 					</div>
+					<div class="row-fluid"  style="margin-top: 20px;">
+					<c:choose>
+								<c:when test="${ratings ne null}">
+									<div id="projects">
+										<table class="table table-striped table-bordered">
+											<tr>
+												<th>Developer ID</th>
+												<th>Rating</th>
+												<th>Date</th>
+											</tr>
+											<c:forEach var="p" items="${ratings}">
+												<tr>
+													<td>${p.developerId}</a></td>
+													<td>${p.rating}</td>
+													<td>${p.date}</td>
+												</tr>
+											</c:forEach>
+										</table>
+									</div>
+								</c:when>
+							</c:choose>
 				</div>
 				<div class="tab-content" id="UpdateProfile" style="display: none;">
 					<div class="tab-pane active">

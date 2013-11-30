@@ -29,21 +29,11 @@ public class Tester {
 	}
 
 	public Float getAverageRating() {
-		Float avg = 0.0f;
-		Integer numberOfRatings = this.ratings.size();
-		Float sumOfRatings = 0.0f;
-		if(numberOfRatings > 0) {
-			for(TestingRating rating : this.ratings) {
-				sumOfRatings = sumOfRatings + rating.getRating();
-			}
-			avg = sumOfRatings/numberOfRatings; 
-		}
-		
-		return avg;
+		return averageRating;
 	}
 	public void setAverageRating(Float averageRating) {
 		this.averageRating = averageRating;
 	}
 	
-
+	
 }
