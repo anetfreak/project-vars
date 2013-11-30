@@ -12,9 +12,14 @@ public class Project {
 	private Integer max_budget;
 	private String project_skills;
 	private String project_users;
+	private String developerName;
 	
 	
 	
+	
+	public String getDeveloperName() {
+		return developerName;
+	}
 	public Integer getProject_id() {
 		return project_id;
 	}
@@ -81,5 +86,10 @@ public class Project {
 	public void setProject_url(String project_url) {
 		this.project_url = project_url;
 	}
+	public void setDeveloperName(String firstName) {
+		// TODO Auto-generated method stub
+		this.developerName = firstName;
+	}
+	
 	
 	}

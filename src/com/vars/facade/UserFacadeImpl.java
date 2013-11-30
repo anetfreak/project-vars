@@ -1,6 +1,7 @@
 package com.vars.facade;
 
 import com.vars.dao.UserDao;
+import com.vars.domain.Developer;
 import com.vars.domain.Tester;
 import com.vars.domain.User;
 
@@ -49,5 +50,11 @@ public class UserFacadeImpl implements UserFacade{
 	public User getUserForId(Integer id) {
 		// TODO Auto-generated method stub
 		return userDao.getUserForId(id);
+	}
+
+	@Override
+	public Developer getDeveloper(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.getDeveloperForId(id);
 	}
 }

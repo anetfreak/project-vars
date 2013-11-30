@@ -56,7 +56,7 @@
 												<th>Project Title</th>
 												<th>Description</th>
 												<th>Domain</th>
-												<th>Developer ID</th>
+												<th>Developer Name</th>
 											</tr>
 											<c:forEach var="p" items="${newProjects}">
 												<tr>
@@ -65,7 +65,7 @@
 													<td>${p.title}</td>
 													<td>${p.description}</td>
 													<td>${p.domain}</td>
-													<td>${p.developer_id}</td>
+													<td>${p.developerName}</td>
 												</tr>
 											</c:forEach>
 										</table>
@@ -90,7 +90,7 @@
 												<th>Project Title</th>
 												<th>Description</th>
 												<th>Domain</th>
-												<th>Developer ID</th>
+												<th>Developer Name</th>
 											</tr>
 											<c:forEach var="p" items="${myProjects}">
 												<tr>
@@ -99,7 +99,7 @@
 													<td>${p.title}</td>
 													<td>${p.description}</td>
 													<td>${p.domain}</td>
-													<td>${p.developer_id}</td>
+													<td>${p.developerName}</td>
 												</tr>
 											</c:forEach>
 										</table>

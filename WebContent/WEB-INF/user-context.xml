@@ -31,6 +31,7 @@ http://www.springframework.org/schema/tx http://www.springframework.org/schema/t
 	<bean id="projectController" class="com.vars.controller.ProjectController">
 		<property name="bidFacade" ref="bidFacade" />
 		<property name="projectFacade" ref="projectFacade" />
+		<property name="userFacade" ref="userFacade" />
 	</bean>
 	
 	<bean id="bidDao" class="com.vars.dao.BidDaoImpl">

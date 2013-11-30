@@ -25,6 +25,8 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	
 	private static final String GET_TESTER_FOR_ID = "select user_id from tester where id = ?";
 	
+	private static final String GET_DEVELOPER_FOR_ID = "select user_id from developer where id = ?";
+	
 	private static final String GET_PROJECT = "select * from project where id = ?";
 	
 	private static final String INSERT_USER = "INSERT into user (username, password, first_name, last_name, istester, linkedin_id, linkedin_url) values (?, ?, ?, ?, ?, ?, ?)";
@@ -238,4 +240,19 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 		
 	}
 
-}
+	@Override
+	public Developer getDeveloperForId(Integer id) {
+		Developer developer = getJdbcTemplate().queryForObject(GET_DEVELOPER_FOR_ID, new Object[]{id}, new RowMapper<Developer>(){
+			@Override
+			public Developer mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Developer developer = new Developer();
+				developer.setUserId((rs.getInt("user_id")));
+				return developer;
+			}
+		});
+		developer.setId(id);
+		return developer;
+	}
+
+
+	}

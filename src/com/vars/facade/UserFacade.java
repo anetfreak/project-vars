@@ -1,5 +1,6 @@
 package com.vars.facade;
 
+import com.vars.domain.Developer;
 import com.vars.domain.Tester;
 import com.vars.domain.User;
 
@@ -18,5 +19,7 @@ public interface UserFacade {
 	Tester getTester(Integer id);
 
 	User getUserForId(Integer id);
+
+	Developer getDeveloper(Integer id);
 	
 }

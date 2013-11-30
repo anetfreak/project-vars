@@ -12,16 +12,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vars.domain.Developer;
 import com.vars.domain.Project;
+import com.vars.domain.Tester;
 import com.vars.domain.User;
 import com.vars.facade.BidFacade;
 import com.vars.facade.ProjectFacade;
+import com.vars.facade.UserFacade;
+import com.vars.facade.UserFacadeImpl;
 
 @Controller
 public class ProjectController {
 
 	private ProjectFacade projectFacade;
 	private BidFacade bidFacade;
+	private UserFacade userFacade;
+	
+	public void setUserFacade(UserFacade userFacade) {
+		this.userFacade = userFacade;
+	}
+
 	public void setBidFacade(BidFacade bidFacade) {
 		this.bidFacade = bidFacade;
 	}
@@ -65,6 +75,7 @@ public class ProjectController {
 		if(user != null) {
 			if(user.getIsTester()) {
 				ArrayList<Project> newProjects = projectFacade.getNewProjects();
+				
 				System.out.println("New Projects count"+ newProjects.size());
 				
 				ArrayList<Project> myProjects = bidFacade.getProjectsForTester(user.getTester().getId());
@@ -75,6 +86,12 @@ public class ProjectController {
 				if(newProjects.size() <= 0) {
 					modelAndView.addObject("newProjects", null);
 				} else {
+					for (Project project : newProjects) {
+						Developer developer =  userFacade.getDeveloper(project.getDeveloper_id());
+						User userd = userFacade.getUserForId((developer.getUserId()));
+						project.setDeveloperName(userd.getFirstName());
+					}
+												
 					modelAndView.addObject("newProjects", newProjects);
 				}
 				
@@ -84,6 +101,11 @@ public class ProjectController {
 				}
 				else
 				{
+					for (Project project : myProjects) {
+						Developer developer =  userFacade.getDeveloper(project.getDeveloper_id());
+						User userd = userFacade.getUserForId((developer.getUserId()));
+						project.setDeveloperName(userd.getFirstName());
+					}
 					modelAndView.addObject("myProjects", myProjects);
 				}
 				
@@ -100,6 +122,7 @@ public class ProjectController {
 		return modelAndView;
 	}
 	
+
 	@RequestMapping(value = "/viewTesterProjects.htm", method = RequestMethod.GET)
 	public ModelAndView getProjectTest() {
 		//getProjectDev needs tester Id to fetch

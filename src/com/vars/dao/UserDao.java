@@ -1,5 +1,6 @@
 package com.vars.dao;
 
+import com.vars.domain.Developer;
 import com.vars.domain.Tester;
 import com.vars.domain.User;
 
@@ -18,4 +19,6 @@ public interface UserDao {
 	Tester getTester(Integer id);
 	
 	User getUserForId(Integer id);
+	
+	Developer getDeveloperForId(Integer id);
 }
