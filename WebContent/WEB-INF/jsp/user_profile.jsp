@@ -74,7 +74,19 @@
 				<c:when test="${user.isTester}">
 					<div class="span2" style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
 						<h5> Rating </h5>
-						<div id="rating"><h6>${tester.averageRating}</h6></div>
+						<div id="rating-stars" style="margin-top:10px;">
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" checked="checked" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+						</div>
+						<div id="rating" style="margin-left: 100px;"><h5>${tester.averageRating}</h5></div>
 					</div>
 				</c:when>
 				</c:choose>
@@ -83,26 +95,26 @@
 							<tr>
 								<td><h5>First Name</h5></td>
 								<td></td>
-										<td><span>${user.firstName}</span></td>
+								<td><span style="margin-left: 10px;">${user.firstName}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h5>Last Name</h5></td>
 								<td></td>
-										<td><span>${user.lastName}</span></td>
+								<td><span style="margin-left: 10px;">${user.lastName}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
 								<td><h5>Email</h5></td>
 								<td></td>
-								<td><span>${user.userName}</span></td>
+								<td><span style="margin-left: 10px;">${user.userName}</span></td>
 							</tr>
 
 							<tr></tr>
 							<tr>
 		 						<td><h5>LinkedIn URL</h5></td>
 								<td></td>
-										<td><span><a href="${user.linkedInUrl}">${user.linkedInUrl}</a></span></td>
+								<td><span style="margin-left: 10px;"><a href="${user.linkedInUrl}" target="_blank">${user.linkedInUrl}</a></span></td>
 							</tr>
 							
 							<c:choose>
@@ -111,7 +123,7 @@
 								<tr>
 									<td><h5>Rating</h5></td>
 									<td></td>
-									<td><span>${tester.averageRating}</span></td>
+									<td><span style="margin-left: 10px;">${tester.averageRating}</span></td>
 								</tr>
 								</c:when>
 							</c:choose>
@@ -124,10 +136,10 @@
 								<td></td>
 								<c:choose>
 									<c:when test="${user.isTester}">
-										<td><span>Tester</span></td>
+										<td><span style="margin-left: 10px;">Tester</span></td>
 									</c:when>
 									<c:otherwise>
-										<td><span>Developer Group / Project Owner</span></td>
+										<td><span style="margin-left: 10px;">Developer Group / Project Owner</span></td>
 									</c:otherwise>
 								</c:choose>
 							</tr>
@@ -247,11 +259,3 @@
 
 </body>
 </html>
-
-
-
-
-
-
-
-
