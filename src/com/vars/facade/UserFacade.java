@@ -1,5 +1,6 @@
 package com.vars.facade;
 
+import com.vars.domain.Tester;
 import com.vars.domain.User;
 
 public interface UserFacade {
@@ -13,5 +14,9 @@ public interface UserFacade {
 	boolean checkInUser(String linkedInId);
 
 	User getInUser(String inId);
+	
+	Tester getTester(Integer id);
 
+	User getUserForId(Integer id);
+	
 }

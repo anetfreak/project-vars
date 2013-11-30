@@ -91,6 +91,9 @@ public class AuthenticationController {
 		user.setTester(tester);
 		user.setFirstName(fname);
 		user.setLastName(lname);
+		
+		System.out.println("Signup started for" + user.getFirstName() );
+		
 		userFacade.createUser(user);
 		
 		session.setAttribute("user", userFacade.getUser(user.getUserName()));

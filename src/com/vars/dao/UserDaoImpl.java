@@ -15,11 +15,15 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 
 	private static final String GET_USER = "select id, password, first_name, last_name, istester, linkedin_id, linkedin_url from user where username = ?";
 	
+	private static final String GET_USER_FOR_ID = "select username, password, first_name, last_name, istester, linkedin_id, linkedin_url from user where id = ?";
+	
 	private static final String GET_IN_USER = "select id, username, password, first_name, last_name, istester, linkedin_url from user where linkedin_id = ?";
 	
 	private static final String GET_DEVELOPER = "select id from developer where user_id = ?";
 	
 	private static final String GET_TESTER = "select id from tester where user_id = ?";
+	
+	private static final String GET_TESTER_FOR_ID = "select user_id from tester where id = ?";
 	
 	private static final String GET_PROJECT = "select * from project where id = ?";
 	
@@ -55,7 +59,6 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 						,user.getLinkedInUrl()});
 		int userId = getJdbcTemplate().queryForInt("select last_insert_id()");
 		
-		System.out.println("userID: "+userId);
 		user.setId(userId);
 		if(user.getIsTester()) {
 			user.getTester().setUserId(userId);
@@ -64,10 +67,11 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			user.getDeveloper().setUserId(userId);
 			getJdbcTemplate().update(INSERT_DEVELOPER, new Object[]{user.getId()} );
 		}
+		System.out.println("created userID: "+userId);
 	}
 
 	public User getUser(final String username) {
-		System.out.println("username is" + username);
+		System.out.println("username fo get user is " + username);
 		User user = getJdbcTemplate().queryForObject(GET_USER, new Object[]{username}, new RowMapper<User>(){
 			@Override
 			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -84,6 +88,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			}
 		});
 		
+		System.out.println("getting tester for user if " + user.getId());
 		if(user.getIsTester()) {
 			Tester tester = getJdbcTemplate().queryForObject(GET_TESTER, new Object[]{user.getId()}, new RowMapper<Tester>(){
 				@Override
@@ -171,6 +176,66 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 			user.setDeveloper(developer);
 		}
 		return user;
+	}
+
+	@Override
+	public Tester getTester(Integer id) {
+		Tester tester = getJdbcTemplate().queryForObject(GET_TESTER_FOR_ID, new Object[]{id}, new RowMapper<Tester>(){
+			@Override
+			public Tester mapRow(ResultSet rs, int rowNum) throws SQLException {
+				Tester tester = new Tester();
+				tester.setUserId((rs.getInt("user_id")));
+				return tester;
+			}
+		});
+		tester.setId(id);
+		return tester;
+	}
+
+	@Override
+	public User getUserForId(Integer id) {
+		// TODO Auto-generated method stub
+		//GET_USER_FOR_ID
+		System.out.println("getUserForId"+ id);
+		User user = getJdbcTemplate().queryForObject(GET_USER_FOR_ID, new Object[]{id}, new RowMapper<User>(){
+			@Override
+			public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+				User user = new User();
+				user.setUserName(rs.getString("username"));
+				user.setPassword(rs.getString("password"));
+				user.setIsTester(rs.getInt("istester") == 1 ? true : false);
+				user.setFirstName(rs.getString("first_name"));
+				user.setLastName(rs.getString("last_name"));
+				user.setLinkedInUrl(rs.getString("linkedin_url"));
+				user.setLinkedInId(rs.getString("linkedin_id"));
+				return user;
+			}
+		});
+		
+		if(user.getIsTester()) {
+			Tester tester = getJdbcTemplate().queryForObject(GET_TESTER, new Object[]{id}, new RowMapper<Tester>(){
+				@Override
+				public Tester mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Tester tester = new Tester();
+					tester.setId(rs.getInt("id"));
+					return tester;
+				}
+			}); 
+			user.setTester(tester);
+		} else {
+			Developer developer = getJdbcTemplate().queryForObject(GET_DEVELOPER, new Object[]{id}, new RowMapper<Developer>(){
+				@Override
+				public Developer mapRow(ResultSet rs, int rowNum) throws SQLException {
+					Developer developer = new Developer();
+					developer.setId(rs.getInt("id"));
+					return developer;
+				}
+			});
+			user.setDeveloper(developer);
+		}
+		user.setId(id);
+		return user;
+		
 	}
 
 }

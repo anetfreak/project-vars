@@ -1,6 +1,7 @@
 package com.vars.facade;
 
 import com.vars.dao.UserDao;
+import com.vars.domain.Tester;
 import com.vars.domain.User;
 
 public class UserFacadeImpl implements UserFacade{
@@ -39,5 +40,14 @@ public class UserFacadeImpl implements UserFacade{
 	public boolean checkInUser(String linkedInId) {
 		return userDao.checkInUser(linkedInId);
 	}
-	
+
+	@Override
+	public Tester getTester(Integer id) {
+		return userDao.getTester(id);
+	}
+	@Override
+	public User getUserForId(Integer id) {
+		// TODO Auto-generated method stub
+		return userDao.getUserForId(id);
+	}
 }

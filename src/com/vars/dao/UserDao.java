@@ -1,5 +1,6 @@
 package com.vars.dao;
 
+import com.vars.domain.Tester;
 import com.vars.domain.User;
 
 public interface UserDao {
@@ -13,4 +14,8 @@ public interface UserDao {
 	boolean checkInUser(String linkedInId);
 
 	User getInUser(String inId);
+	
+	Tester getTester(Integer id);
+	
+	User getUserForId(Integer id);
 }

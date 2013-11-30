@@ -17,12 +17,14 @@ import com.vars.domain.Tester;
 import com.vars.domain.User;
 import com.vars.facade.BidFacade;
 import com.vars.facade.ProjectFacade;
+import com.vars.facade.UserFacade;
 
 @Controller
 public class BidController {
 
 	private BidFacade bidFacade;
 	private ProjectFacade projectFacade;
+	private UserFacade userFacade;
 
 	public void setProjectFacade(ProjectFacade projectFacade) {
 		this.projectFacade = projectFacade;
@@ -79,6 +81,10 @@ public class BidController {
 		//return new ModelAndView("tester_proposal", "project", project);
 	//}
 	
+	public void setUserFacade(UserFacade userFacade) {
+		this.userFacade = userFacade;
+	}
+
 	@RequestMapping(value = "/project/bids/{id}.htm", method = RequestMethod.GET)
 	public ModelAndView getTesterProjects(@PathVariable("id") Integer id) {
 		Project project = projectFacade.getProject(id);
@@ -92,6 +98,14 @@ public class BidController {
 		if(bids.size() <= 0)
 			return new ModelAndView("project_bids", "bids", null);
 		else
+			for (Bid bid : bids) {
+				Project project = projectFacade.getProject(bid.getProjectId());
+				bid.setProjectName(project.getTitle());
+				
+				Tester tester = userFacade.getTester(bid.getTester());
+				User user = userFacade.getUserForId((tester.getUserId()));
+				bid.setTesterName(user.getFirstName());
+			}
 			return new ModelAndView("project_bids", "bids", bids);
 	}
 	

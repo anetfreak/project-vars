@@ -151,8 +151,12 @@
 									<td><h2 class="label label-primary">Description</h2></td>
 									<td></td>
 									<td><div class="input-group">
-											<input type="text" id="DescriptionInput" class="form-control">
+											<textarea rows="4" class="required" id="DescriptionInput" placeholder="Project Description "></textarea>
 										</div></td>
+										
+										
+										
+										
 								</tr>
 								<tr>
 									<td><h2 class="label label-primary">Project URL</h2></td>

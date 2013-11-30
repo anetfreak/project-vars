@@ -64,16 +64,16 @@ $(document).ready(function () {
 								<table class="table table-striped table-bordered">
 									<tr>
 										<th>Bid ID</th>
-										<th>Project ID</th>
-										<th>Tester ID</th>
+										<th>Project Name</th>
+										<th>Tester Name</th>
 										<th>Bid Description</th>
 										<th>Amount</th>
 									</tr>
 									<c:forEach var="b" items="${bids}">
 										<tr>
 										<td><a href="/project-vars/bids/selectBid/${b.id}.htm"><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></a></td>
-										<td><a href="/project-vars/project/devp_project/${b.projectId}.htm">${b.projectId}</a></td>
-										<td>${b.tester}</td>
+										<td><a href="/project-vars/project/devp_project/${b.projectId}.htm">${b.projectName}</a></td>
+										<td>${b.testerName}</td>
 										<td>${b.description}</td>
 										<td>$${b.amount}</td>
 									</tr>
