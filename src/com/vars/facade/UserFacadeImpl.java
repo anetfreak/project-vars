@@ -41,8 +41,8 @@ public class UserFacadeImpl implements UserFacade{
 	}
 
 	@Override
-	public boolean checkInUser(String linkedInId) {
-		return userDao.checkInUser(linkedInId);
+	public boolean checkInUser(String email) {
+		return userDao.checkInUser(email);
 	}
 
 	@Override

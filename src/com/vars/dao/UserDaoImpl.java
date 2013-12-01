@@ -9,7 +9,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.vars.domain.Developer;
-import com.vars.domain.Project;
 import com.vars.domain.Tester;
 import com.vars.domain.TestingRating;
 import com.vars.domain.User;
@@ -20,7 +19,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	
 	private static final String GET_USER_FOR_ID = "select username, password, first_name, last_name, istester, linkedin_id, linkedin_url from user where id = ?";
 	
-	private static final String GET_IN_USER = "select id, username, password, first_name, last_name, istester, linkedin_url from user where linkedin_id = ?";
+	private static final String GET_IN_USER = "select id, username, password, first_name, last_name, istester, linkedin_id, linkedin_url from user where username = ?";
 	
 	private static final String GET_DEVELOPER = "select id from developer where user_id = ?";
 	
@@ -48,7 +47,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	
 	//private static final String UPDATE_TESTER = "UPDATE tester set first_name =?, last_name =? where user_id =?";
 	
-	private static final String CHECK_LINKED_IN_USER = "select distinct(linkedin_id) from user where lower(linkedin_id) = lower(?)";
+	private static final String CHECK_LINKED_IN_USER = "select distinct(username) from user where lower(username) = lower(?)";
 
 	public void updateUser(User user) {
 		// TODO Auto-generated method stub
@@ -127,10 +126,10 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	}
 
 	@Override
-	public boolean checkInUser(String linkedInId) {
+	public boolean checkInUser(String email) {
 		boolean exists = false;
         List existingEmail = getJdbcTemplate().queryForList(
-        		CHECK_LINKED_IN_USER, new Object[] { linkedInId }, String.class);
+        		CHECK_LINKED_IN_USER, new Object[] { email }, String.class);
         if (!existingEmail.isEmpty()) {
             exists = true;
         }

@@ -1,8 +1,5 @@
 package com.vars.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
@@ -48,15 +45,6 @@ public class AuthenticationController {
 		return modelAndView;
 	}
 	
-	@RequestMapping(value = "/inLogin.htm", method = RequestMethod.POST)
-	public ModelAndView inLogin(@RequestParam("id") String linkedInId, HttpSession session) {
-		User user = userFacade.getInUser(linkedInId);
-		session.setAttribute("user", user);
-		session.setAttribute("sessionId", session.getId());
-		
-		return new ModelAndView("viewProjects.htm");
-	}
-
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.GET)
 	public ModelAndView showSignup() {
 		return new ModelAndView("auth/user_signup");
@@ -104,29 +92,24 @@ public class AuthenticationController {
 	
 	@RequestMapping(value = "/logout.htm", method = RequestMethod.GET)
 	public ModelAndView logout(HttpSession session) {
-		
 		session.invalidate();
 		return new ModelAndView("home");
 	}
 	
-	@RequestMapping(value = "/checkINUser.htm", method = RequestMethod.POST)
-	public ModelAndView checkInUser(@RequestParam("id") String linkedInId, HttpSession session) {
-		ModelAndView modelAndView;
+	@RequestMapping(value = "/checkUserRegistered.htm", method = RequestMethod.POST)
+	public ModelAndView checkUser(@RequestParam("email") String email, HttpSession session) {
 		Response response = null;
-		boolean exists = userFacade.checkInUser(linkedInId);
+		boolean exists = userFacade.checkInUser(email);
 		if(exists) {
 			response = new Response("exists");
-			User user = userFacade.getInUser(linkedInId);
+			User user = userFacade.getInUser(email);
 			session.setAttribute("user", user);
 			session.setAttribute("sessionId", session.getId());
-			
-			modelAndView = new ModelAndView("viewProjects.htm");
 		} else {
 			response = new Response("newUser");
-			modelAndView = new ModelAndView("signup.htm");
 		}
 		
-		return modelAndView;
+		return new ModelAndView(VIEW_NAME, "result", response);
 	}
 
 	public void setUserFacade(UserFacade userFacade) {

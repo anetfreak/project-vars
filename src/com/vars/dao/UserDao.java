@@ -16,7 +16,7 @@ public interface UserDao {
 	
 	void updateUser(User user);
 
-	boolean checkInUser(String linkedInId);
+	boolean checkInUser(String email);
 
 	User getInUser(String inId);
 	

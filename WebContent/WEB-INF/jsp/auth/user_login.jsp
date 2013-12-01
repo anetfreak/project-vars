@@ -9,7 +9,7 @@
 <script type="text/javascript" src="http://platform.linkedin.com/in.js">
   api_key: 75wgepnpou4y46
   authorize: true
-  scope: r_network
+  scope: r_emailaddress
   onLoad : onLinkedInLoad
 </script>
 
@@ -86,7 +86,7 @@
 
 	function onLinkedInAuth() {
 		IN.API.Profile("me")
-		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl")
+		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl", "emailAddress")
 		.result(displayProfile);
 	}
 	
@@ -114,12 +114,17 @@
 // 		$('#userProfile').css('display', 'block');
 // 		$('#profile').html("<img src=" + member.pictureUrl + "></img><br/><div id=\"" + member.id + "\">Hello <b>" +  member.firstName + " " + member.lastName + "</b><br/><br/><div>You are currently <b>'" + member.headline + "'</b> and located in " + member.location.name + ", " + member.location.country.code.toUpperCase() + ".<br/><br/> Your primary industry is <b>" + member.industry + "</b></div></div>");
 		
+		var email = member.emailAddress;
 		$.ajax({
-			url : "checkINUser.htm",
+			url : "checkUserRegistered.htm",
 		    type: "POST",
-		    data : "id=" + member.id,
+		    data : "email=" + email,
 		    success:function(data, textStatus, jqXHR){
-		    	window.location.href = "/project-vars/";
+		    	if(data.response == "exists"){
+		    		window.location.href = "viewProjects.htm";
+		    	} else {
+		    		window.location.href = "signup.htm";
+		    	}
 		    },
 		    error: function(jqXHR, textStatus, errorThrown){
 		    	alert("Could not process request.. " + errorThrown);
