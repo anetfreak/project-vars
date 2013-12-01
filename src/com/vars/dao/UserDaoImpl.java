@@ -27,7 +27,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 	
 	private static final String GET_TESTER_FOR_ID = "select user_id from tester where id = ?";
 		
-	private static final String GET_RATING = "select id, developer_id, rating, ratingdate from tester_rating where tester_id = ?";
+	private static final String GET_RATING = "select developer_id, rating, ratingdate from tester_rating where tester_id = ?";
 	
 	private static final String GET_DEVELOPER_FOR_ID = "select user_id from developer where id = ?";
 	
@@ -253,7 +253,6 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 					public TestingRating mapRow(ResultSet rs, int rowNum)
 							throws SQLException {
 						TestingRating testingRating = new TestingRating();
-						testingRating.setId(rs.getInt("id"));
 						testingRating.setDeveloperId(rs.getInt("developer_id"));
 						testingRating.setRating(rs.getFloat("rating"));
 						testingRating.setDate(rs.getDate("ratingdate"));
