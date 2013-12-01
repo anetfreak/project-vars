@@ -75,16 +75,16 @@
 					<div class="span2" style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
 						<h5> Rating </h5>
 						<div id="rating-stars" style="margin-top:10px;">
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" checked="checked" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="05Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="10Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="15Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="20Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="25Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="30Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="35Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="40Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="45Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input id="50Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
 						</div>
 						<div id="rating" style="margin-left: 100px;"><h5>${tester.averageRating}</h5></div>
 					</div>
