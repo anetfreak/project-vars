@@ -53,7 +53,8 @@ public class UserController {
 			user.getTester().setAverageRating(ratingAverage);
 		}
 		modelAndView.addObject("user", user);
-		modelAndView.addObject("ratings", ratings);
+		if(ratings.size() > 0)
+			modelAndView.addObject("ratings", ratings);
 		modelAndView.addObject("tester", tester);
 		return modelAndView;
 	}
