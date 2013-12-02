@@ -25,6 +25,20 @@
 	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
+$(document).ready(function() {
+    $('#example').dataTable( {
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p>>"
+    });
+} );
+</script>
+<script>
+$.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline"
+} );
+
+</script>
+
+<script type="text/javascript">
 	$(document)
 			.ready(
 					function() {
@@ -211,13 +225,16 @@
 							<c:choose>
 								<c:when test="${projects ne null}">
 									<div id="projects">
-										<table class="table table-striped table-bordered">
+										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="example">
+											<thead>
 											<tr>
 												<th>ID</th>
 												<th>Project Title</th>
 												<th>Description</th>
 												<th>Domain</th>
 											</tr>
+											</thead>
+											<tbody>
 											<c:forEach var="p" items="${projects}">
 												<tr>
 													<td><a
@@ -227,6 +244,17 @@
 													<td>${p.domain}</td>
 												</tr>
 											</c:forEach>
+											</tbody>
+											<!--
+											<tfoot>
+											<tr>
+												<th>ID</th>
+												<th>Project Title</th>
+												<th>Description</th>
+												<th>Domain</th>
+											</tr>
+											</tfoot>
+											-->
 										</table>
 									</div>
 								</c:when>
