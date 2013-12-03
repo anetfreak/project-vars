@@ -30,7 +30,14 @@ $(document).ready(function () {
 	
 	
 </script>
-
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#bidding').dataTable( {
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//"sPaginationType": "bootstrap"
+    });
+} );
+</script>
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/layout/header.jsp" %>
@@ -61,7 +68,11 @@ $(document).ready(function () {
 						<c:when test="${bids ne null}">
 						<div class="tab-pane active" id="ShowAllBids">
 							<div id="bids">
-								<table class="table table-striped table-bordered">
+							<table>
+							<tr>
+							<td>
+								<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="bidding">
+									<thead>
 									<tr>
 										<th>Bid ID</th>
 										<th>Project Name</th>
@@ -69,6 +80,8 @@ $(document).ready(function () {
 										<th>Bid Description</th>
 										<th>Amount</th>
 									</tr>
+									</thead>
+									<tbody>
 									<c:forEach var="b" items="${bids}">
 										<tr>
 										<td><a href="/project-vars/bids/selectBid/${b.id}.htm"><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></a></td>
@@ -77,25 +90,27 @@ $(document).ready(function () {
 										<td>${b.description}</td>
 										<td>$${b.amount}</td>
 									</tr>
+									
 									</c:forEach>
-											<tr>
+									</tbody>
+									</table>
+											</td>
 											</tr>
 											<tr>
 											</tr>
+											</table>
+											<table>
 											<tr>
-												<td></td>
-												<td></td>
-
+												<td style="width: 82.5%;"></td>
 												<td>
-													<div class="col-sm-offset-2 col-sm-10">
-														<input type="submit" class="btn btn-default" id="submit"
+													<div>
+														<input type="submit" class="btn btn-primary" id="submit"
 															value="Submit" />
 													</div>
-
 												</td>
 
 											</tr>
-										</table>
+											</table>
 							</div>
 						</div>
 						</c:when>

@@ -27,7 +27,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#example').dataTable( {
-    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p>>"
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//"sPaginationType": "bootstrap"
     });
 } );
 </script>
@@ -239,7 +240,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 												<tr>
 													<td><a
 														href="/project-vars/project/devp_project/${p.project_id}.htm">${p.project_id}</a></td>
-													<td>${p.title}</a></td>
+													<td>${p.title}</td>
 													<td>${p.description}</td>
 													<td>${p.domain}</td>
 												</tr>

@@ -13,6 +13,29 @@
 	font-size: 14px;
 }
 </style>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#shwNewPrj').dataTable( {
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//"sPaginationType": "bootstrap"
+    });
+} );
+</script>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#viwMyPrj').dataTable( {
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//"sPaginationType": "bootstrap"
+    });
+} );
+</script>
+<script>
+$.extend( $.fn.dataTableExt.oStdClasses, {
+    "sWrapper": "dataTables_wrapper form-inline"
+} );
+
+</script>
+
 </head>
 <body>
 
@@ -50,7 +73,8 @@
 							<c:choose>
 								<c:when test="${newProjects ne null}">
 									<div id="projects">
-										<table class="table table-striped table-bordered">
+										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="shwNewPrj">
+											<thead>
 											<tr>
 												<th>ID</th>
 												<th>Project Title</th>
@@ -58,6 +82,8 @@
 												<th>Domain</th>
 												<th>Developer Name</th>
 											</tr>
+											</thead>
+											<tbody>
 											<c:forEach var="p" items="${newProjects}">
 												<tr>
 													<td><a
@@ -68,6 +94,7 @@
 													<td>${p.developerName}</td>
 												</tr>
 											</c:forEach>
+											</tbody>
 										</table>
 									</div>
 								</c:when>
@@ -84,7 +111,8 @@
 							<c:choose>
 								<c:when test="${myProjects ne null}">
 									<div id="projects">
-										<table class="table table-striped table-bordered">
+										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="viwMyPrj">
+											<thead>
 											<tr>
 												<th>ID</th>
 												<th>Project Title</th>
@@ -92,6 +120,8 @@
 												<th>Domain</th>
 												<th>Developer Name</th>
 											</tr>
+											</thead>
+											<tbody>
 											<c:forEach var="p" items="${myProjects}">
 												<tr>
 													<td><a
@@ -102,6 +132,7 @@
 													<td>${p.developerName}</td>
 												</tr>
 											</c:forEach>
+											</tbody>
 										</table>
 									</div>
 
