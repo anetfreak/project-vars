@@ -16,6 +16,7 @@ $(document).ready(function() {
 } );
 </script>
 
+
 <script type="text/javascript">
 		$(document).ready(function() {
 			$('#updateinformation').click(function(event) {
@@ -65,7 +66,7 @@ $(document).ready(function() {
 <body>
 	<%@include file="./layout/header.jsp"%>
 
-	<div id="container" style="padding-top: 40px;">
+	<div id="container" style="padding-top: 40px">
 	
 	<% if(session.getAttribute("user") == null) { %>
 		<div class="container-fluid">
@@ -73,7 +74,7 @@ $(document).ready(function() {
 		</div>
 	<% } else { %>
 	
-		<div class="container-fluid">
+		<div class="container-fluid" style="max-height:500px; overflow-y:auto">
 			<div class="row-fluid">
 				<div id="UserProfile" style="margin: 0px 0px 10px 30px;">
 				<div><h3>User Profile </h3></div>
@@ -269,6 +270,7 @@ $(document).ready(function() {
 		<% } %>
 	</div>
 </div>
+
 <%@include file="./layout/footer.jsp"%>
 
 </body>
