@@ -92,23 +92,6 @@
 	
 	function displayProfile(profiles) {
 		var member = profiles.values[0];
-// 		var loggedInHtml = "<ul id='loggedInMenu' class='nav' style='float:right; padding-right: 35px;'>";
-// 		loggedInHtml = loggedInHtml + "<li class='dropdown' id='loggedInDown'>";
-// 		loggedInHtml = loggedInHtml + "<a class='dropdown-toggle' data-toggle='dropdown' href='#loggedInDown' style='color: white;'>Hello " + member.firstName + " <span class='caret'></span></a>";
-// 		loggedInHtml = loggedInHtml + "<ul class='dropdown-menu'>";
-// 		loggedInHtml = loggedInHtml + "<li><a href='showProfile.htm'>Profile</a></li>";
-// 		loggedInHtml = loggedInHtml + "<li><a href='#' onclick='IN.User.logout();'>Logout</a></li>";
-// 		loggedInHtml = loggedInHtml + "</ul>";
-// 		loggedInHtml = loggedInHtml + "</li>";
-// 		loggedInHtml = loggedInHtml + "</ul>";
-		
-// 		$('#loginMenu').css('display','none');
-// 		var existingMenu = $('#headerNav').html();		
-// 		$('#headerNav').html(existingMenu + loggedInHtml);
-// 		window.location.href = "/project-vars/";
-// 	}
-	
-	
 		
 // 		$('#loginOptions').css('display', 'none');
 // 		$('#userProfile').css('display', 'block');
