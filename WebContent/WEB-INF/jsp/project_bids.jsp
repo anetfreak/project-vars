@@ -68,7 +68,7 @@ $(document).ready(function() {
 						<c:when test="${bids ne null}">
 						<div class="tab-pane active" id="ShowAllBids">
 							<div id="bids">
-							<table>
+							<table style = "width:100%">
 							<tr>
 							<td>
 								<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="bidding">
@@ -101,7 +101,7 @@ $(document).ready(function() {
 											</table>
 											<table>
 											<tr>
-												<td style="width: 82.5%;"></td>
+												<td style="width: 86%;"></td>
 												<td>
 													<div>
 														<input type="submit" class="btn btn-primary" id="submit"
