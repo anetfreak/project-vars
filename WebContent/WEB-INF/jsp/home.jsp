@@ -21,9 +21,8 @@ snowStorm.snowStick = true;
 <body>
 	
 	<%@include file="./layout/header.jsp" %>
-	<div id="container" style="margin: 0px 0px 70px 0px;max-height:540px; overflow-y:hidden">
+	<div id="container" style="margin: 0px 0px 70px 0px; max-height:100%; overflow-y:hidden;">
 	    <div class="hero-unit" style="padding: 0px; font-size: 35px; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
-<!-- 			<img src="http://www.chevrolet.com/content/dam/Chevrolet/northamerica/usa/nscwebsite/en/Home/Chevy%20Culture/Racing/Performance%20meets%20Innovation/01-image/2012-culture-racing-cutting-edge-athletic-technologies-mh-1_1280x600.jpg"/> -->
 			<img src="images/rt-masthead.jpg"/>
 			<div style="width: auto; line-height: 40px; top: 6em; left: 4em; position: absolute; z-index: 10; margin: 0px 0px 0px 40px;">
 				<p style="font-size: 45px;">Welcome to MakeItUsable!</p>
