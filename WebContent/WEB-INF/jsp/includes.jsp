@@ -29,5 +29,9 @@
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/global.js"/></script>
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/jquery.js"/></script>
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/jquery.dataTables.nightly.js"/></script>
+			
+			<script type="text/javascript" src="<%=request.getContextPath()%>/js/snowstorm.js"/></script>
+				<script type="text/javascript" src="<%=request.getContextPath()%>/js/snowstorm-min.js"/></script>
+			
 	</head>
 </html>
