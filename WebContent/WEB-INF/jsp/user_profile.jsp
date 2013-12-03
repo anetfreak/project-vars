@@ -7,6 +7,14 @@
 <title>MakeItUsable! - User Profile</title>
 
 <%@include file="includes.jsp"%>
+<script type="text/javascript">
+$(document).ready(function() {
+    $('#rate').dataTable( {
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//"sPaginationType": "bootstrap"
+    });
+} );
+</script>
 
 <script type="text/javascript">
 		$(document).ready(function() {
@@ -155,20 +163,24 @@
 					</div>
 					</div>
 					<div class="row-fluid">
-						<div class="btn-group" style="margin-top: 20px;">
-								<input type="submit" class="btn" id="updateinformation" value="Update Information"/>
+					<div class="span2"></div>
+						<div class="btn-group" style="margin-top: 20px; margin-left: 50px">
+								<input type="submit" class="btn btn-primary" id="updateinformation" value="Update Information"/>
 						</div>
 					</div>
 					<div class="row-fluid"  style="margin-top: 20px;">
 					<c:choose>
 								<c:when test="${ratings ne null}">
 									<div id="projects">
-										<table class="table table-striped table-bordered">
+										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="rate">
+											<thead>
 											<tr>
 												<th>Project Owner</th>
 												<th>Rating</th>
 												<th>Date</th>
 											</tr>
+											</thead>
+											<tbody>
 											<c:forEach var="p" items="${ratings}">
 												<tr>
 													<td>${p.developerName}</td>
@@ -176,10 +188,12 @@
 													<td>${p.date}</td>
 												</tr>
 											</c:forEach>
+											</tbody>
 										</table>
 									</div>
 								</c:when>
 							</c:choose>
+				</div>
 				</div>
 				<div class="tab-content" id="UpdateProfile" style="display: none;">
 					<div class="tab-pane active">
@@ -248,13 +262,13 @@
 						</table>
 					</div>
 				</div>
-			</div>
+			
 
 
 		</div>
 		<% } %>
 	</div>
-
+</div>
 <%@include file="./layout/footer.jsp"%>
 
 </body>
