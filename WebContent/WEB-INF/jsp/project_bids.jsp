@@ -12,20 +12,22 @@
 	
 $(document).ready(function () {
    
-//    $('#submit').click(function(event) {
-// 	   var bidIdinput = $("input:radio[name=bidRadio]:checked").val();
-// 		//params to be displayed here are not handled - projName,Desc,etc	  
-// 		$.ajax({
-// 			url : "selectBid/" + bidIdinput + ".htm",
-// 		    type: "GET",
-// 		    success:function(data, textStatus, jqXHR){
-// 		    	window.location.href="viewProjects.htm";
-// 		    },
-// 		    error: function(jqXHR, textStatus, errorThrown){
-// 		    	alert("Could not process request.. " + errorThrown);
-// 		    }
-// 		});
-//    });
+    $('#submit').click(function(event) {
+ 	   var bidIdinput = $("input:radio[name=bidRadio]:checked").val();
+ 		//params to be displayed here are not handled - projName,Desc,etc	  
+ 		$.ajax({
+ 			url : "selectBid/" + bidIdinput + ".htm",
+ 		    type: "POST",
+ 		   data : "bidId="
+				+ bidIdinput,
+ 		    success:function(data, textStatus, jqXHR){
+ 		    	window.location.href="viewProjects.htm";
+ 		    },
+ 		    error: function(jqXHR, textStatus, errorThrown){
+ 		    	alert("Could not process request.. " + errorThrown);
+ 		    }
+ 		});
+    });
 });
 	
 	

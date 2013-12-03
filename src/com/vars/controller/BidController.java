@@ -114,7 +114,7 @@ public class BidController {
 			return new ModelAndView("project_bids", "bids", bids);
 	}
 	
-	@RequestMapping(value = "/bids/selectBid/{bidId}.htm", method = RequestMethod.GET)
+	@RequestMapping(value = "/bids/selectBid/{bidId}.htm", method = RequestMethod.POST)
 	public ModelAndView selectBid(@PathVariable("bidId") Integer bidId) {
 		Bid bid = bidFacade.getBid(bidId);
 		bidFacade.setBidForProject(bid);
