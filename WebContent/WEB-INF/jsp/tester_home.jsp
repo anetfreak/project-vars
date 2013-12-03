@@ -59,11 +59,11 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 			<div class="row-fluid">
 				<div id="sidebar" class="span2" style="margin: 0px 20px 0px 20px;">
 					<!--Sidebar content-->
-					<ul id="sidebar-list" class="nav nav-list">
-						<li class="nav-header">Tester Options</li>
-						<li class="active"><a href="#ShowNewProjects"
+					<ul id="sidebar-list" class="nav nav-list"  style="background-color: #f7f5fa;">
+						<li class="nav-header" style="font-size: 15px;">Tester Options</li>
+						<li class="active" style="font-size: 15px;"><a href="#ShowNewProjects"
 							data-toggle="tab">Show New Projects</a></li>
-						<li><a href="#ViewMyProjects" data-toggle="tab">View My
+						<li style="font-size: 15px;"><a href="#ViewMyProjects" data-toggle="tab">View My
 								Projects</a></li>
 					</ul>
 				</div>

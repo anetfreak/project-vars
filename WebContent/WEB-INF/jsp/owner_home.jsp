@@ -133,11 +133,11 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 			<div class="row-fluid">
 				<div id="sidebar" class="span2" style="margin: 0px 20px 0px 20px;">
 					<!--Sidebar content-->
-					<ul id="sidebar-list" class="nav nav-list">
-						<li class="nav-header">Project Options</li>
-						<li class="active"><a href="#ViewMyProjects"
+					<ul id="sidebar-list" class="nav nav-list" style="background-color: #f7f5fa;">
+						<li class="nav-header" style="font-size: 15px;">Project Options</li>
+						<li class="active" style="font-size: 15px;"><a href="#ViewMyProjects"
 							data-toggle="tab">View My Projects</a></li>
-						<li><a href="#PostNewProject" data-toggle="tab">Post new
+						<li style="font-size: 15px;"><a href="#PostNewProject" data-toggle="tab">Post new
 								Project</a></li>
 					</ul>
 				</div>
@@ -148,75 +148,74 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							
 								<!--Body content-->
 								<tr>
-									<td><h2 class="label label-primary">Project Title</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project Title</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" id="ProjectTitleInput"
-												class="form-control">
+									<td><div>
+											<input type="text" id="ProjectTitleInput" style="width: 310px;" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Domain</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Domain</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" id="DomainInput" class="form-control">
+									<td><div>
+											<input type="text" style="width: 310px;" id="DomainInput" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Description</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Description</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<textarea rows="4" class="required" id="DescriptionInput" placeholder="Project Description "></textarea>
+									<td><div>
+											<textarea rows="4" class="required" style="width: 310px;" id="DescriptionInput" placeholder="Project Description "></textarea>
 										</div></td>
-										
-										
-										
-										
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Project URL</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project URL</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="url" id="ProjectURLInput" class="form-control"
+									<td><div>
+											<input type="url" id="ProjectURLInput" style="width: 310px;" class="form-control"
 												placeholder="Enter your Website URl">
 										</div></td>
 								</tr>
 								
 								<tr>
-									<td><h2 class="label label-primary">Budget</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Budget</h2></td>
 									<td></td>
-									<td><div class="input-prepend input-append">
+									<td><div>
 											<span class="add-on">$</span> 
-											<input id="MiniBudgetInput" type="text" size="25"
-												placeholder="Minimum Amount in USD">
-										</div> To
+											<input id="MiniBudgetInput" type="text" style="width: 295px;" placeholder="Minimum Amount">
+										</div> 
+										
+										
+										To
 						
 										
-										<div class="input-prepend input-append">
+										<div>
 											<span class="add-on">$</span> <input 
-												id="MaxBudgetInput" type="text" placeholder="Maximum Amount in USD"> </div></td>
-								</tr>
-								
+												id="MaxBudgetInput" type="text" style="width: 295px;" placeholder="Maximum Amount"> </div>
+									</td>
+								</tr>	
 								<tr>
-									<td><h2 class="label label-primary">Project Skills</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project Skills</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" id="ProjectSkillsInput"
+									<td><div>
+											<input type="text" id="ProjectSkillsInput" style="width: 310px;"
 												class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Project Users</h2></td>
+									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project Users</h2></td>
 									<td></td>
-									<td><div class="input-group">
-											<input type="text" id="ProjectUsersInput"
+									<td><div>
+											<input type="text" id="ProjectUsersInput" style="width: 310px;"
 												class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><div class="col-sm-offset-2 col-sm-10">
+								<td></td>
+								<td></td>
+									<td><div class="col-sm-offset-2 col-sm-10" style="margin-left: 100px ; margin-top: 15px ">
 											<input type="submit" class="btn btn-primary"
-												id="submitProject" value="Submit" />
+												id="submitProject" value="Submit Project" />
 										</div></td>
 								</tr>
 							</table>
