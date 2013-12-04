@@ -81,7 +81,7 @@ $(document).ready(function() {
 				<div class="row-fluid"> 
 				<c:choose>
 				<c:when test="${user.isTester}">
-					<div class="span2" style="-webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
+					<div class="span2" style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
 						<h5> Rating </h5>
 						<div id="rating-stars" style="margin-top:10px;">
 							<input id="05Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>

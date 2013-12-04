@@ -28,7 +28,7 @@
 $(document).ready(function() {
     $('#example').dataTable( {
     	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
-    	//,"sPaginationType": "bootstrap"
+    	,"sPaginationType": "full_numbers"
     });
 } );
 </script>
@@ -131,9 +131,9 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 		%>
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div id="sidebar" class="span2" style="margin: 0px 20px 0px 20px;">
+				<div id="sidebar" class="span2" style="margin: 35px 20px 0px 20px; padding: 20px 0px 50px 0px; background-color: ghostwhite;">
 					<!--Sidebar content-->
-					<ul id="sidebar-list" class="nav nav-list" style="background-color: #f7f5fa;">
+					<ul id="sidebar-list" class="nav nav-list">
 						<li class="nav-header" style="font-size: 15px;">Project Options</li>
 						<li class="active" style="font-size: 15px;"><a href="#ViewMyProjects"
 							data-toggle="tab">View My Projects</a></li>
@@ -225,10 +225,9 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							<c:choose>
 								<c:when test="${projects ne null}">
 									<div id="projects">
-										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="example">
+										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="example" style="background-color: ghostwhite;">
 											<thead>
 											<tr>
-												<th>ID</th>
 												<th>Project Title</th>
 												<th>Description</th>
 												<th>Domain</th>
@@ -237,24 +236,12 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 											<tbody>
 											<c:forEach var="p" items="${projects}">
 												<tr>
-													<td><a
-														href="/project-vars/project/devp_project/${p.project_id}.htm">${p.project_id}</a></td>
-													<td>${p.title}</td>
+													<td><a href="/project-vars/project/devp_project/${p.project_id}.htm">${p.title}</a></td>
 													<td>${p.description}</td>
 													<td>${p.domain}</td>
 												</tr>
 											</c:forEach>
 											</tbody>
-											<!--
-											<tfoot>
-											<tr>
-												<th>ID</th>
-												<th>Project Title</th>
-												<th>Description</th>
-												<th>Domain</th>
-											</tr>
-											</tfoot>
-											-->
 										</table>
 									</div>
 								</c:when>
