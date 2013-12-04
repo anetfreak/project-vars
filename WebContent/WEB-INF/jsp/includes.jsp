@@ -28,11 +28,14 @@
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/star-rating/jquery.rating.css"/>
 			
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/global.js"/></script>
-			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/jquery.js"/></script>
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/jquery.dataTables.nightly.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/shCore.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/shBrushScript.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/js/datatable/DT_bootstrap.js"/></script>
+			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/js/datatable/DT_bootstrap.css"/>
 			
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/snowstorm.js"/></script>
-				<script type="text/javascript" src="<%=request.getContextPath()%>/js/snowstorm-min.js"/></script>
+			<script type="text/javascript" src="<%=request.getContextPath()%>/js/snowstorm-min.js"/></script>
 			
 	</head>
 </html>

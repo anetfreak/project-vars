@@ -28,7 +28,7 @@
 $(document).ready(function() {
     $('#example').dataTable( {
     	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
-    	,"sPaginationType": "full_numbers"
+    	//,"sPaginationType": "bootstrap"
     });
 } );
 </script>
