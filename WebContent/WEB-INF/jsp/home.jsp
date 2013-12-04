@@ -28,13 +28,6 @@ snowStorm.snowStick = true;
 				<p style="font-size: 45px;">Welcome to <span style="color: green;">MakeItUsable!</span></p>
 			</div>
 		</div>
-		
-		
-<!-- 		<div style="padding: 150px 20px 70px 50px;"> -->
-<!-- 			<h1 style="font-family: Calibri; font-style: italic;">Welcome to MakeItUsable!</h1> -->
-<!-- 			<p>A superb platform where developer groups and usability testers interact..</p> -->
-<!-- 			<a href="/project-vars/about.htm" class="btn btn-large btn-success">Know More</a> -->
-<!-- 		</div> -->
 	</div>
 
 	<%@include file="./layout/footer.jsp" %>

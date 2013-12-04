@@ -55,20 +55,6 @@
 		
 	});
 	
-	var loginAJAX = function(linkedInId) {
-		$.ajax({
-			url : "inLogin.htm",
-		    type: "POST",
-		    data: "id=" + linkedInId,
-		    success:function(data, textStatus, jqXHR){
-		    	window.location.href="viewProjects.htm";
-		    },
-		    error: function(jqXHR, textStatus, errorThrown){
-		    	alert("Could not process request.. " + errorThrown);
-		    }
-		});
-	};
-	
 	function onLinkedInLoad () {
 		IN.Event.on(IN, "auth", function() {onLinkedInAuth();});
 		IN.Event.on(IN, "logout", function() {onLinkedInLogout();});

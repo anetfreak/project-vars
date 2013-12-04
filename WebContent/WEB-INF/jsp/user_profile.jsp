@@ -263,9 +263,6 @@ $(document).ready(function() {
 						</table>
 					</div>
 				</div>
-			
-
-
 		</div>
 		<% } %>
 	</div>
