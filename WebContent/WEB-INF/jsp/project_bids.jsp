@@ -18,10 +18,9 @@ $(document).ready(function () {
  		$.ajax({
  			url : "selectBid/" + bidIdinput + ".htm",
  		    type: "POST",
- 		   data : "bidId="
-				+ bidIdinput,
+ 		   data : "bidId="+ bidIdinput,
  		    success:function(data, textStatus, jqXHR){
- 		    	window.location.href="viewProjects.htm";
+ 		    	window.location.href="/project-vars/viewProjects.htm";
  		    },
  		    error: function(jqXHR, textStatus, errorThrown){
  		    	alert("Could not process request.. " + errorThrown);
