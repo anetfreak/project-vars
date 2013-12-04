@@ -25,7 +25,7 @@ snowStorm.snowStick = true;
 	    <div class="hero-unit" style="padding: 0px; font-size: 35px; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
 			<img src="images/rt-masthead.jpg"/>
 			<div style="width: auto; line-height: 40px; top: 6em; left: 6em; position: absolute; z-index: 10; margin: 0px 0px 0px 40px;">
-				<p style="font-size: 45px;">Welcome to <span style="color: green;">MakeItUsable!</span></p>
+				<p style="font-size: 45px;">Welcome to <span style="color: green;">MakeItUsable<span style="color:red">!</span></span></p>
 			</div>
 		</div>
 	</div>
