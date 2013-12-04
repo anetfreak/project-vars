@@ -10,8 +10,8 @@
 <script type="text/javascript">
 $(document).ready(function() {
     $('#rate').dataTable( {
-    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>",
-    	"sPaginationType": "bootstrap"
+    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+    	//,"sPaginationType": "bootstrap"
     });
 } );
 </script>
