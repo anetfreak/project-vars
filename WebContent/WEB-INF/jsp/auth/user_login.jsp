@@ -118,7 +118,7 @@
 		<div class="container-fluid">
 			<div id="loginOptions" style="margin: 80px 0px 0px 50px;">
 				<div class="span1"></div>
-				<div class="span4">
+				<div class="span5">
 					<div style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
 						<h3> Sign In </h3>
 						<table>
@@ -144,7 +144,7 @@
 				</div>
 				<div class="divider-vertical"></div>
 				
-				<div class="span4">
+				<div class="span5">
 					<div style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
 						<h3> Sign In with LinkedIn </h3>
 						<div id="linkedInLogin" style="margin: 30px 0px 77px 0px;">
