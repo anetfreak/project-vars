@@ -77,7 +77,7 @@
 		</div>
 	<% } else { %>
 	
-		<div class="container-fluid" style="max-height:500px; overflow-y:auto">
+		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="UserProfile" style="margin: 0px 0px 10px 30px;">
 				<div><h3>User Profile </h3></div>
