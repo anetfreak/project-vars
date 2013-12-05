@@ -9,30 +9,14 @@
 	<title>Welcome to MakeItUsable!</title>
 	<%@include file="includes.jsp" %>
 	<script type="text/javascript">
-// 		$(document).ready(function(){
-// 			$('#createUser').click(function(event) {
-// 				$.ajax({
-// 					url : "showUser.htm",
-// 				    type: "GET",
-// 				    success:function(data, textStatus, jqXHR){
-// 				    },
-// 				    error: function(jqXHR, textStatus, errorThrown){
-// 				    	alert("Could not add to cart.. " + errorThrown);
-// 				    }
-// 				});
-// 			});
-// 		});
-	
 	</script>
-	
 </head>
 <body>
 
-Welcome to a basic Spring Application, ${hello}!
-
-<div>
-	<a href="showUser.htm" class="btn btn-primary" id="createUser">Create User</a>
-</div>
+	Welcome to MakeItUsable!, ${hello}!
+	<div>
+		<a href="showUser.htm" class="btn btn-primary" id="createUser">Create User</a>
+	</div>
 
 </body>
 </html>
