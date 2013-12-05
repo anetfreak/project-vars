@@ -46,6 +46,7 @@
 	
 		<div class="container-fluid">
 			<div class="row-fluid">
+			<div class="span2"></div>
 				<input type="hidden" id="projectId" name="projectId" value="${project.project_id}"/>
 				<input type="hidden" id="developer_ID" name="developer_Id" value="${project.developer_id}" />
 				<input type="hidden" id="tester_ID" name="tester_Id" value="${project.tester_id}" />

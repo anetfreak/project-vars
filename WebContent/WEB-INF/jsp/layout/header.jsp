@@ -8,7 +8,7 @@
 			<a class="brand" href="/project-vars/"><span style="color: green; margin: 0px 10px 0px 10px;">MakeItUsable<span style="color: red;">!</span></span></a>
 			<% if(session.getAttribute("user") != null) { %>
 			<ul class="nav">
-				<li><a href="viewProjects.htm" style="color: white;">View Projects</a></li>
+				<li><a href="/project-vars/viewProjects.htm" style="color: white;">View Projects</a></li>
 			</ul>
 			<% } %>
 			<% if(session.getAttribute("user") == null) { %>
