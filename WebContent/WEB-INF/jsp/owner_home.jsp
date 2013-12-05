@@ -139,6 +139,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							data-toggle="tab">View My Projects</a></li>
 						<li style="font-size: 15px;"><a href="#PostNewProject" data-toggle="tab">Post new
 								Project</a></li>
+						<li style="font-size: 15px;"><a href="#ViewCompletedProjects" data-toggle="tab">View Completed Projects</a></li>
 					</ul>
 				</div>
 				<div>
@@ -239,6 +240,40 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 													<td><a href="/project-vars/project/devp_project/${p.project_id}.htm">${p.title}</a></td>
 													<td>${p.description}</td>
 													<td>${p.domain}</td>
+												</tr>
+											</c:forEach>
+											</tbody>
+										</table>
+									</div>
+								</c:when>
+								<c:otherwise>
+									<div id="projects">
+										<p>
+											Sorry, no projects found under you name.. Start by posting a
+											project <a href="#PostNewProject" data-toggle="tab">here</a>
+										</p>
+									</div>
+								</c:otherwise>
+							</c:choose>
+						</div>
+						<div class="tab-pane" id="ViewCompletedProjects">
+							<c:choose>
+								<c:when test="${myCompletedProjects ne null}">
+									<div id="projects">
+										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="example" style="background-color: ghostwhite;">
+											<thead>
+											<tr>
+												<th>Project Title</th>
+												<th>Description</th>
+												<th>Domain</th>
+											</tr>
+											</thead>
+											<tbody>
+											<c:forEach var="p" items="${myCompletedProjects}">
+												<tr>
+													<td><a href="/project-vars/project/devp_project/${p.project_id}.htm">${p.title}</a></td>
+													<td>${p.description}</td>
+													<td>${p.domain}</td> 
 												</tr>
 											</c:forEach>
 											</tbody>

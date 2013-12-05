@@ -116,12 +116,22 @@ public class ProjectController {
 					System.out.println("out of my Projects!!");
 				}
 				
-			} else {
+			} 
+			else 
+			{
+				modelAndView.setViewName("owner_home");
 				List<Project> projects = projectFacade.getProjectDev(user.getDeveloper().getId());
 				if(projects.size() <= 0)
-					modelAndView = new ModelAndView("owner_home", "projects", null);
+					modelAndView.addObject("projects", null);
 				else
-					modelAndView = new ModelAndView("owner_home", "projects", projects );
+					modelAndView.addObject("projects", projects);
+				
+				List<Project> myCompletedProjects =
+						projectFacade.getCompletedProjects(user.getDeveloper().getId());
+				if(myCompletedProjects.size() <= 0)
+					modelAndView.addObject("myCompletedProjects", null);
+				else
+					modelAndView.addObject("myCompletedProjects", myCompletedProjects);
 			}
 		} else {
 			modelAndView = new ModelAndView("auth/user_login");
@@ -153,6 +163,7 @@ public class ProjectController {
 	public ModelAndView showProjectToDevp(@PathVariable("id") Integer id) {
 		Project project = projectFacade.getProject(id);
 		project.setProject_id(id);
+		System.out.println("Result is" + project.getResults());
 		return new ModelAndView("devp_project", "project", project);
 	}
 	
