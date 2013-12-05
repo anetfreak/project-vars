@@ -132,28 +132,28 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							
 								<!--Body content-->
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project Title</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Project Title</h5></td>
 									<td></td>
 									<td><div>
 											<input type="text" id="ProjectTitleInput" style="width: 310px;" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Domain</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Domain</h5></td>
 									<td></td>
 									<td><div>
 											<input type="text" style="width: 310px;" id="DomainInput" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Description</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Description</h5></td>
 									<td></td>
 									<td><div>
 											<textarea rows="4" class="required" style="width: 310px;" id="DescriptionInput" placeholder="Project Description "></textarea>
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project URL</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Project URL</h5></td>
 									<td></td>
 									<td><div>
 											<input type="url" id="ProjectURLInput" style="width: 310px;" class="form-control"
@@ -162,7 +162,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 								</tr>
 								
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Budget</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Budget</h5></td>
 									<td></td>
 									<td><div>
 											<span class="add-on">$</span> 
@@ -179,7 +179,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 									</td>
 								</tr>	
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project Skills</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Project Skills</h5></td>
 									<td></td>
 									<td><div>
 											<input type="text" id="ProjectSkillsInput" style="width: 310px;"
@@ -187,7 +187,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 										</div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary" style="font-size: 14px;height: 18px;">Project Users</h2></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Project Users</h5></td>
 									<td></td>
 									<td><div>
 											<input type="text" id="ProjectUsersInput" style="width: 310px;"

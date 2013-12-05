@@ -138,6 +138,9 @@
 						<div id="rating" style="margin-left: 100px;"><h5>${tester.averageRating}</h5></div>
 					</div>
 				</c:when>
+				<c:otherwise>
+					<div class="span1"></div>
+				</c:otherwise>
 				</c:choose>
 					<div class="span8">
 						<table>
