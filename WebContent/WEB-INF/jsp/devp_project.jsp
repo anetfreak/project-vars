@@ -52,45 +52,45 @@
 				<input type="hidden" id="tester_ID" name="tester_Id" value="${project.tester_id}" />
 				<div class="tab-content" id="projectDetails">
 					<div class="tab-pane active">
-						<table>
+						<table cellpadding="5px">
 							<!--Body content-->
 							<tr>
 								<h3>Project Details </h3>
 							</tr>
 							<tr>
-								<td><h2 class="label label-primary">Project Name</h2></td>
+								<td><h5>Project Name</h5></td>
 								<td></td>
 								<td><span>${project.title}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Project Description</h2></td>
+								<td><h5>Project Description</h5></td>
 								<td></td>
 								<td><span>${project.description}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Project Domain</h2></td>
+								<td><h5>Project Domain</h5></td>
 								<td></td>
 								<td><span>${project.domain}</span></td>
 							</tr>
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Developer</h2></td>
+								<td><h5>Developer</h5></td>
 								<td></td>
 								<td><span>${project.developerName}</span></td>
 							</tr>
 
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Tester</h2></td>
+								<td><h5>Tester</h5></td>
 								<td></td>
 								<td><span>${project.testerName}</span></td>
 							</tr>
 							
 							<tr></tr>
 							<tr>
-								<td><h2 class="label label-primary">Result</h2></td>
+								<td><h5>Result</h5></td>
 								<td></td>
 								<td><span>${project.results}</span></td>
 							</tr>
@@ -110,7 +110,7 @@
 							</c:when>
 							<c:otherwise>
 							<tr>
-								<td><h2 class="label label-primary">Rate the tester</h2></td>
+								<td><h5>Rate the tester</h5></td>
 								<td></td>
 								<td><textarea class="required" id="inputRating" placeholder="Rating in between 1 to 5"></textarea></td>
 							</tr>

@@ -69,13 +69,13 @@ $(document).ready(function () {
 				</div>
 					<div class="tab-content">
 						<div class="tab-pane active" id="NewUserSignUp">
-							<table>
+							<table cellpadding="5px">
 								<!--Body content-->
 								<tr>
   									<h2>Create an account here</h2>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">First Name</h2></td>
+									<td><h5>First Name</h5></td>
 									<td></td>
 									<td><div class="input-group">
 											<input type="text" id="firstNameInput" class="required" placeholder="First Name">
@@ -83,7 +83,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Last Name</h2></td>
+									<td><h5>Last Name</h5></td>
 									<td></td>
 									<td><div class="input-group">
 											<input type="text" id="lastNameInput" class="required" placeholder="Last Name">
@@ -91,7 +91,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Email</h2></td>
+									<td><h5>Email</h5></td>
 									<td></td>
 									<td><div class="input-group">
 											<input type="email" id="emailInput" class="required email" placeholder="Email ID">
@@ -99,7 +99,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Password</h2></td>
+									<td><h5>Password</h5></td>
 									<td></td>
 									<td><div class="input-group">
 											<input type="password" id="passwordInput" name="passwordInput" class="required" placeholder="Password">
@@ -107,7 +107,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Re-enter Password</h2></td>
+									<td><h5>Re-enter Password</h5></td>
 									<td></td>
 									<td><div class="input-group">
 											<input type="password" id="reEnterPasswordInput" name="reEnterPasswordInput" class="required" placeholder="Re-enter Password" onChange="checkPasswordMatch();">
@@ -116,7 +116,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">You are a</h2></td>
+									<td><h5>You are a</h5></td>
 									<td></td>
 									<td><div class="col-lg-6">
    											 <div class="input-group">
