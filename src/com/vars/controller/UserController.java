@@ -51,11 +51,11 @@ public class UserController {
 			ratingAverage = (float)(Math.round(ratingAverage*100.0)/100.0);
 			tester.setAverageRating(ratingAverage);
 			user.getTester().setAverageRating(ratingAverage);
+			if(ratings.size() > 0)
+				modelAndView.addObject("ratings", ratings);
+			modelAndView.addObject("tester", tester);
 		}
 		modelAndView.addObject("user", user);
-		if(ratings.size() > 0)
-			modelAndView.addObject("ratings", ratings);
-		modelAndView.addObject("tester", tester);
 		return modelAndView;
 	}
 	
