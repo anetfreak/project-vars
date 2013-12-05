@@ -22,7 +22,7 @@ function checkPasswordMatch(){
     if (password != rePassword)
         $("#divCheckPasswordMatch").html("Passwords do not match!");
     else{
-        $("#divCheckPasswordMatch").html("Passwords match.");  
+        $("#divCheckPasswordMatch").html("");  
     }
 }
 
