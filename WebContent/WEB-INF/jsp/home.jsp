@@ -9,13 +9,12 @@
 		<script src="snowstorm.js" type="text/javascript"></script>
 		
 		<script type="text/javascript">
-
-snowStorm.flakesMaxActive = 100;    // show more snow on screen at once
-snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
-snowStorm.followMouse = true;
-snowStorm.freezeOnBlur = true;
-snowStorm.snowStick = true;
-</script>
+			snowStorm.flakesMaxActive = 100;    // show more snow on screen at once
+			snowStorm.useTwinkleEffect = true; // let the snow flicker in and out of view
+			snowStorm.followMouse = true;
+			snowStorm.freezeOnBlur = true;
+			snowStorm.snowStick = true;
+		</script>
 
 </head>
 <body>

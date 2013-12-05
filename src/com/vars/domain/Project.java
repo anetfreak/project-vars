@@ -14,6 +14,7 @@ public class Project {
 	private String project_users;
 	private String developerName;
 	private String results;
+	private String testerName;
 	
 	
 	
@@ -96,6 +97,12 @@ public class Project {
 	public void setResults(String results) {
 		this.results = results;
 	}
-	
+	public void setTesterName(String firstName) {
+		// TODO Auto-generated method stub
+		this.testerName = firstName;
+	}
+	public String getTesterName() {
+		return testerName;
+	}
 	
 	}
