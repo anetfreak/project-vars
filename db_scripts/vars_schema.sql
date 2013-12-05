@@ -108,7 +108,7 @@ CREATE TABLE `tester_rating` (
 `tester_id` int(11) NOT NULL,
 `developer_id` int(11) NOT NULL,
 `rating` decimal(3,2) NOT NULL,
-`ratingdate` date NOT NULL, 
+`ratingdate` VARCHAR(100) NOT NULL, 
 PRIMARY KEY (`id`),
 KEY `fk_rating_devp_id_idx` (`developer_id`),
 KEY `fk_rating_tester_id_idx` (`tester_id`),
