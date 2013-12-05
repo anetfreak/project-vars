@@ -114,6 +114,7 @@
 	
 		<div class="container-fluid">
 			<div class="row-fluid">
+				<div class="span2"></div>
 				<div id="UserProfile" style="margin: 0px 0px 10px 30px;">
 				<div><h3>User Profile </h3></div>
 				<div class="row-fluid"> 
