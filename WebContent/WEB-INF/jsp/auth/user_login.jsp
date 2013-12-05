@@ -6,12 +6,6 @@
 <title>MakeItUsable! - Login</title>
 
 <%@include file="../includes.jsp" %>
-<script type="text/javascript" src="http://platform.linkedin.com/in.js">
-  api_key: 75wgepnpou4y46
-  authorize: true
-  scope: r_emailaddress
-  onLoad : onLinkedInLoad
-</script>
 
 <script type="text/javascript">
 	$(document).ready(function(){

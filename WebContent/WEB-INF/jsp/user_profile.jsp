@@ -49,8 +49,43 @@
 			}
 			$('input.star').rating('select', rating);
 			$('input.star').rating('readOnly', true);
+			
+			$('#viewConnections').click(function(){
+		 		$('#connModal').modal();
+			});
+			
 		});
 
+		function onLinkedInLoad() {
+			IN.Event.on(IN, "auth", function() {getProfile();});
+		}
+		
+		function getProfile() {
+			IN.API.Profile("me")
+			.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl", "emailAddress")
+			.result(getConnections);
+		}
+		
+		function getConnections(){
+
+			IN.API.Connections("me")
+	 	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
+	 	    .result(showConnections)
+	 		.error(connectionError);
+		}
+		
+		
+		function showConnections(connections) {
+			var conn = connections.values;
+			for(var c in conn) {
+				$('#connections').html($('#connections').html() + "<img src=" + conn[c].pictureUrl + "></img><div id=\"" + conn[c].id + "\">Name - " +  conn[c].firstName + " " + conn[c].lastName + "<br/><div>Current Status - '" + conn[c].headline + "'</div>");
+			}
+		}
+		
+		function connectionError(error) {
+			alert(error.message);
+		}
+		
 		function checkPasswordMatch() {
 			//var checkPasswordMatch = function() {
 			var password = $("#passwordInput").val();
@@ -168,9 +203,11 @@
 					</div>
 					</div>
 					<div class="row-fluid">
-					<div class="span2"></div>
 						<div class="btn-group" style="margin-top: 20px; margin-left: 50px">
 								<input type="submit" class="btn btn-primary" id="updateinformation" value="Update Information"/>
+						</div>
+						<div class="btn-group" style="margin-top: 20px; margin-left: 50px">
+								<a href="#" role="button" class="btn btn-primary" id="viewConnections" data-toggle="modal">View Connections</a>
 						</div>
 					</div>
 					<div class="row-fluid"  style="margin-top: 20px;">
@@ -257,8 +294,6 @@
 							<tr></tr>
 							<tr></tr>
 							<tr>
-								<td></td>
-								<td></td>
 								<td><div class="btn-group">
 										<input type="submit" class="btn" id="updateprofilebtn"  value="Update Profile"/>
 									</div>
@@ -271,6 +306,27 @@
 		<% } %>
 	</div>
 </div>
+
+<!-- Modal Code used for Login -->
+		
+<div class="modal fade" id="connModal" tabindex="-1" role="dialog" aria-labelledby="connModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+	          <h4 class="modal-title">User Connections</h4>
+	        </div>
+	        <div class="modal-body">
+	        	<div style="text-align: center;"><h5>LinkedIn Connections</h5></div>
+	        	<div id="connections" style="margin: 30px; text-align: center;">
+	        		<script type="IN/Login"></script>
+	        	</div>
+	        </div>
+	      </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
+<!-- Modal Code used for Login -->
 
 <%@include file="./layout/footer.jsp"%>
 

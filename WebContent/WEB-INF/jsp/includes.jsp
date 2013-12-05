@@ -11,14 +11,14 @@
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-alert.js"/></script>
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-button.js"/></script>
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-carousel.js"/></script>
-			<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-modal.js"/></script>
+<%-- 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-modal.js"/></script> --%>
 			<script type="text/javascript" src="<%=request.getContextPath()%>/js/bootstrap/bootstrap-scrollspy.js"/></script>
 			
-			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/vars.css"/>
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap.css"/>
 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap.min.css"/>
-			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-responsive.css"/>
-			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-responsive.min.css"/>
+			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/vars.css"/>
+<%-- 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-responsive.css"/> --%>
+<%-- 			<link rel="stylesheet" type="text/css" href="<%=request.getContextPath()%>/css/bootstrap/bootstrap-responsive.min.css"/> --%>
 
 			<!-- Rating includes -->
 			<script type="text/javascript" src="<%=request.getContextPath()%>/star-rating/jquery.MetaData.js"/></script>
