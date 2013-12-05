@@ -163,7 +163,10 @@ public class ProjectController {
 	public ModelAndView showProjectToDevp(@PathVariable("id") Integer id) {
 		Project project = projectFacade.getProject(id);
 		project.setProject_id(id);
-		System.out.println("Result is" + project.getResults());
+		Developer developer =  userFacade.getDeveloper(project.getDeveloper_id());
+		User userd = userFacade.getUserForId((developer.getUserId()));
+		project.setDeveloperName(userd.getFirstName());
+		
 		return new ModelAndView("devp_project", "project", project);
 	}
 	

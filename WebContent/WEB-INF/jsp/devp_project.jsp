@@ -71,7 +71,7 @@
 							<tr>
 								<td><h2 class="label label-primary">Developer</h2></td>
 								<td></td>
-								<td><span>${project.developer_id}</span></td>
+								<td><span>${project.developerName}</span></td>
 							</tr>
 
 							<tr></tr>
