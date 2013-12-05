@@ -78,7 +78,7 @@
 							<tr>
 								<td><h2 class="label label-primary">Tester</h2></td>
 								<td></td>
-								<td><span>${project.tester_id}</span></td>
+								<td><span>${project.testerName}</span></td>
 							</tr>
 							
 							<tr></tr>
