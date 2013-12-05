@@ -266,8 +266,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 								<c:otherwise>
 									<div id="projects">
 										<p>
-											Sorry, no completed projects found under your name.. Start by posting a
-											project <a href="#PostNewProject" data-toggle="tab">here</a>
+											Sorry, no completed projects.
 										</p>
 									</div>
 								</c:otherwise>
