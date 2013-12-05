@@ -19,12 +19,12 @@ $(document).ready(function () {
    
    $('#submitResponse').click(function(event) {
 	   var results = $('#resultsInput').val();
-	   var projectTitle = $('#titleInput').val();	  
-	   
+	   var projectTitle = $('#projectTitle').val();	  
+	   console.log("project title:"+ projectTitle );
 		$.ajax({
 			url : "/project-vars/tester_project.htm",
 		    type: "POST",
-		    data : "results=" + results + "projectTitle=" +projectTitle,
+		    data : "results=" + results + "&projectTitle=" +projectTitle,
 		    success:function(data, textStatus, jqXHR){
 		    	window.location.href="/project-vars/viewProjects.htm";
 		    },
@@ -57,6 +57,7 @@ $(document).ready(function () {
 			} else {
 		%>
 		<div id="container" style="padding-top: 40px;">
+		<input type="hidden" id="projectTitle" name="projectTitle" value="${project.title}" />
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2">
@@ -96,10 +97,10 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Tester Name</h2></td>
+									<td><h2 class="label label-primary">Developer Name</h2></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="NameInput">${project.tester_id}</p>
+    									  <p class="form-control-static" id="NameInput">${project.developerName}</p>
   										  </div></td>
 								</tr>
 								<tr></tr>

@@ -156,11 +156,15 @@ public class ProjectController {
 	}
 	
 	@RequestMapping(value = "/project/tester_project/{id}.htm", method = RequestMethod.GET)
-	public ModelAndView showProject(@PathVariable("id") String id) {
+	public ModelAndView showProject(@PathVariable("id") Integer id) {
 		System.out.println("at tester_project start" + id);
 		Project project = null;
 		if(id != null)
-		project = projectFacade.getProject(Integer.parseInt(id));
+		project = projectFacade.getProject(id);
+		project.setProject_id(id);
+		Developer developer =  userFacade.getDeveloper(project.getDeveloper_id());
+		User userd = userFacade.getUserForId((developer.getUserId()));
+		project.setDeveloperName(userd.getFirstName());
 		System.out.println("at tester_project end " + id);
 		return new ModelAndView("tester_project", "project", project);
 	}
@@ -179,10 +183,10 @@ public class ProjectController {
 		return new ModelAndView("devp_project", "project", project);
 	}
 	
-	@RequestMapping(value = "/project-vars/tester_project.htm", method = RequestMethod.POST)
+	@RequestMapping(value = "/tester_project.htm", method = RequestMethod.POST)
 	public ModelAndView giveTesterResults(@RequestParam("results") String results,
 			@RequestParam("projectTitle") String projectTitle) {
-		System.out.println("Inside ProjectController - insert tester suggestions");
+		System.out.println("insert tester suggestions for projectTitle "+ projectTitle);
 		projectFacade.giveTesterResults(results, projectTitle);
 		
 		return new ModelAndView("tester_home");

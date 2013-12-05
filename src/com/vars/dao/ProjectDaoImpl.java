@@ -122,9 +122,8 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 
 	@Override
 	public void giveTesterResults(String results, String projectTitle) {
-		
+		System.out.println("insert testing results for"+ projectTitle+ " as"+ results);
 		getJdbcTemplate().update( INSERT_TESTING_RESULTS, new Object[] { results, projectTitle });
-		
 	}
 
 	@Override
