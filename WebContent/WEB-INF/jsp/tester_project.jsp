@@ -104,26 +104,28 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<c:choose>
-									<c:when test="${project.tester_id ne null}">	
+									<c:when test="${project.tester_id eq 0}">	
+								<tr>
+									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
+									<td></td>
+									<td><textarea id="resultsInput" diasbled="disabled" class="proposalDescription-Input" rows="3"></textarea>
+									</td>
+								</tr>
+								</c:when>
+								<c:otherwise>
+								
 								<tr>
 									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
 									<td></td>
 									<td><textarea id="resultsInput" class="proposalDescription-Input" rows="3"></textarea>
 									</td>
 								</tr>
-								</c:when>
-								<c:otherwise>
-									<tr>
-									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
-									<td></td>
-									<td><textarea id="resultsInput" diasbled="disabled" class="proposalDescription-Input" rows="3"></textarea>
-									</td>
-								</tr>
+									
 								</c:otherwise>
 							</c:choose>
 								<tr></tr>
 								<c:choose>
-									<c:when test="${project.tester_id eq null}">
+									<c:when test="${project.tester_id eq 0}">
 								<tr>
 									<td><h2 class="label label-primary">Bids</h2></td>
 									<td></td>
