@@ -8,22 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <title>MakeItUsable! - Project Owner</title>
 
-<script type="text/javascript" src="js/bootstrap/bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap.min.css">
-<link rel="stylesheet" type="text/css"
-	href="css/bootstrap/bootstrap-responsive.css">
-<link rel="stylesheet" type="text/css"
-	href="css/vars.css">
-<script type="text/javascript" src="js/bootstrap/bootstrap.js"></script>
-<script
-	src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
-<script src="//code.jquery.com/jquery-1.9.1.js"></script>
-<script type="text/javascript"
-	src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.8/jquery.validate.min.js"></script>
-
+<%@include file="/WEB-INF/jsp/includes.jsp"%>
 <script type="text/javascript">
 $(document).ready(function() {
     $('#example').dataTable( {
@@ -102,8 +87,6 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 					});
 	
 </script>
-
-<%@include file="/WEB-INF/jsp/includes.jsp"%>
 
 <style type="text/css">
 #sidebar-list {
