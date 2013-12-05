@@ -70,10 +70,10 @@ $(document).ready(function () {
 							<table>
 								<!--Body content-->
 								<tr>
-  									<h2><u>Project Details</u></h2>
+  									<td><h2>Project Details</h2></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Project Title</h2></td>
+									<td><h5>Project Title</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="titleInput">${project.title }</p>
@@ -81,7 +81,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Description</h2></td>
+									<td><h5>Description</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="descriptionInput">${project.description }</p>
@@ -89,7 +89,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Domain</h2></td>
+									<td><h5>Domain</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="descriptionInput">${project.domain }</p>
@@ -97,7 +97,7 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h2 class="label label-primary">Developer Name</h2></td>
+									<td><h5>Developer Name</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="NameInput">${project.developerName}</p>
@@ -107,7 +107,7 @@ $(document).ready(function () {
 								<c:choose>
 									<c:when test="${project.tester_id eq 0}">	
 								<tr>
-									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
+									<td><h5>Tester's Suggestions</h5></td>
 									<td></td>
 									<td><textarea id="resultsInput" diasbled="disabled" class="proposalDescription-Input" rows="3"></textarea>
 									</td>
@@ -116,7 +116,7 @@ $(document).ready(function () {
 								<c:otherwise>
 								
 								<tr>
-									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
+									<td><h5>Tester's Suggestions</h5></td>
 									<td></td>
 									<td><textarea id="resultsInput" class="proposalDescription-Input" rows="3"></textarea>
 									</td>
@@ -128,7 +128,7 @@ $(document).ready(function () {
 								<c:choose>
 									<c:when test="${project.tester_id eq 0}">
 								<tr>
-									<td><h2 class="label label-primary">Bids</h2></td>
+									<td><h5>Bids</h5></td>
 									<td></td>
 									<td><a href="/project-vars/project/bids/${project.project_id}.htm">Bid this project!</a></td>
 								</tr>
