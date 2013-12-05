@@ -145,3 +145,6 @@ PRIMARY KEY (`id`)
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2013-11-21 11:49:31
+
+ALTER TABLE `vars_schema`.`project` 
+ADD COLUMN `results` VARCHAR(200) NULL AFTER `project_users`;

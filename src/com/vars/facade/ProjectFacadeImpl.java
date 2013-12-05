@@ -38,4 +38,10 @@ public class ProjectFacadeImpl implements ProjectFacade {
 	public ArrayList<Project> getNewProjects(){
 		return projectDao.getNewProjects();
 	}
+
+	@Override
+	public void giveTesterResults(String results, String projectTitle) {
+		projectDao.giveTesterResults(results, projectTitle);
+		
+	}
 }

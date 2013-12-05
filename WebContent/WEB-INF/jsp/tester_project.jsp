@@ -12,6 +12,32 @@
 	font-size: 14px;
 }
 </style>
+
+<script type="text/javascript">
+	
+$(document).ready(function () {
+   
+   $('#submitResponse').click(function(event) {
+	   var results = $('#resultsInput').val();
+	   var projectTitle = $('#titleInput').val();	  
+	   
+		$.ajax({
+			url : "/project-vars/tester_project.htm",
+		    type: "POST",
+		    data : "results=" + results + "projectTitle=" +projectTitle,
+		    success:function(data, textStatus, jqXHR){
+		    	window.location.href="/project-vars/viewProjects.htm";
+		    },
+		    error: function(jqXHR, textStatus, errorThrown){
+		    	alert("Could not process request.. " + errorThrown);
+		    }
+		});
+   });
+});
+	
+	
+</script>
+
 </head>
 <body>
 <%@include file="/WEB-INF/jsp/layout/header.jsp" %>
@@ -77,27 +103,55 @@
   										  </div></td>
 								</tr>
 								<tr></tr>
+								<c:choose>
+									<c:when test="${project.tester_id ne null}">	
 								<tr>
 									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
 									<td></td>
-									<td><textarea id="resultsInput" disabled="disabled" class="proposalDescription-Input" rows="3"></textarea>
+									<td><textarea id="resultsInput" class="proposalDescription-Input" rows="3"></textarea>
 									</td>
 								</tr>
+								</c:when>
+								<c:otherwise>
+									<tr>
+									<td><h2 class="label label-primary">Tester's Suggestions</h2></td>
+									<td></td>
+									<td><textarea id="resultsInput" diasbled="disabled" class="proposalDescription-Input" rows="3"></textarea>
+									</td>
+								</tr>
+								</c:otherwise>
+							</c:choose>
 								<tr></tr>
+								<c:choose>
+									<c:when test="${project.tester_id eq null}">
 								<tr>
 									<td><h2 class="label label-primary">Bids</h2></td>
 									<td></td>
 									<td><a href="/project-vars/project/bids/${project.project_id}.htm">Bid this project!</a></td>
 								</tr>
+									</c:when>
+								<c:otherwise>
+								
+								</c:otherwise>
+								</c:choose>
 								<tr></tr>
 								<tr></tr>
+								
+								<c:choose>
+									<c:when test="${project.tester_id ne null}">
 								<tr>
 									<td></td>
 									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-default" id="submit" value="Update Profile"/>
+									<input type="submit" class="btn btn-default" id="submitResponse" value="Submit"/>
 								</div></td>
 								</tr>
+								</c:when>
+								<c:otherwise>
+								
+								</c:otherwise>
+								</c:choose>
+								
 							</table>
 						</div>
 					</div>

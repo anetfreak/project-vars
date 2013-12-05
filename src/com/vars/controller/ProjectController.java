@@ -155,4 +155,13 @@ public class ProjectController {
 		project.setProject_id(id);
 		return new ModelAndView("devp_project", "project", project);
 	}
+	
+	@RequestMapping(value = "/project-vars/tester_project.htm", method = RequestMethod.POST)
+	public ModelAndView giveTesterResults(@RequestParam("results") String results,
+			@RequestParam("projectTitle") String projectTitle) {
+		System.out.println("Inside ProjectController - insert tester suggestions");
+		projectFacade.giveTesterResults(results, projectTitle);
+		
+		return new ModelAndView("tester_home");
+	}
 }

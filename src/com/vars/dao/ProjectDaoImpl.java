@@ -16,7 +16,7 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	private static final String INSERT_PROJECT = "INSERT into project (title, description, domain, devp_id,project_url,min_budget,max_budget,project_skills,project_users) values (?, ?, ?, ?,?,?,?,?,?)";
 	private static final String GET_PROJECTS_DEV = "select * from project where devp_id = ? order by id";
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id IS NULL order by id";
-	
+	private static final String INSERT_TESTING_RESULTS = "update project set results = ? where title = ?";
 	@Override
 	public void createProject(Project project) {
 		// TODO Auto-generated method stub
@@ -104,5 +104,12 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 				});
 
 		return (ArrayList<Project>) projects;
+	}
+
+	@Override
+	public void giveTesterResults(String results, String projectTitle) {
+		
+		getJdbcTemplate().update( INSERT_TESTING_RESULTS, new Object[] { results, projectTitle });
+		
 	}
 }

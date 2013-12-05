@@ -13,7 +13,7 @@ public class Project {
 	private String project_skills;
 	private String project_users;
 	private String developerName;
-	
+	private String results;
 	
 	
 	
@@ -89,6 +89,12 @@ public class Project {
 	public void setDeveloperName(String firstName) {
 		// TODO Auto-generated method stub
 		this.developerName = firstName;
+	}
+	public String getResults() {
+		return results;
+	}
+	public void setResults(String results) {
+		this.results = results;
 	}
 	
 	
