@@ -82,6 +82,12 @@
 							</tr>
 							
 							<tr></tr>
+							<tr>
+								<td><h2 class="label label-primary">Result</h2></td>
+								<td></td>
+								<td><span>${project.results}</span></td>
+							</tr>
+							<tr></tr>
 							<tr></tr>
 							<tr>
 								<td></td>

@@ -44,4 +44,10 @@ public class ProjectFacadeImpl implements ProjectFacade {
 		projectDao.giveTesterResults(results, projectTitle);
 		
 	}
+
+	@Override
+	public List<Project> getCompletedProjects(Integer id) {
+		// TODO Auto-generated method stub
+		return projectDao.getCompletedProjects(id);
+	}
 }

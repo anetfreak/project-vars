@@ -12,4 +12,5 @@ public interface ProjectDao {
 	List<Project> getProjectTest(Integer id);
 	ArrayList<Project> getNewProjects();
 	void giveTesterResults(String results, String projectTitle);
+	List<Project> getCompletedProjects(Integer id);
 }
