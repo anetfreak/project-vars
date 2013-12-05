@@ -7,15 +7,6 @@
 <title>MakeItUsable! - User Profile</title>
 
 <%@include file="includes.jsp"%>
-<script type="text/javascript">
-$(document).ready(function() {
-    $('#rate').dataTable( {
-    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
-    	//,"sPaginationType": "bootstrap"
-    });
-} );
-</script>
-
 
 <script type="text/javascript">
 		$(document).ready(function() {
@@ -46,6 +37,18 @@ $(document).ready(function() {
 			 });
 			});
 			 
+			 $('#rate').dataTable( {
+			    	"sDom": "<'row'<'offset1 span4 'l><'offset3 span4'f>r>t<'row'<'offset1 span4'i><'offset3 span4'p >>"
+			    	//,"sPaginationType": "bootstrap"
+			 });
+			 
+			var rating = $('#ratingValue').val();
+			if(rating > 0) {
+				rating = rating-0.5;
+				rating = rating * 2;
+			}
+			$('input.star').rating('select', rating);
+			$('input.star').rating('readOnly', true);
 		});
 
 		function checkPasswordMatch() {
@@ -81,19 +84,20 @@ $(document).ready(function() {
 				<div class="row-fluid"> 
 				<c:choose>
 				<c:when test="${user.isTester}">
+					<input id="ratingValue" type="hidden" value="${tester.averageRating}"/>
 					<div class="span2" style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding-left: 30px; margin-top:15px;">
 						<h5> Rating </h5>
 						<div id="rating-stars" style="margin-top:10px;">
-							<input id="05Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="10Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="15Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="20Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="25Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="30Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="35Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="40Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="45Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
-							<input id="50Star" name="star5" type="radio" class="star {split:2}" disabled="disabled"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
+							<input name="star5" type="radio" class="star {split:2}"/>
 						</div>
 						<div id="rating" style="margin-left: 100px;"><h5>${tester.averageRating}</h5></div>
 					</div>
