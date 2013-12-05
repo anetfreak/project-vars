@@ -232,7 +232,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 								<c:otherwise>
 									<div id="projects">
 										<p>
-											Sorry, no projects found under you name.. Start by posting a
+											Sorry, no projects found under your name.. Start by posting a
 											project <a href="#PostNewProject" data-toggle="tab">here</a>
 										</p>
 									</div>
@@ -266,7 +266,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 								<c:otherwise>
 									<div id="projects">
 										<p>
-											Sorry, no projects found under you name.. Start by posting a
+											Sorry, no completed projects found under your name.. Start by posting a
 											project <a href="#PostNewProject" data-toggle="tab">here</a>
 										</p>
 									</div>
