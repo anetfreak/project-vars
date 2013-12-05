@@ -1,5 +1,6 @@
 package com.vars.dao;
 
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -18,12 +19,22 @@ public class ProjectDaoImpl extends JdbcDaoSupport implements ProjectDao {
 	private static final String GET_PROJECTS_TESTER = "select * from project where tester_id IS NULL order by id";
 	private static final String INSERT_TESTING_RESULTS = "update project set results = ? where title = ?";
 	private static final String GET_COMPLETED_PROJECTS_DEV = "select * from project where devp_id = ? and results IS NOT NULL order by id";
+	private static final String INSERT_RATING = "INSERT into tester_rating (tester_id, developer_id, rating, ratingdate) values (?, ?, ?, ?)";
+	
 	@Override
 	public void createProject(Project project) {
 		// TODO Auto-generated method stub
 		getJdbcTemplate().update( INSERT_PROJECT, new Object[] { project.getTitle(), project.getDescription(), project.getDomain(), project.getDeveloper_id(),project.getProject_url(),project.getMin_budget(),project.getMax_budget(),project.getProject_skills(),project.getProject_users() });
 	}
 
+	@Override
+	public void setTesterRating(int developerID, int testerId,
+			Integer inputRating, String date) {
+		// TODO Auto-generated method stub
+		getJdbcTemplate().update( INSERT_RATING,
+				new Object[] { testerId, developerID, inputRating, date });
+	}
+	
 	@Override
 	public Project getProject(Integer id) {
 		System.out.println("Getting project for id"+ id);

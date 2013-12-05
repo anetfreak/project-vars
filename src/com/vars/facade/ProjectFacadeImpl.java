@@ -50,4 +50,13 @@ public class ProjectFacadeImpl implements ProjectFacade {
 		// TODO Auto-generated method stub
 		return projectDao.getCompletedProjects(id);
 	}
+
+	@Override
+	public void setTesterRating(int developerID, int testerId, Integer inputRating,
+			String dateNow) {
+		// TODO Auto-generated method stub
+		projectDao.setTesterRating(developerID, testerId, inputRating, dateNow);
+		
+	}
+
 }

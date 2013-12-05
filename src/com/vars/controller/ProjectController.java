@@ -1,6 +1,11 @@
 package com.vars.controller;
 
+import java.sql.Date;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -12,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.vars.domain.Bid;
 import com.vars.domain.Developer;
 import com.vars.domain.Project;
 import com.vars.domain.Tester;
@@ -174,5 +180,20 @@ public class ProjectController {
 		projectFacade.giveTesterResults(results, projectTitle);
 		
 		return new ModelAndView("tester_home");
+	}
+	
+	@RequestMapping(value = "selectRating/{inputRating}.htm", method = RequestMethod.POST)
+	public ModelAndView giveRating(@RequestParam("inputRating") Integer inputRating,
+			@RequestParam("developerID") Integer developerID
+			, @RequestParam("testerID") Integer testerID) throws ParseException {
+		System.out.println("Rating is "+inputRating +"developerId"+ developerID);
+		// Get Developer ID, tester ID and Rating s from page
+		Calendar currentDate = Calendar.getInstance(); //Get the current date
+		DateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		String dateNow = dateFormat.format(currentDate.getTime()); 
+		System.out.println("date is "+ dateNow);
+				
+		projectFacade.setTesterRating(developerID ,testerID, inputRating, dateNow );
+		return new ModelAndView("owner_home");
 	}
 }

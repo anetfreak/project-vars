@@ -10,19 +10,23 @@
 
 	<script type="text/javascript">
 		$(document).ready(function() {
-// 			$('#bids').click(function(event) {
-// 				var projectId = $('#projectId').val();
-// 				$.ajax({
-// 					url : "/project-vars/project/bids/" + projectId + ".htm",
-// 				    type: "GET",
-// // 				    success:function(data, textStatus, jqXHR){
-// // 				    	//window.location.href="project_bids.htm";
-// // 				    },
-// 				    error: function(jqXHR, textStatus, errorThrown){
-// 				    	alert("Could not process request.. " + errorThrown);
-// 				    }
-// 				});
-// 			});
+ 			$('#submitRating').click(function(event) {
+ 				var inputRating = $('#inputRating').val();
+ 				console.log("rating is"+ inputRating);
+ 				var developer_id = $('#developer_ID').val();
+ 				var tester_id = $('#tester_ID').val();
+ 				$.ajax({
+ 					url : "/project-vars/selectRating/" + inputRating + ".htm",
+ 				    type: "POST",
+ 				   data : "inputRating="+ inputRating +"&developerID="+developer_id+"&testerID="+tester_id ,
+ 		 		    success:function(data, textStatus, jqXHR){
+ 		 		    	window.location.href="/project-vars/viewProjects.htm";
+ 		 		    },
+ 		 		    error: function(jqXHR, textStatus, errorThrown){
+ 		 		    	alert("Could not process request.. " + errorThrown);
+ 		 		    }
+ 				});
+ 			});
 			
 		});
 	</script>
@@ -43,6 +47,8 @@
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<input type="hidden" id="projectId" name="projectId" value="${project.project_id}"/>
+				<input type="hidden" id="developer_ID" name="developer_Id" value="${project.developer_id}" />
+				<input type="hidden" id="tester_ID" name="tester_Id" value="${project.tester_id}" />
 				<div class="tab-content" id="projectDetails">
 					<div class="tab-pane active">
 						<table>
@@ -88,7 +94,10 @@
 								<td><span>${project.results}</span></td>
 							</tr>
 							<tr></tr>
-							<tr></tr>
+							
+							<c:choose>
+								<c:when test="${project.results eq null}">
+								<tr></tr>
 							<tr>
 								<td></td>
 								<td></td>
@@ -97,6 +106,24 @@
 									</div>
 								</td>
 							</tr>
+							</c:when>
+							<c:otherwise>
+							<tr>
+								<td><h2 class="label label-primary">Rate the tester</h2></td>
+								<td></td>
+								<td><textarea class="required" id="inputRating" placeholder="Rating in between 1 to 5"></textarea></td>
+							</tr>
+							<tr></tr>
+							<tr>
+								<td></td>
+								<td></td>
+								<td><div class="btn-group">
+										<a class="btn btn-primary" id="submitRating">Submit Rating</a>
+									</div>
+								</td>
+							</tr>
+							</c:otherwise>
+							</c:choose>
 						</table>
 					</div>
 				</div>

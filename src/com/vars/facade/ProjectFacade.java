@@ -13,4 +13,5 @@ public interface ProjectFacade {
 	ArrayList<Project> getNewProjects();
 	void giveTesterResults(String results, String projectTitle);
 	List<Project> getCompletedProjects(Integer id);
+	void setTesterRating(int i, int j, Integer inputRating, String dateNow);
 }

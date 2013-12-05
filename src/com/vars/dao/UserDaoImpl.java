@@ -255,7 +255,7 @@ public class UserDaoImpl extends JdbcDaoSupport implements UserDao {
 						TestingRating testingRating = new TestingRating();
 						testingRating.setDeveloperId(rs.getInt("developer_id"));
 						testingRating.setRating(rs.getFloat("rating"));
-						testingRating.setDate(rs.getDate("ratingdate"));
+						testingRating.setDate(rs.getString("ratingdate"));
 						return testingRating;
 					}
 				});

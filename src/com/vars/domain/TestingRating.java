@@ -1,13 +1,11 @@
 package com.vars.domain;
 
-import java.util.Date;
-
 public class TestingRating {
 private Integer testerId;
 private Integer developerId;
 private Float rating;
 private Integer id;
-private Date date;
+private String date;
 private String developerName;
 
 public Integer getTesterId() {
@@ -25,10 +23,10 @@ public Integer getId() {
 public void setId(Integer id) {
 	this.id = id;
 }
-public Date getDate() {
+public String getDate() {
 	return date;
 }
-public void setDate(Date date) {
+public void setDate(String date) {
 	this.date = date;
 }
 public void setTesterId(Integer testerId) {

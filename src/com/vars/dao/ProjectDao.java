@@ -1,5 +1,6 @@
 package com.vars.dao;
 
+import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,4 +14,6 @@ public interface ProjectDao {
 	ArrayList<Project> getNewProjects();
 	void giveTesterResults(String results, String projectTitle);
 	List<Project> getCompletedProjects(Integer id);
+	void setTesterRating(int developerID, int testerId, Integer inputRating,
+			String date);
 }
