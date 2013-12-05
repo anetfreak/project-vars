@@ -29,7 +29,7 @@
  					</c:choose>
 					
 					<ul class="dropdown-menu">
-				      <li><a href="showProfile.htm">Profile</a></li>
+				      <li><a href="/project-vars/showProfile.htm">Profile</a></li>
 				      <li><a href="/project-vars/logout.htm">Logout</a></li>
 				    </ul>
 			    </li>
