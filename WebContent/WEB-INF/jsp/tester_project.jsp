@@ -67,7 +67,7 @@ $(document).ready(function () {
 				</div>
 					<div class="tab-content">
 						<div class="tab-pane active" id="Project">
-							<table>
+							<table cellpadding="5px">
 								<!--Body content-->
 								<tr>
   									<td><h2>Project Details</h2></td>
