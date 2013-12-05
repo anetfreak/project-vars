@@ -105,23 +105,16 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<c:choose>
-									<c:when test="${project.tester_id eq 0}">	
+									<c:when test="${project.tester_id ne 0}">	
 								<tr>
 									<td><h5>Tester's Suggestions</h5></td>
 									<td></td>
-									<td><textarea id="resultsInput" diasbled="disabled" class="proposalDescription-Input" rows="3"></textarea>
+									<td><textarea id="resultsInput"class="proposalDescription-Input" rows="3" ></textarea>
 									</td>
 								</tr>
 								</c:when>
 								<c:otherwise>
-								
-								<tr>
-									<td><h5>Tester's Suggestions</h5></td>
-									<td></td>
-									<td><textarea id="resultsInput" class="proposalDescription-Input" rows="3"></textarea>
-									</td>
-								</tr>
-									
+																	
 								</c:otherwise>
 							</c:choose>
 								<tr></tr>
