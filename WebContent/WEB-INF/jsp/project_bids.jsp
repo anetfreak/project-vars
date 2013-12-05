@@ -85,7 +85,7 @@ $(document).ready(function() {
 									<tbody>
 									<c:forEach var="b" items="${bids}">
 										<tr>
-										<td><a href="/project-vars/bids/selectBid/${b.id}.htm"><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></a></td>
+										<td><input name="bidRadio" id="bidRadio" type="radio" class="required" value="${b.id}"></td>
 										<td><a href="/project-vars/project/devp_project/${b.projectId}.htm">${b.projectName}</a></td>
 										<td>${b.testerName}</td>
 										<td>${b.description}</td>
