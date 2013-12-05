@@ -76,33 +76,33 @@ $(document).ready(function () {
 								<!--Body content-->
 								<tr>
 									<h2>
-										<u>Tester Proposal</u>
+										Tester Proposal
 									</h2>
 								</tr>
 								<input type="hidden" id="projectId" name="projectId" value="${project.project_id }"/>
 								<tr>
-									<td><h2 class="label label-primary">Project Title</h2></td>
+									<td><h5>Project Title</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="titleLabel">${project.title }</p>
   										  </div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Domain</h2></td>
+									<td><h5>Domain</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="domainLabel">${project.domain }</p>
   										  </div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Description</h2></td>
+									<td><h5>Description</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
     									  <p class="form-control-static" id="descriptionLabel">${project.description }</p>
   										  </div></td>
 								</tr>
 								<tr>
-									<td><h2 class="label label-primary">Proposal</h2></td>
+									<td><h5>Proposal</h5></td>
 									<td></td>
 									<td>
 										<div class="input-prepend input-append">
@@ -113,9 +113,9 @@ $(document).ready(function () {
 									</td>
 								</tr>
 								<tr>
-									<td><h2>
-											<span class="label label-primary">Proposal Description</span>
-										</h2></td>
+									<td><h5>
+											<span> Proposal Description</span>
+										</h5></td>
 									<td></td>
 									<td><textarea rows="4" class="required" id="proposalDescription" placeholder="Description regarding proposal "></textarea></td>
 								</tr>
