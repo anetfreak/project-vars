@@ -214,7 +214,8 @@
 								<a href="#" role="button" class="btn btn-primary" id="viewConnections" data-toggle="modal">View Connections</a>
 						</div>
 					</div>
-					<div class="row-fluid"  style="margin-top: 20px;">
+					<div class="row-fluid"  style="margin-top: 40px;">
+					<h3>User Ratings</h3>
 					<c:choose>
 								<c:when test="${ratings ne null}">
 									<div id="projects">
