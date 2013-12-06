@@ -215,9 +215,9 @@
 						</div>
 					</div>
 					<div class="row-fluid"  style="margin-top: 40px;">
-					<h3>User Ratings</h3>
 					<c:choose>
 								<c:when test="${ratings ne null}">
+									<h3>User Ratings</h3>
 									<div id="projects">
 										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="rate">
 											<thead>
