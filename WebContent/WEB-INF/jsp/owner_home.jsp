@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - Project Owner</title>
+<title>AppleStore! - Admin</title>
 
 <%@include file="/WEB-INF/jsp/includes.jsp"%>
 <script type="text/javascript">
@@ -28,47 +28,35 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 	$(document)
 			.ready(
 					function() {
-						$('#submitProject')
+						$('#AddProduct')
 								.click(
 										function(event) {
 
-											var projectTitle = $(
-													'#ProjectTitleInput').val();
-											var domain = $('#DomainInput')
-													.val();
-											var description = $(
-													'#DescriptionInput').val();
-											var projectURL = $(
-											'#ProjectURLInput').val();
-											var minBudget = $(
-											'#MiniBudgetInput').val();
-											var maxBudget = $(
-											'#MaxBudgetInput').val();
-											var projectSkills = $(
-											'#ProjectSkillsInput').val();
-											var projectUsers = $(
-											'#ProjectUsersInput').val();
+											var productName = $(
+											'#ProductName').val();
+											var description = $('#Description')
+											.val();
+											var catalogId = $(
+											'#CatalogId').val();
+											var price = $(
+											'#Price').val();
+											var quantity = $(
+											'#Quantity').val();
 
 											$
 													.ajax({
 														url : "project.htm",
 														type : "POST",
-														data : "projectTitle="
-																+ projectTitle
-																+ "&domain="
-																+ domain
-																+ "&description="
-																+ description
-																+ "&projectURL="
-																+ projectURL
-																+ "&minBudget="
-																+ minBudget
-																+ "&maxBudget="
-																+ maxBudget
-																+ "&projectSkills="
-																+ projectSkills
-																+ "&projectUsers="
-																+ projectUsers,
+														data : "productName="
+															+ productName
+															+ "&description="
+															+ description
+															+ "&catalogId="
+															+ catalogId
+															+ "&price="
+															+ price
+															+ "&quantity="
+															+ quantity,
 																
 														success : function(
 																data,
@@ -117,12 +105,9 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 				<div id="sidebar" class="span2" style="margin: 35px 20px 0px 20px; padding: 20px 0px 50px 0px; background-color: ghostwhite;">
 					<!--Sidebar content-->
 					<ul id="sidebar-list" class="nav nav-list">
-						<li class="nav-header" style="font-size: 15px;">Project Options</li>
-						<li class="active" style="font-size: 15px;"><a href="#ViewMyProjects"
-							data-toggle="tab">View My Projects</a></li>
-						<li style="font-size: 15px;"><a href="#PostNewProject" data-toggle="tab">Post new
-								Project</a></li>
-						<li style="font-size: 15px;"><a href="#ViewCompletedProjects" data-toggle="tab">View Completed Projects</a></li>
+						<li class="nav-header" style="font-size: 15px;">Admin Privileges</li>
+						<li style="font-size: 15px;"><a href="#PostNewProject" data-toggle="tab">Add a new product</a></li>
+						
 					</ul>
 				</div>
 				<div>
@@ -132,65 +117,41 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 							
 								<!--Body content-->
 								<tr>
-									<td><h5  style="font-size: 14px;height: 18px;">Project Title</h5></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Product Name</h5></td>
 									<td></td>
 									<td><div>
-											<input type="text" id="ProjectTitleInput" style="width: 310px;" class="form-control">
-										</div></td>
-								</tr>
-								<tr>
-									<td><h5  style="font-size: 14px;height: 18px;">Domain</h5></td>
-									<td></td>
-									<td><div>
-											<input type="text" style="width: 310px;" id="DomainInput" class="form-control">
+											<input type="text" id="ProductName" style="width: 310px;" class="form-control">
 										</div></td>
 								</tr>
 								<tr>
 									<td><h5  style="font-size: 14px;height: 18px;">Description</h5></td>
 									<td></td>
 									<td><div>
-											<textarea rows="4" class="required" style="width: 310px;" id="DescriptionInput" placeholder="Project Description "></textarea>
+											<input type="text" style="width: 310px;" id="Description" class="form-control">
 										</div></td>
 								</tr>
+									
 								<tr>
-									<td><h5  style="font-size: 14px;height: 18px;">Project URL</h5></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Catalog ID</h5></td>
 									<td></td>
 									<td><div>
-											<input type="url" id="ProjectURLInput" style="width: 310px;" class="form-control"
-												placeholder="Enter your Website URl">
-										</div></td>
-								</tr>
-								
-								<tr>
-									<td><h5  style="font-size: 14px;height: 18px;">Budget</h5></td>
-									<td></td>
-									<td><div>
-											<span class="add-on">$</span> 
-											<input id="MiniBudgetInput" type="text" style="width: 295px;" placeholder="Minimum Amount">
-										</div> 
-										
-										
-										To
-						
-										
-										<div>
-											<span class="add-on">$</span> <input 
-												id="MaxBudgetInput" type="text" style="width: 295px;" placeholder="Maximum Amount"> </div>
-									</td>
-								</tr>	
-								<tr>
-									<td><h5  style="font-size: 14px;height: 18px;">Project Skills</h5></td>
-									<td></td>
-									<td><div>
-											<input type="text" id="ProjectSkillsInput" style="width: 310px;"
+											<input type="text" id="CatalogId" style="width: 310px;"
 												class="form-control">
 										</div></td>
 								</tr>
 								<tr>
-									<td><h5  style="font-size: 14px;height: 18px;">Project Users</h5></td>
+									<td><h5  style="font-size: 14px;height: 18px;">Price</h5></td>
 									<td></td>
 									<td><div>
-											<input type="text" id="ProjectUsersInput" style="width: 310px;"
+											<input type="text" id="Price" style="width: 310px;"
+												class="form-control">
+										</div></td>
+								</tr>
+								<tr>
+									<td><h5  style="font-size: 14px;height: 18px;">Quantity</h5></td>
+									<td></td>
+									<td><div>
+											<input type="text" id="Quantity" style="width: 310px;"
 												class="form-control">
 										</div></td>
 								</tr>
@@ -199,78 +160,11 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 								<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10" style="margin-left: 100px ; margin-top: 15px ">
 											<input type="submit" class="btn btn-primary"
-												id="submitProject" value="Submit Project" />
+												id="AddProduct" value="Add Product" />
 										</div></td>
 								</tr>
 							</table>
 
-						</div>
-						<div class="tab-pane active" id="ViewMyProjects">
-							<c:choose>
-								<c:when test="${projects ne null}">
-									<div id="projects">
-										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="example" style="background-color: ghostwhite;">
-											<thead>
-											<tr>
-												<th>Project Title</th>
-												<th>Description</th>
-												<th>Domain</th>
-											</tr>
-											</thead>
-											<tbody>
-											<c:forEach var="p" items="${projects}">
-												<tr>
-													<td><a href="/project-vars/project/devp_project/${p.project_id}.htm">${p.title}</a></td>
-													<td>${p.description}</td>
-													<td>${p.domain}</td>
-												</tr>
-											</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</c:when>
-								<c:otherwise>
-									<div id="projects">
-										<p>
-											Sorry, no projects found under your name.. Start by posting a
-											project <a href="#PostNewProject" data-toggle="tab">here</a>
-										</p>
-									</div>
-								</c:otherwise>
-							</c:choose>
-						</div>
-						<div class="tab-pane" id="ViewCompletedProjects">
-							<c:choose>
-								<c:when test="${myCompletedProjects ne null}">
-									<div id="projects">
-										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="example" style="background-color: ghostwhite;">
-											<thead>
-											<tr>
-												<th>Project Title</th>
-												<th>Description</th>
-												<th>Domain</th>
-											</tr>
-											</thead>
-											<tbody>
-											<c:forEach var="p" items="${myCompletedProjects}">
-												<tr>
-													<td><a href="/project-vars/project/devp_project/${p.project_id}.htm">${p.title}</a></td>
-													<td>${p.description}</td>
-													<td>${p.domain}</td> 
-												</tr>
-											</c:forEach>
-											</tbody>
-										</table>
-									</div>
-								</c:when>
-								<c:otherwise>
-									<div id="projects">
-										<p>
-											Sorry, no completed projects.
-										</p>
-									</div>
-								</c:otherwise>
-							</c:choose>
 						</div>
 					</div>
 				</div>
