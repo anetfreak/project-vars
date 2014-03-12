@@ -61,8 +61,8 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 					<div class="tab-content">
 						<div class="tab-pane active" id="ShowNewProjects">
 							<c:choose>
-								<c:when test="${product ne null}">
-									<div id="projects">
+								<c:when test="${newProducts ne null}">
+									<div id="products">
 										<table cellpadding="0" cellspacing="0" border="0" class="table table-striped table-bordered"  id="shwNewPrj" style="background-color: ghostwhite;">
 											<thead>
 											<tr>
@@ -73,7 +73,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 											</tr>
 											</thead>
 											<tbody>
-											<c:forEach var="p" items="${product}">
+											<c:forEach var="p" items="${newProducts}">
 												<tr>
 													<td>${p.name}</td>
 													<td>${p.description}</td>
@@ -86,7 +86,7 @@ $.extend( $.fn.dataTableExt.oStdClasses, {
 									</div>
 								</c:when>
 								<c:otherwise>
-									<div id="projects">
+									<div id="products">
 										<h5>Sorry, there are no available new products now. Check
 											later.</h5>
 									</div>
