@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - Sign Up</title>
+<title>AppleStore! - Sign Up</title>
 
 <%@include file="../includes.jsp" %>
 
@@ -36,12 +36,14 @@ $(document).ready(function () {
 	   var lname = $('#lastNameInput').val();
 	   var email = $('#emailInput').val();
 	   var password = $('#passwordInput').val();
-	   var userType = $("input:radio[name=userTypeInput]:checked").val();
+	   var address = $('#addressInput').val();
+	   var pin = $('#pinInput').val();
+	   var mobile = $('#mobileInput').val();
 	   
 		$.ajax({
 			url : "signup.htm",
 		    type: "POST",
-		    data : "fname=" + fname + "&lname=" + lname + "&email=" + email + "&password=" + password + "&userType=" + userType,
+		    data : "firstName=" + fname + "&lastName=" + lname + "&email=" + email + "&password=" + password + "&address=" + address + "&pin=" + pin + "&mobile=" + mobile,
 		    success:function(data, textStatus, jqXHR){
 		    	window.location.href="viewProjects.htm";
 		    },
@@ -69,7 +71,7 @@ $(document).ready(function () {
 				</div>
 					<div class="tab-content">
 						<div class="tab-pane active" id="NewUserSignUp">
-							<table cellpadding="5px">
+								<table cellpadding="5px">
 								<!--Body content-->
 								<tr>
   									<h2>Create an account here</h2>
@@ -116,20 +118,27 @@ $(document).ready(function () {
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h5>You are a</h5></td>
+									<td><h5>Address</h5></td>
 									<td></td>
-									<td><div class="col-lg-6">
-   											 <div class="input-group">
-      											<span class="input-group-addon">
-        											<input name="userTypeInput" id="userTypeInputDeveloper" type="radio" class="required" value="0">
-      											</span>
-      											<h2 class="label label-primary">Project Owner</h2>
-      											<span>
-      												<input name="userTypeInput" id="userTypeInputTester" type="radio" class="required" value="1">
-      											</span>
-      											<h2 class="label label-primary">Tester</h2>
-    										</div><!-- /input-group -->
-  										</div><!-- /.col-lg-6 --></td>
+									<td><div class="input-group">
+											<input type="text" id="addressInput" class="required" placeholder="Address">
+										</div></td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td><h5>Zip</h5></td>
+									<td></td>
+									<td><div class="input-group">
+											<input type="text" id="pinInput" class="required" placeholder="Zip Code">
+										</div></td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td><h5>Mobile</h5></td>
+									<td></td>
+									<td><div class="input-group">
+											<input type="text" id="mobileInput" class="required" placeholder="Mobile">
+										</div></td>
 								</tr>
 								<tr></tr>
 								<tr>

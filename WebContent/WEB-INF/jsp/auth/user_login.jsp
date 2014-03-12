@@ -3,7 +3,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - Login</title>
+<title>AppleStore! - Login</title>
 
 <%@include file="../includes.jsp" %>
 
@@ -49,27 +49,6 @@
 		
 	});
 	
-	function onLinkedInLoad () {
-		IN.Event.on(IN, "auth", function() {onLinkedInAuth();});
-		IN.Event.on(IN, "logout", function() {onLinkedInLogout();});
-	}
-	
-	function onLinkedInLogout() {
-		$('#loggedInMenu').css('display','none');
-		$('#loginMenu').css('display','block');
-	}
-	
-// 		IN.API.Connections("me")
-// 	    .fields("id", "firstName", "lastName", "headline", "pictureUrl")
-// 	    .result(showConnections)
-// 		.error(connectionError);
-
-	function onLinkedInAuth() {
-		IN.API.Profile("me")
-		.fields("id", "firstName", "lastName", "headline", "location", "industry", "pictureUrl", "emailAddress")
-		.result(displayProfile);
-	}
-	
 	function displayProfile(profiles) {
 		var member = profiles.values[0];
 		
@@ -93,19 +72,6 @@
 		    	alert("Could not process request.. " + errorThrown);
 		    }
 		});
-	}
-
-	
-	
-	function showConnections(connections) {
-		var conn = connections.values;
-		for(var c in conn) {
-			$('#connections').html($('#connections').html() + "<img src=" + conn[c].pictureUrl + "></img><div id=\"" + conn[c].id + "\">Name - " +  conn[c].firstName + " " + conn[c].lastName + "<br/><div>Current Status - '" + conn[c].headline + "'</div>");
-		}
-	}
-	
-	function connectionError(error) {
-		alert(error.message);
 	}
 	
 </script>
@@ -138,25 +104,6 @@
 					</div>
 				</div>
 				
-				<div class="divider-vertical"></div>
-				<div class="span1" style="margin-top: 80px;">
-					<h3> OR </h3>
-				</div>
-				<div class="divider-vertical"></div>
-				
-				<div class="span5">
-					<div style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
-						<h3> Sign In with LinkedIn </h3>
-						<div id="linkedInLogin" style="margin: 30px 0px 77px 0px;">
-							<script type="IN/Login"></script>
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div id="userProfile" style="margin: 80px 0px 0px 50px; display: none;">
-				<div id="profile" class="span4"></div>
-				<div id="connections" class="span4"></div>
 			</div>
 			
 		</div>

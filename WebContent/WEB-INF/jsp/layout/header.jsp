@@ -12,7 +12,7 @@
 <div id="header">
 	<div class="navbar navbar-inverse navbar-static-top">
 		<div id="headerNav" class="navbar-inner">
-			<a class="brand" href="/project-vars/"><span style="color: green; margin: 0px 10px 0px 10px;">MakeItUsable<span style="color: red;">!</span></span></a>
+			<a class="brand" href="/project-vars/"><span style="color: green; margin: 0px 10px 0px 10px;">AppleStore!<span style="color: red;">!</span></span></a>
 			<% if(session.getAttribute("user") != null) { %>
 			<ul class="nav">
 				<li><a href="/project-vars/viewProjects.htm" style="color: white;">View Projects</a></li>

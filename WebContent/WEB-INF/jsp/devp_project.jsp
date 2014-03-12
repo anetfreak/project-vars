@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - View Project</title>
+<title>AppleStore! - View Project</title>
 
 <%@include file="includes.jsp"%>
 
