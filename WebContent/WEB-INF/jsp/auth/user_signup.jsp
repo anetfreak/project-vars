@@ -61,14 +61,14 @@ $(document).ready(function () {
 	<%@include file=".././layout/header.jsp" %>
 	
 	
-	<div id="container" style="padding-top: 40px;">
+	<div id="container" align="center" style="padding-top: 40px;">
 		<div class="container-fluid">
 			<div class="row-fluid">
-				<div id="sidebar" class="span2">
-						<!--Sidebar content-->
+				<!-- <div id="sidebar" class="span2">
+						Sidebar content
 					<ul id="sidebar-list" class="nav nav-list">
 					</ul>
-				</div>
+				</div> -->
 					<div class="tab-content">
 						<div class="tab-pane active" id="NewUserSignUp">
 								<table cellpadding="5px">

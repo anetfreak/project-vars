@@ -82,7 +82,7 @@
 
 	<div id="container" style="padding-top: 40px;" align="center">
 		<div class="container-fluid">
-			<div id="loginOptions" style="margin: 80px 0px 0px 50px;">
+			<div id="loginOptions" style="margin: 80px 0px 0px 350px;">
 				<div class="span1"></div>
 				<div class="span5">
 					<div style="background-color: ghostwhite; -webkit-box-shadow: 3px 0px 5px #888888; -moz-box-shadow: 3px 0px 5px #888888; box-shadow: 3px 0px 5px #888888; padding: 30px;">
