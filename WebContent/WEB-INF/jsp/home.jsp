@@ -4,7 +4,7 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-	<title>MakeItUsable! - Home</title>
+	<title>AppleStore! - Welcome Home</title>
 		<%@include file="includes.jsp" %>
 		<script src="snowstorm.js" type="text/javascript"></script>
 		
@@ -24,7 +24,7 @@
 	    <div class="hero-unit" style="padding: 0px; font-size: 35px; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,.4);">
 			<img src="images/rt-masthead.jpg"/>
 			<div style="width: auto; line-height: 40px; top: 6em; left: 6em; position: absolute; z-index: 10; margin: 0px 0px 0px 40px;">
-				<p style="font-size: 45px;">Welcome to <span style="color: green;">MakeItUsable<span style="color:red">!</span></span></p>
+				<p style="font-size: 45px;">Welcome to <span style="color: green;">AppleStore<span style="color:red">!</span></span></p>
 			</div>
 		</div>
 	</div>

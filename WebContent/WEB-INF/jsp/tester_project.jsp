@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<title>MakeItUsable! - Project Details</title>
+<title>AppleStore! - Product Details</title>
 
 <%@include file="/WEB-INF/jsp/includes.jsp" %>
 <style type="text/css">
@@ -18,13 +18,12 @@
 $(document).ready(function () {
    
    $('#submitResponse').click(function(event) {
-	   var results = $('#resultsInput').val();
-	   var projectTitle = $('#projectTitle').val();	  
-	   console.log("project title:"+ projectTitle );
+	   var productId = $('#productId').val();	  
+	   console.log("product ID:"+ productId );
 		$.ajax({
 			url : "/project-vars/tester_project.htm",
 		    type: "POST",
-		    data : "results=" + results + "&projectTitle=" +projectTitle,
+		    data : "productId=" +productId,
 		    success:function(data, textStatus, jqXHR){
 		    	window.location.href="/project-vars/viewProjects.htm";
 		    },
@@ -57,7 +56,7 @@ $(document).ready(function () {
 			} else {
 		%>
 		<div id="container" style="padding-top: 40px;">
-		<input type="hidden" id="projectTitle" name="projectTitle" value="${project.title}" />
+		<input type="hidden" id="productId" name="productId" value="${product.id}" />
 		<div class="container-fluid">
 			<div class="row-fluid">
 				<div id="sidebar" class="span2">
@@ -66,17 +65,25 @@ $(document).ready(function () {
 					</ul>
 				</div>
 					<div class="tab-content">
-						<div class="tab-pane active" id="Project">
+						<div class="tab-pane active" id="Product">
 							<table cellpadding="5px">
 								<!--Body content-->
 								<tr>
-  									<td><h2>Project Details</h2></td>
+  									<td><h2>Product Details</h2></td>
 								</tr>
 								<tr>
-									<td><h5>Project Title</h5></td>
+									<td><h5>Product Name</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="titleInput">${project.title }</p>
+    									  <p class="form-control-static" id="productName">${product.name}</p>
+  										  </div></td>
+								</tr>
+								<tr></tr>
+								<tr>
+									<td><h5>Catalog ID</h5></td>
+									<td></td>
+									<td><div class="col-sm-10">
+    									  <p class="form-control-static" id="catalogId">${product.catalogId}</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
@@ -84,69 +91,27 @@ $(document).ready(function () {
 									<td><h5>Description</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="descriptionInput">${project.description }</p>
+    									  <p class="form-control-static" id="description">${product.description }</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
 								<tr>
-									<td><h5>Domain</h5></td>
+									<td><h5>Price</h5></td>
 									<td></td>
 									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="descriptionInput">${project.domain }</p>
+    									  <p class="form-control-static" id="price">${product.price}</p>
   										  </div></td>
 								</tr>
 								<tr></tr>
-								<tr>
-									<td><h5>Developer Name</h5></td>
-									<td></td>
-									<td><div class="col-sm-10">
-    									  <p class="form-control-static" id="NameInput">${project.developerName}</p>
-  										  </div></td>
-								</tr>
 								<tr></tr>
-								<c:choose>
-									<c:when test="${project.tester_id ne 0}">	
-								<tr>
-									<td><h5>Tester's Suggestions</h5></td>
-									<td></td>
-									<td><textarea id="resultsInput"class="proposalDescription-Input" rows="3" ></textarea>
-									</td>
-								</tr>
-								</c:when>
-								<c:otherwise>
-																	
-								</c:otherwise>
-							</c:choose>
-								<tr></tr>
-								<c:choose>
-									<c:when test="${project.tester_id eq 0}">
-								<tr>
-									<td><h5>Bids</h5></td>
-									<td></td>
-									<td><a href="/project-vars/project/bids/${project.project_id}.htm">Bid this project!</a></td>
-								</tr>
-									</c:when>
-								<c:otherwise>
-								
-								</c:otherwise>
-								</c:choose>
-								<tr></tr>
-								<tr></tr>
-								
-								<c:choose>
-									<c:when test="${project.tester_id ne null}">
 								<tr>
 									<td></td>
 									<td></td>
 									<td><div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" class="btn btn-default" id="submitResponse" value="Submit"/>
+									<input type="submit" class="btn btn-default" id="submitResponse" value="Add To Cart"/>
 								</div></td>
 								</tr>
-								</c:when>
-								<c:otherwise>
 								
-								</c:otherwise>
-								</c:choose>
 								
 							</table>
 						</div>
