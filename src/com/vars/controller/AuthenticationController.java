@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
-
-import com.vars.domain.Developer;
-import com.vars.domain.Response;
-import com.vars.domain.Tester;
 import com.vars.domain.User;
 import com.vars.facade.UserFacade;
 
@@ -33,7 +29,7 @@ public class AuthenticationController {
 		
 		User user = userFacade.getUser(email);
 		if(user!=null){
-			if(user.getUserName().equals(email) && user.getPassword().equals(password)){
+			if(user.getEmail().equals(email) && user.getPasswd().equals(password)){
 				session.setAttribute("user", user);
 				session.setAttribute("sessionId", session.getId());
 			}
@@ -51,40 +47,29 @@ public class AuthenticationController {
 	}
 
 	@RequestMapping(value = "/signup.htm", method = RequestMethod.POST)
-	public ModelAndView signup(@RequestParam("fname") String fname, 
-			@RequestParam("lname") String lname, 
+	public ModelAndView signup(@RequestParam("firstName") String fname, 
+			@RequestParam("lastName") String lname, 
 			@RequestParam("email") String email,
 			@RequestParam("password") String password, 
-			@RequestParam("userType") Integer userType,
+			@RequestParam("address") String address, 
+			@RequestParam("pin") Integer pin,
+			@RequestParam("mobile") Integer mobile,
 			HttpSession session) {
-		
 		User user = new User();
-		Developer developer = new Developer();
-		Tester tester = new Tester();
-
-		if(userType == 0) {
-			user.setIsTester(false);
-			//developer.setFirstName(fname);
-			//developer.setLastName(lname);
-			//developer.setLinkedInUrl("test url");
-		} else {
-			user.setIsTester(true);
-			//tester.setFirstName(fname);
-			//tester.setLastName(lname);
-			//tester.setLinkedInUrl("test url");
-		}
-		user.setUserName(email);
-		user.setPassword(password);
-		user.setDeveloper(developer);
-		user.setTester(tester);
+		user.setEmail(email);
+		user.setPasswd(password);
+		user.setAddress(address);
+		user.setAdmin(false);
 		user.setFirstName(fname);
 		user.setLastName(lname);
-		
+		user.setPin(pin);
+		user.setMobile(mobile);
+		user.setLastLogin(user.getCurrentTime());
 		System.out.println("Signup started for" + user.getFirstName() );
 		
 		userFacade.createUser(user);
 		
-		session.setAttribute("user", userFacade.getUser(user.getUserName()));
+		session.setAttribute("user", userFacade.getUser(user.getEmail()));
 		session.setAttribute("sessionId", session.getId());
 		System.out.println("Signup completed for user" + user.getFirstName() );
 		return new ModelAndView("home");
@@ -96,22 +81,7 @@ public class AuthenticationController {
 		return new ModelAndView("home");
 	}
 	
-	@RequestMapping(value = "/checkUserRegistered.htm", method = RequestMethod.POST)
-	public ModelAndView checkUser(@RequestParam("email") String email, HttpSession session) {
-		Response response = null;
-		boolean exists = userFacade.checkInUser(email);
-		if(exists) {
-			response = new Response("exists");
-			User user = userFacade.getInUser(email);
-			session.setAttribute("user", user);
-			session.setAttribute("sessionId", session.getId());
-		} else {
-			response = new Response("newUser");
-		}
-		
-		return new ModelAndView(VIEW_NAME, "result", response);
-	}
-
+	
 	public void setUserFacade(UserFacade userFacade) {
 		this.userFacade = userFacade;
 	}

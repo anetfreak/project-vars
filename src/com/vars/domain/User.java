@@ -1,66 +1,90 @@
 package com.vars.domain;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+
 public class User {
 	
-	private Integer id;
-	private String password;
-	private String userName;
-	private Developer developer;
-	private Tester tester;
-	private boolean isTester;
 	private String firstName;
 	private String lastName;
-	private String linkedInId;
-	private String linkedInUrl;
+	private String email;
+	private String passwd;
+	private String address;
+	private Integer pin;
+	private Integer mobile;
+	private String lastLogin;
+	private boolean isAdmin;
 	
-	public String getLinkedInUrl() {
-		return linkedInUrl;
+	public User() {
+		super();
 	}
-	public void setLinkedInUrl(String linkedInUrl) {
-		this.linkedInUrl = linkedInUrl;
+		
+	public String getAddress() {
+		return address;
 	}
-	public Integer getId() {
-		return id;
+
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public void setId(Integer id) {
-		this.id = id;
+
+
+	public Integer getPin() {
+		return pin;
 	}
-	public String getPassword() {
-		return password;
+
+
+	public void setPin(Integer pin) {
+		this.pin = pin;
 	}
-	public void setPassword(String password) {
-		this.password = password;
+
+
+	public Integer getMobile() {
+		return mobile;
 	}
-	public String getUserName() {
-		return userName;
+
+
+	public void setMobile(Integer mobile) {
+		this.mobile = mobile;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+
+	public String getLastLogin() {
+		return lastLogin;
 	}
-	public Developer getDeveloper() {
-		return developer;
+
+	public String getCurrentTime()
+	{
+		Calendar cal = Calendar.getInstance();
+    	cal.getTime();
+    	SimpleDateFormat sdf = new SimpleDateFormat("HH:mm:ss");
+    	return sdf.format(cal.getTime()) ;
 	}
-	public void setDeveloper(Developer developer) {
-		this.developer = developer;
+	
+	public void setLastLogin(String lastLogin) {
+		this.lastLogin = lastLogin;
 	}
-	public Tester getTester() {
-		return tester;
+
+
+	public boolean isAdmin() {
+		return isAdmin;
 	}
-	public void setTester(Tester tester) {
-		this.tester = tester;
+
+
+	public void setAdmin(boolean isAdmin) {
+		this.isAdmin = isAdmin;
 	}
-	public boolean getIsTester() {
-		return isTester;
+
+
+	public User(String firstName, String lastName, String email, String passwd) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.passwd = passwd;
 	}
-	public void setIsTester(boolean isTester) {
-		this.isTester = isTester;
-	}
-	public String getLinkedInId() {
-		return linkedInId;
-	}
-	public void setLinkedInId(String linkedInId) {
-		this.linkedInId = linkedInId;
-	}
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}
@@ -73,5 +97,16 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPasswd() {
+		return passwd;
+	}
+	public void setPasswd(String passwd) {
+		this.passwd = passwd;
+	}
 }
